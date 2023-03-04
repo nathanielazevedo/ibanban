@@ -1,0 +1,16 @@
+export const Traveling_1 = [
+  { word: { chinese: "或者", pinyin: "huòzhě" } },
+  { word: { chinese: "俄罗斯", pinyin: "E2luósī" } },
+  { word: { chinese: "日本", pinyin: "Rìběn" } },
+  { word: { chinese: "韩国", pinyin: "Hánguó" } },
+  { word: { chinese: "泰国", pinyin: "Tàiguó" } },
+  { word: { chinese: "过", pinyin: "guo" } },
+  { word: { chinese: "法国", pinyin: "Fǎguó" } },
+  { word: { chinese: "德国", pinyin: "Déguó" } },
+  { word: { chinese: "英国", pinyin: "Yīngguó" } },
+  { word: { chinese: "加拿大", pinyin: "Jiānádà" } },
+  { word: { chinese: "带", pinyin: "dài" } },
+  { word: { chinese: "国家", pinyin: "guójiā" } },
+  { word: { chinese: "语言", pinyin: "yǔyán" } },
+  { word: { chinese: "行李箱", pinyin: "xínglǐxiāng" } },
+];

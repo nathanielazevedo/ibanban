@@ -1,0 +1,17 @@
+export const Communications = [
+  { word: { chinese: "给", pinyin: "gěi" } },
+  { word: { chinese: "打", pinyin: "dǎ" } },
+  { word: { chinese: "发", pinyin: "fā" } },
+  { word: { chinese: "电话", pinyin: "diànhuà" } },
+  { word: { chinese: "短信", pinyin: "duǎnxìn" } },
+  { word: { chinese: "邮件", pinyin: "yóujiàn" } },
+  { word: { chinese: "微信", pinyin: "Wēixìn" } },
+  { word: { chinese: "到", pinyin: "dào" } },
+  { word: { chinese: "接", pinyin: "jiē" } },
+  { word: { chinese: "收", pinyin: "shōu" } },
+  { word: { chinese: "…的时候", pinyin: "…deshíhòu" } },
+  { word: { chinese: "散步", pinyin: "sànbù" } },
+  { word: { chinese: "等", pinyin: "děng" } },
+  { word: { chinese: "健身", pinyin: "jiànshēn" } },
+  { word: { chinese: "东西", pinyin: "dōngxi" } },
+];

@@ -1,0 +1,16 @@
+export const Apologizing = [
+  { word: { chinese: "因此", pinyin: "yīncǐ" } },
+  { word: { chinese: "照顾", pinyin: "zhàogu" } },
+  { word: { chinese: "完成", pinyin: "wánchéng" } },
+  { word: { chinese: "必须", pinyin: "bìxū" } },
+  { word: { chinese: "突然", pinyin: "tūrán" } },
+  { word: { chinese: "不得不", pinyin: "bùdébù" } },
+  { word: { chinese: "推迟", pinyin: "tuīchí" } },
+  { word: { chinese: "取消", pinyin: "qǔxiāo" } },
+  { word: { chinese: "改变", pinyin: "gǎibiàn" } },
+  { word: { chinese: "不好意思", pinyin: "bù hǎoyìsi" } },
+  { word: { chinese: "会议", pinyin: "huìyì" } },
+  { word: { chinese: "计划", pinyin: "jìhuà" } },
+  { word: { chinese: "既然", pinyin: "jìrán" } },
+  { word: { chinese: "赶", pinyin: "gǎn" } },
+];

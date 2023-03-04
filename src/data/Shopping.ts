@@ -1,0 +1,16 @@
+export const Shopping = [
+  { word: { chinese: "试", pinyin: "shì", english: "to try on" } },
+  { word: { chinese: "逛", pinyin: "guàng", english: "to stroll" } },
+  { word: { chinese: "尝", pinyin: "cháng", english: "to taste" } },
+  { word: { chinese: "手机", pinyin: "shǒujī", english: "cell phone" } },
+  { word: { chinese: "电脑", pinyin: "diànnǎo", english: "computer" } },
+  { word: { chinese: "钱包", pinyin: "qiánbāo", english: "wallet" } },
+  { word: { chinese: "手表", pinyin: "shǒubiǎo", english: "watch" } },
+  { word: { chinese: "觉得", pinyin: "juéde", english: "to think" } },
+  { word: { chinese: "怎么样", pinyin: "zěnmeyàng", english: "how about" } },
+  { word: { chinese: "可以", pinyin: "kěyǐ", english: "to be allowed to" } },
+  { word: { chinese: "用", pinyin: "yòng", english: "to use" } },
+  { word: { chinese: "现金", pinyin: "xiànjīn", english: "cash" } },
+  { word: { chinese: "信用卡", pinyin: "xìnyòngkǎ", english: "credit card" } },
+  { word: { chinese: "支付宝", pinyin: "Zhīfùbǎo", english: "alipay" } },
+];

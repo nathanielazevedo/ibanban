@@ -1,0 +1,18 @@
+export const Restaurants_1 = [
+  { word: { chinese: "米饭", pinyin: "mǐfàn", english: "rice" } },
+  { word: { chinese: "要", pinyin: "yào", english: "to want" } },
+  { word: { chinese: "饺子", pinyin: "jiǎozi", english: "dumpling" } },
+  { word: { chinese: "服务员", pinyin: "fúwùyuán", english: "waiter" } },
+  { word: { chinese: "面条", pinyin: "miàntiáo", english: "noodles" } },
+  { word: { chinese: "牛排", pinyin: "niúpái", english: "steak" } },
+  { word: { chinese: "份", pinyin: "fèn", english: "measure word" } },
+  { word: { chinese: "沙拉", pinyin: "shālā", english: "salad" } },
+  { word: { chinese: "色拉", pinyin: "sèlā", english: "" } },
+  { word: { chinese: "汤", pinyin: "tāng", english: "soup" } },
+  { word: { chinese: "碗", pinyin: "wǎn", english: "measure food" } },
+  { word: { chinese: "筷子", pinyin: "kuàizi", english: "chopsticks" } },
+  { word: { chinese: "双", pinyin: "shuāng", english: "pair" } },
+  { word: { chinese: "给", pinyin: "gěi", english: "to give" } },
+  { word: { chinese: "勺子", pinyin: "sháozi", english: "spoon" } },
+  { word: { chinese: "叉子", pinyin: "chāzi", english: "fork" } },
+];

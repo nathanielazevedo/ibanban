@@ -1,0 +1,17 @@
+export const Praise = [
+  { word: { chinese: "不但", pinyin: "bùdàn" } },
+  { word: { chinese: "而且", pinyin: "érqiě" } },
+  { word: { chinese: "从来", pinyin: "cónglái" } },
+  { word: { chinese: "说谎", pinyin: "shuōhuǎng" } },
+  { word: { chinese: "犯", pinyin: "fàn" } },
+  { word: { chinese: "不管", pinyin: "bùguǎn" } },
+  { word: { chinese: "放弃", pinyin: "fàngqì" } },
+  { word: { chinese: "解决", pinyin: "jiějué" } },
+  { word: { chinese: "困难", pinyin: "kùnnan" } },
+  { word: { chinese: "十分", pinyin: "shífēn" } },
+  { word: { chinese: "幸福", pinyin: "xìngfú" } },
+  { word: { chinese: "感动", pinyin: "gǎndòng" } },
+  { word: { chinese: "愉快", pinyin: "yúkuài" } },
+  { word: { chinese: "兴奋", pinyin: "xīngfèn" } },
+  { word: { chinese: "吃惊", pinyin: "chījīng" } },
+];

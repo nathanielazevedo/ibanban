@@ -1,0 +1,18 @@
+export const Personality = [
+  { word: { chinese: "多么", pinyin: "duōme" } },
+  { word: { chinese: "啊", pinyin: "a" } },
+  { word: { chinese: "浪漫", pinyin: "làngmàn" } },
+  { word: { chinese: "幽默", pinyin: "yōumò" } },
+  { word: { chinese: "活泼", pinyin: "huópo" } },
+  { word: { chinese: "努力", pinyin: "nǔlì" } },
+  { word: { chinese: "各", pinyin: "gè" } },
+  { word: { chinese: "参加", pinyin: "cānjiā" } },
+  { word: { chinese: "优点", pinyin: "yōudiǎn" } },
+  { word: { chinese: "缺点", pinyin: "quēdiǎn" } },
+  { word: { chinese: "活动", pinyin: "huódòng" } },
+  { word: { chinese: "感兴趣", pinyin: "gǎn xìngqù" } },
+  { word: { chinese: "熟悉", pinyin: "shúxī" } },
+  { word: { chinese: "重视", pinyin: "zhòngshì" } },
+  { word: { chinese: "礼貌", pinyin: "lǐmào" } },
+  { word: { chinese: "耐心", pinyin: "nàixīn" } },
+];

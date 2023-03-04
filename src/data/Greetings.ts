@@ -1,0 +1,15 @@
+export const Greetings = [
+  { word: { chinese: "好像", pinyin: "hǎoxiàng" } },
+  { word: { chinese: "见", pinyin: "jiàn" } },
+  { word: { chinese: "挺", pinyin: "tǐng" } },
+  { word: { chinese: "过", pinyin: "guò" } },
+  { word: { chinese: "最近", pinyin: "zuìjìn" } },
+  { word: { chinese: "叔叔", pinyin: "shūshu" } },
+  { word: { chinese: "阿姨", pinyin: "āyí" } },
+  { word: { chinese: "还", pinyin: "hái" } },
+  { word: { chinese: "俩", pinyin: "liǎ" } },
+  { word: { chinese: "咱们", pinyin: "zánmen" } },
+  { word: { chinese: "保持", pinyin: "bǎochí" } },
+  { word: { chinese: "永远", pinyin: "yǒngyuǎn" } },
+  { word: { chinese: "聚会", pinyin: "jùhuì" } },
+];

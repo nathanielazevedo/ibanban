@@ -1,0 +1,18 @@
+export const Dates = [
+  { word: { chinese: "今天", pinyin: "jīntiān", english: "today" } },
+  { word: { chinese: "今天", pinyin: "mingtian", english: "tomorrow" } },
+  { word: { chinese: "昨天", pinyin: "zuótiān", english: "yesterday" } },
+  { word: { chinese: "星期一", pinyin: "Xīngqīyī", english: "monday" } },
+  { word: { chinese: "星期二", pinyin: "Xīngqīèr", english: "tuesday" } },
+  { word: { chinese: "星期三", pinyin: "Xīngqīsān", english: "wednesday" } },
+  { word: { chinese: "星期四", pinyin: "Xīngqīsì", english: "thursday" } },
+  { word: { chinese: "星期五", pinyin: "Xīngqīwǔ", english: "friday" } },
+  { word: { chinese: "星期六", pinyin: "Xīngqīliù", english: "saturday" } },
+  { word: { chinese: "星期天", pinyin: "Xīngqītiān", english: "sunday" } },
+  { word: { chinese: "星期", pinyin: "xingqī", english: "week" } },
+  { word: { chinese: "月", pinyin: "yuè", english: "month" } },
+  { word: { chinese: "号", pinyin: "hào", english: "date" } },
+  { word: { chinese: "年", pinyin: "nián", english: "year" } },
+  { word: { chinese: "生日", pinyin: "shēngri", english: "birthday" } },
+  { word: { chinese: "零", pinyin: "líng", english: "zero" } },
+];

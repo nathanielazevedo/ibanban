@@ -1,0 +1,18 @@
+export const Career = [
+  { word: { chinese: "希望", pinyin: "xīwàng" } },
+  { word: { chinese: "演员", pinyin: "yǎnyuán" } },
+  { word: { chinese: "司机", pinyin: "sījī" } },
+  { word: { chinese: "警察", pinyin: "jǐngchá" } },
+  { word: { chinese: "律师", pinyin: "lǜshī" } },
+  { word: { chinese: "虽然", pinyin: "suīrán" } },
+  { word: { chinese: "但是", pinyin: "dànshì" } },
+  { word: { chinese: "穷", pinyin: "qióng" } },
+  { word: { chinese: "有钱", pinyin: "yǒuqián" } },
+  { word: { chinese: "轻松", pinyin: "qīngsōng" } },
+  { word: { chinese: "忙", pinyin: "máng" } },
+  { word: { chinese: "除了", pinyin: "chúle" } },
+  { word: { chinese: "记者", pinyin: "jìzhě" } },
+  { word: { chinese: "设计师", pinyin: "shèjìshī" } },
+  { word: { chinese: "护士", pinyin: "hùshi" } },
+  { word: { chinese: "程序员", pinyin: "chéngxùyuán" } },
+];
