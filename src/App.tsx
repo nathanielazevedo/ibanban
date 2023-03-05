@@ -1,8 +1,13 @@
 import { Box, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import TopNav from "./components/TopNav";
-import SideNav from "./components/SideNav";
-import router from "./router/routes";
-import { RouterProvider } from "react-router-dom";
+import TopNav from "./components/nav/TopNav";
+import SideNav from "./components/nav/SideNav";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+import Welcome from "./pages/Welcome";
+import Overview from "./pages/Overview";
+import Spelling from "./pages/Spelling";
+import Games from "./pages/Games";
+import PlanetDefender from "./pages/PlanetDefender";
 
 const darkTheme = createTheme({
   palette: {
@@ -17,15 +22,34 @@ const darkTheme = createTheme({
   },
 });
 
-const App = () => (
-  <ThemeProvider theme={darkTheme}>
-    <Box sx={{ maxheight: "100vh", maxWidth: "100vw" }}>
-      <CssBaseline />
-      <TopNav />
-      <SideNav />
-      <RouterProvider router={router} />
-    </Box>
-  </ThemeProvider>
-);
+const App = () => {
+  const [sideNavOpen, setSideNavOpen] = useState(false);
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={darkTheme}>
+        <Box sx={{ maxheight: "100vh", maxWidth: "100vw" }}>
+          <CssBaseline />
+          <TopNav setSideNavOpen={setSideNavOpen} />
+          <SideNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />
+          <div
+            id="main"
+            style={{ height: "calc(100vh - 70px)", marginTop: "70px" }}
+          >
+            <Routes>
+              <Route path="/" element={<Welcome />} />
+              <Route path="/deck/:deckName/overview" element={<Overview />} />
+              <Route path="/deck/:deckName/spelling" element={<Spelling />} />
+              <Route path="/deck/:deckName/games" element={<Games />} />
+              <Route
+                path="/deck/:deckName/games/planetDefender"
+                element={<PlanetDefender />}
+              />
+            </Routes>
+          </div>
+        </Box>
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+};
 
 export default App;
