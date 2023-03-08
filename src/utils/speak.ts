@@ -1,4 +1,4 @@
-export const speak = (word: string, rate: number | number[]) => {
+export const speak = (word: string, rate?: number | number[]) => {
   var msg = new SpeechSynthesisUtterance();
   msg.text = word;
   msg.lang = "zh";

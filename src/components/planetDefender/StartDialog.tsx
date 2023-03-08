@@ -13,6 +13,7 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 type WinDialog = {
   open: boolean;
@@ -43,7 +44,7 @@ const StartDialog = ({
           width: "100%",
         }}
       >
-        Menu
+        Planet Defender
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
@@ -75,7 +76,9 @@ const StartDialog = ({
         </FormControl>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
-        <Button onClick={() => console.log("leave")}>Leave Game</Button>
+        <Link to="/">
+          <Button>Leave Game</Button>
+        </Link>
         <Button
           onClick={() => {
             setShowStartDialog(false);

@@ -1,27 +1,14 @@
-import React from "react";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Box, Slider, Stack, Typography } from "@mui/material";
 
 type Footer = {
-  deckName: string;
-  index: number;
-  previousWord: () => void;
-  nextWord: () => void;
-  deckLength: number;
+  GameClass: any;
   speechRate: number | number[];
   setSpeechRate: (rate: number | number[]) => void;
 };
 
-const Footer = ({
-  deckName,
-  index,
-  previousWord,
-  nextWord,
-  deckLength,
-  speechRate,
-  setSpeechRate,
-}: Footer) => {
+const Footer = ({ GameClass, speechRate, setSpeechRate }: Footer) => {
   return (
     <Box
       sx={{
@@ -35,7 +22,7 @@ const Footer = ({
         padding: "0 2rem",
       }}
     >
-      <Typography>{deckName}</Typography>
+      <Typography>{GameClass.deckName}</Typography>
       <Stack
         spacing={2}
         direction="row"
@@ -45,9 +32,10 @@ const Footer = ({
         <Slider
           aria-label="Volume"
           value={speechRate}
-          onChange={(event: Event, newValue: number | number[]) =>
-            setSpeechRate(newValue)
-          }
+          onChange={(event: Event, newValue: number | number[]) => {
+            if (event.type == "input") return;
+            setSpeechRate(newValue);
+          }}
           color="secondary"
           min={0.5}
           max={2}
@@ -55,13 +43,18 @@ const Footer = ({
         />
       </Stack>
       <div style={{ display: "flex" }}>
-        {index !== 0 && (
-          <ArrowLeftIcon onClick={previousWord} sx={{ cursor: "pointer" }} />
-        )}
-        <Typography>{index + 1 + " - " + deckLength}</Typography>
-        {index !== deckLength - 1 && (
-          <ArrowRightIcon onClick={nextWord} sx={{ cursor: "pointer" }} />
-        )}
+        <ArrowLeftIcon
+          onClick={() => GameClass.goPreviousWord()}
+          sx={{ cursor: "pointer" }}
+        />
+
+        <Typography>
+          {GameClass.currentWordIndex + 1 + " - " + GameClass.getDeckLength()}
+        </Typography>
+        <ArrowRightIcon
+          onClick={() => GameClass.goNextWord()}
+          sx={{ cursor: "pointer" }}
+        />
       </div>
     </Box>
   );

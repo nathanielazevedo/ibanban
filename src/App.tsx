@@ -7,7 +7,8 @@ import Welcome from "./pages/Welcome";
 import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
 import Games from "./pages/Games";
-import PlanetDefender from "./pages/PlanetDefender";
+import PlanetDefender from "./components/planetDefender/PlanetDefender";
+import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
 
 const darkTheme = createTheme({
   palette: {
@@ -42,7 +43,11 @@ const App = () => {
               <Route path="/deck/:deckName/games" element={<Games />} />
               <Route
                 path="/deck/:deckName/games/planetDefender"
-                element={<PlanetDefender />}
+                element={
+                  <PlanetDefenderWrapper>
+                    <PlanetDefender />
+                  </PlanetDefenderWrapper>
+                }
               />
             </Routes>
           </div>

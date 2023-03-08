@@ -5,18 +5,20 @@ type StackType = {
     english: string;
   };
 }[];
-export default class PlanetDefender {
+export default class PlanetDefenderClass {
   stack: StackType;
+  stackStore: StackType;
 
   constructor(deck: StackType) {
     this.stack = structuredClone(deck);
+    this.stackStore = deck;
   }
 
-  shift() {
+  public shift() {
     this.stack.shift();
   }
 
-  shiftPush() {
+  public shiftPush() {
     this.stack.push(this.stack.shift() as never);
   }
 
@@ -24,9 +26,19 @@ export default class PlanetDefender {
     return this.stack.length == 0;
   }
 
-  checkWork(input: string) {
+  checkWord(input: string) {
     if (input === this.stack[0].word.english) {
-      this.shift();
+      return true;
+    } else {
+      return false;
     }
+  }
+
+  getNextWord() {
+    return this.stack[0];
+  }
+
+  restoreDeck() {
+    this.stack = structuredClone(this.stackStore);
   }
 }

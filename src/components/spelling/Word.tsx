@@ -3,18 +3,36 @@ import Letter from "./Letter";
 import { speak } from "../../utils/speak";
 import { Tooltip, Typography } from "@mui/material";
 import HearingIcon from "@mui/icons-material/Hearing";
+import { SpellingGame } from "../../utils/spelling";
 
 type Word = {
-  word: Record<string, any>;
-  goNextWord: () => void;
+  GameClass: SpellingGame;
   speechRate: number | number[];
 };
 
-const Word = ({ word, goNextWord, speechRate }: Word) => {
-  const [inputRefs, setInputRefs] = useState<any>(undefined);
+type State = [
+  {
+    targetValue: string;
+    value: string;
+    ref: any;
+    status: string;
+  }
+];
+
+const Word = ({ GameClass, speechRate }: Word) => {
+  const [state, setState] = useState<State>(GameClass.generateState());
 
   useEffect(() => {
-    setInputRefs(document.getElementById("inputs"));
+    const inputRefs = document.getElementById("inputs")?.children;
+    GameClass.setState = setState;
+    if (!inputRefs) return;
+    //apply's refs to each letter
+    setState((previous) => {
+      previous?.forEach((e, i) => {
+        e.ref = inputRefs[i];
+      });
+      return previous;
+    });
   }, []);
 
   return (
@@ -27,10 +45,12 @@ const Word = ({ word, goNextWord, speechRate }: Word) => {
           height: "100px",
         }}
       >
-        <Typography variant="h2">{word?.word?.english}</Typography>
+        <Typography variant="h2">
+          {GameClass.getCurrentEnglishWord()}
+        </Typography>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
-            onClick={() => speak(word.word.chinese, speechRate)}
+            onClick={() => speak(GameClass.getCurrentChineseWord(), speechRate)}
             sx={{
               fontSize: "50px",
               color: "gray",
@@ -48,19 +68,25 @@ const Word = ({ word, goNextWord, speechRate }: Word) => {
           alignItems: "center",
         }}
       >
-        {inputRefs &&
-          word.word.pinyin
-            .split("")
-            ?.map((letter: string, i: number) => (
-              <Letter
-                index={i}
-                letter={letter}
-                goNextWord={goNextWord}
-                refs={inputRefs?.children}
-                key={Math.random() * i}
-              />
-            ))}
+        {GameClass.getCurrentPinyinWord()?.map(
+          (letter: string, index: number) => (
+            <Letter
+              key={(Math.random() * index) / Math.random()}
+              value={state[index]?.value ?? ""}
+              focused={GameClass.currentLetterIndex === index}
+              state={state[index]?.status}
+              handleChange={() => {
+                return GameClass.handleChange(index, state, setState);
+              }}
+            />
+          )
+        )}
       </div>
+      {/* {showCheck && (
+        <CheckIcon
+          sx={{ color: "lightgreen", marginLeft: "50px", fontSize: "50px" }}
+        />
+      )} */}
     </div>
   );
 };

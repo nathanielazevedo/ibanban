@@ -1,43 +1,26 @@
-import { Box } from "@mui/material";
-import { useState } from "react";
-import Word from "../components/spelling/Word";
+import { useMemo, useState } from "react";
 import { register } from "../data";
+import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
+import Word from "../components/spelling/Word";
 import Footer from "../components/spelling/Footer";
+import { SpellingGame } from "../utils/spelling";
+import { keyDownListener } from "../utils/keyDownListener";
 
 const Words = () => {
-  const { deckName } = useParams();
-  const deck = register[deckName ?? ""];
-  const [index, setIndex] = useState(0);
   const [speechRate, setSpeechRate] = useState<number | number[]>(1);
+  const { deckName } = useParams();
+  if (!deckName) return <></>;
+  const setCurrentWord = useState(register[deckName][0])[1];
 
-  const goNextWord = () => {
-    const idx = index;
-    setIndex(idx + 1);
-  };
+  const GameClass = useMemo(() => {
+    return new SpellingGame(register[deckName], deckName, setCurrentWord);
+  }, []);
 
-  const previousWord = () => {
-    if (index !== 0) {
-      const idx = index;
-      setIndex(idx - 1);
-    }
-  };
+  document.onkeydown = (e) => keyDownListener(e, GameClass);
 
-  const keyDownListener = (e: any) => {
-    const key = e.key;
-    switch (key) {
-      case "ArrowRight":
-        goNextWord();
-        break;
-      case "ArrowLeft":
-        previousWord();
-        break;
-    }
-  };
-
-  document.onkeydown = keyDownListener;
-
-  if (index >= deck.length) return <div>Finished</div>;
+  if (GameClass.currentWordIndex >= GameClass.getDeckLength())
+    return <div>Finished</div>;
 
   return (
     <Box
@@ -47,17 +30,9 @@ const Words = () => {
       justifyContent="space-between"
       width="100%"
     >
-      <Word
-        word={deck[index]}
-        goNextWord={goNextWord}
-        speechRate={speechRate}
-      />
+      <Word GameClass={GameClass} speechRate={speechRate} />
       <Footer
-        deckName={deckName ?? ""}
-        index={index}
-        previousWord={previousWord}
-        nextWord={goNextWord}
-        deckLength={deck.length}
+        GameClass={GameClass}
         speechRate={speechRate}
         setSpeechRate={setSpeechRate}
       />

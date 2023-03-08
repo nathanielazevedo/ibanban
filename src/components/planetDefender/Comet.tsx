@@ -1,18 +1,19 @@
 import { useEffect, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { colors } from "../../styles/PlanetDefender";
+import playSound from "../../utils/playSound";
+import { speak } from "../../utils/speak";
+import lose from "../../assets/lose.wav";
 
-const Comet = ({
-  text,
-  handleWrong,
-  difficulty,
-}: {
+type Comet = {
   text: any;
-  handleWrong: any;
-  difficulty: any;
-}) => {
-  const first = useRef(true);
-  const [spring, api] = useSpring(() => ({
+  handleWrong: () => void;
+  difficulty: string;
+};
+
+const Comet = ({ text, handleWrong, difficulty }: Comet) => {
+  const firstRender = useRef(true);
+  const [spring] = useSpring(() => ({
     from: { x: -700 },
     to: { x: 400 },
     config: {
@@ -21,20 +22,14 @@ const Comet = ({
     onRest: (x) => {
       if (x.finished) {
         handleWrong();
-        const sound = new Audio("./lose.wav");
-        sound.volume = 0.1;
-        sound.play();
+        playSound(lose);
       }
     },
   }));
   useEffect(() => {
-    if (first.current) {
-      first.current = false;
-      const msg = new SpeechSynthesisUtterance();
-      msg.text = text?.word?.chinese ?? "";
-      msg.lang = "zh";
-      msg.rate = 0.5;
-      window.speechSynthesis.speak(msg);
+    if (firstRender.current) {
+      firstRender.current = false;
+      speak(text.word.chinese);
     }
   }, []);
 
