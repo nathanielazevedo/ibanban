@@ -1,23 +1,25 @@
 import { useEffect, useRef } from "react";
 import { useSpring, animated } from "@react-spring/web";
-import { colors } from "../../styles/PlanetDefender";
 import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
 import lose from "../../assets/lose.wav";
+import { WordType } from "../overview/Row";
 
 type Comet = {
-  text: any;
+  text: WordType;
   handleWrong: () => void;
   difficulty: string;
+  planetRef: HTMLDivElement | null;
 };
 
-const Comet = ({ text, handleWrong, difficulty }: Comet) => {
+const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
   const firstRender = useRef(true);
+
   const [spring] = useSpring(() => ({
-    from: { x: -700 },
-    to: { x: 400 },
+    from: { x: -50 },
+    to: { x: planetRef?.getBoundingClientRect().left },
     config: {
-      duration: 5000,
+      duration: difficulty == "easy" ? 7000 : 5000,
     },
     onRest: (x) => {
       if (x.finished) {
@@ -41,11 +43,12 @@ const Comet = ({ text, handleWrong, difficulty }: Comet) => {
         position: "absolute",
         top: "420px",
         borderRadius: "50%",
+        color: "black",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         background: `radial-gradient(circle at 5% 15%, pink 1px,
-            ${colors.purple} 4%,${colors.red} 60%, ${colors.pink} 100%)`,
+            gray 4%,darkgray 60%, black 100%)`,
         ...spring,
       }}
     >

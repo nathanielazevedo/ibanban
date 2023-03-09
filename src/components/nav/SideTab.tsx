@@ -15,6 +15,7 @@ const SideTab = ({ title, setSideNavOpen }: SideTab) => {
   return (
     <NavLink
       to={`/deck/${title.replaceAll(" ", "_")}/overview`}
+      replace
       className={({ isActive }) => (isActive ? "side-tab-active" : "")}
       onClick={() => setSideNavOpen(false)}
     >

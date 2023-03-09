@@ -39,6 +39,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Welcome />} />
               <Route path="/deck/:deckName/overview" element={<Overview />} />
+              <Route path="/deck/:deckName/overview" element={<Overview />} />
               <Route path="/deck/:deckName/spelling" element={<Spelling />} />
               <Route path="/deck/:deckName/games" element={<Games />} />
               <Route

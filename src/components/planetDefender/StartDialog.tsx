@@ -1,6 +1,4 @@
-import React from "react";
 import {
-  TextField,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -12,8 +10,9 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Typography,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 type WinDialog = {
   open: boolean;
@@ -30,11 +29,15 @@ const StartDialog = ({
   prepareGame,
   difficulty,
 }: WinDialog) => {
+  const location = useLocation();
+  const splitLocation = location.pathname.split("/");
+  const backRoute = splitLocation.slice(0, 4).join("/");
+
   return (
     <Dialog
       open={open}
       fullWidth
-      PaperProps={{ sx: { height: "500px", backgroundColor: "black" } }}
+      PaperProps={{ sx: { height: "700px", backgroundColor: "black" } }}
     >
       <DialogTitle
         sx={{
@@ -55,10 +58,9 @@ const StartDialog = ({
             Difficulty
           </FormLabel>
           <RadioGroup
-            row
-            aria-labelledby="demo-row-radio-buttons-group-label"
             name="row-radio-buttons-group"
             defaultValue={difficulty}
+            sx={{ paddingTop: "20px", marginLeft: "20px" }}
           >
             <FormControlLabel
               value="easy"
@@ -66,17 +68,30 @@ const StartDialog = ({
               label="Easy"
               onClick={() => setDifficulty("easy")}
             />
+            <Typography ml="20px">
+              Pinyin word will be shown on the comet.
+            </Typography>
+            <Typography ml="20px">
+              You will have 7 seconds to input the correct response.
+            </Typography>
             <FormControlLabel
               value="hard"
               control={<Radio />}
               label="Hard"
               onClick={() => setDifficulty("hard")}
+              sx={{ marginTop: "20px" }}
             />
+            <Typography ml="20px">
+              Pinyin word will be not shown on the comet.
+            </Typography>
+            <Typography ml="20px">
+              You will have 5 seconds to input the correct response.
+            </Typography>
           </RadioGroup>
         </FormControl>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
-        <Link to="/">
+        <Link to={backRoute}>
           <Button>Leave Game</Button>
         </Link>
         <Button

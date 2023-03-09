@@ -68,9 +68,10 @@ import { Alphabet } from "./Alphabet";
 import Hello from "./Hello";
 import Food from "./Food";
 import Money from "./Money";
+import { WordType } from "../components/overview/Row";
 
 type registerType = {
-  [key: string]: any;
+  [key: string]: WordType[];
 };
 
 export const register: registerType = {

@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import arrow from "../assets/arrow.png";
 
 const Welcome = () => {
   return (
@@ -12,6 +13,15 @@ const Welcome = () => {
         justifyContent: "center",
       }}
     >
+      <img
+        src={arrow}
+        style={{
+          transform: "rotate(80deg) scaleX(-1)",
+          position: "absolute",
+          top: 0,
+          left: 70,
+        }}
+      />
       <Typography variant="h2" color="lightblue">
         Learn Mandarin with games.
       </Typography>

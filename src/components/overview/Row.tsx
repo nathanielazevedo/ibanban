@@ -3,7 +3,15 @@ import { Typography } from "@mui/material";
 import { speak } from "../../utils/speak";
 import TableRow from "@mui/material/TableRow";
 
-const Row = ({ word }: { word: Record<any, any> }) => {
+export type WordType = {
+  word: {
+    chinese: string;
+    english?: string;
+    pinyin: string;
+  };
+};
+
+const Row = ({ word }: { word: WordType }) => {
   return (
     <TableRow>
       <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>

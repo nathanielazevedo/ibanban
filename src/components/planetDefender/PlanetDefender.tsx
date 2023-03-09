@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef } from "react";
 import { TextField } from "@mui/material";
 import { GameContext } from "../../pages/PlanetDefenderWrapper";
 //components
@@ -11,6 +11,7 @@ import Good from "../../assets/good.wav";
 import playSound from "../../utils/playSound";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CountDown from "./CountDown";
+import Footer from "./Footer";
 
 const PlanetDefender = () => {
   const context = useContext(GameContext);
@@ -20,8 +21,10 @@ const PlanetDefender = () => {
   const [input, setInput] = useState("");
   const [showWinDialog, setShowWinDialog] = useState(false);
   const [showStartDialog, setShowStartDialog] = useState(true);
+  const [borderColor, setBorderColor] = useState("lightblue");
   const [difficulty, setDifficulty] = useState("easy");
   const [showCountDown, setShowCountDown] = useState(false);
+  const planetRef = useRef<HTMLDivElement | null>(null);
 
   // starts countdown
   const startCountDown = () => {
@@ -43,6 +46,7 @@ const PlanetDefender = () => {
     }, 500);
   };
 
+  // Inputting characters into bar
   const handleInputChange = (text: string) => {
     setInput(text);
     if (context.checkWord(text)) {
@@ -52,9 +56,11 @@ const PlanetDefender = () => {
         setShowWinDialog(true);
         playSound(Win);
       } else {
+        setBorderColor("green");
         playSound(Good);
         setCurrentWord(context.getNextWord());
         setTimeout(() => {
+          setBorderColor("blue");
           setInput("");
           setShowComet(true);
         }, 500);
@@ -64,11 +70,13 @@ const PlanetDefender = () => {
 
   // comet hit the planet
   const handleWrong = () => {
+    setBorderColor("red");
     setShowComet(false);
     setInput("");
     context.shiftPush();
     setCurrentWord(context.getNextWord());
     setTimeout(() => {
+      setBorderColor("blue");
       setShowComet(true);
     }, 500);
   };
@@ -78,7 +86,13 @@ const PlanetDefender = () => {
       <div style={{ height: "100%", width: "100%" }}>
         {showCountDown ? <CountDown /> : null}
         <CloseRoundedIcon
-          className="planet-defender-close"
+          sx={{
+            fontSize: "75px",
+            color: "white",
+            position: "absolute",
+            left: "20px",
+            cursor: "pointer",
+          }}
           onClick={() => {
             setShowStartDialog(true);
             setShowComet(false);
@@ -89,15 +103,23 @@ const PlanetDefender = () => {
             text={currentWord}
             handleWrong={handleWrong}
             difficulty={difficulty}
+            planetRef={planetRef.current}
           />
         )}
-        <div className="planet" />
-        <TextField
-          id="planet-defender-text-field"
-          onChange={(evt) => handleInputChange(evt.target.value)}
-          value={input}
-          sx={{ position: "absolute", bottom: 100, right: 900 }}
-        />
+        <div ref={planetRef} className="planet" />
+        <Footer stack={context}>
+          <TextField
+            id="planet-defender-text-field"
+            onChange={(evt) => handleInputChange(evt.target.value)}
+            value={input}
+            focused={showComet}
+            inputRef={(input) => input && input.focus()}
+            autoFocus={showComet}
+            autoComplete={"off"}
+            sx={{ border: `solid ${borderColor} 1px` }}
+            disabled={!showComet}
+          />
+        </Footer>
       </div>
 
       <WinDialog

@@ -10,14 +10,12 @@ type Word = {
   speechRate: number | number[];
 };
 
-type State = [
-  {
-    targetValue: string;
-    value: string;
-    ref: any;
-    status: string;
-  }
-];
+export type State = {
+  targetValue: string;
+  value: string;
+  ref: Element | undefined;
+  status: string;
+}[];
 
 const Word = ({ GameClass, speechRate }: Word) => {
   const [state, setState] = useState<State>(GameClass.generateState());
@@ -26,7 +24,7 @@ const Word = ({ GameClass, speechRate }: Word) => {
     const inputRefs = document.getElementById("inputs")?.children;
     GameClass.setState = setState;
     if (!inputRefs) return;
-    //apply's refs to each letter
+    //applys refs to each letter
     setState((previous) => {
       previous?.forEach((e, i) => {
         e.ref = inputRefs[i];
@@ -71,7 +69,7 @@ const Word = ({ GameClass, speechRate }: Word) => {
         {GameClass.getCurrentPinyinWord()?.map(
           (letter: string, index: number) => (
             <Letter
-              key={(Math.random() * index) / Math.random()}
+              key={(Math.random() * index + 5) / Math.random()}
               value={state[index]?.value ?? ""}
               focused={GameClass.currentLetterIndex === index}
               state={state[index]?.status}
@@ -82,11 +80,6 @@ const Word = ({ GameClass, speechRate }: Word) => {
           )
         )}
       </div>
-      {/* {showCheck && (
-        <CheckIcon
-          sx={{ color: "lightgreen", marginLeft: "50px", fontSize: "50px" }}
-        />
-      )} */}
     </div>
   );
 };

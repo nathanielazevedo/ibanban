@@ -11,9 +11,9 @@ type PlanetDefender = {
   };
 }[];
 
-export const GameContext = createContext<any>(null);
+export const GameContext = createContext<stack | undefined>(undefined);
 
-const PlanetDefenderWrapper = ({ children }: { children: any }) => {
+const PlanetDefenderWrapper = ({ children }: { children: React.ReactNode }) => {
   const { deckName } = useParams();
   const deck = register[deckName ?? ""] as PlanetDefender;
   const thisStack = new stack(deck);

@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -12,7 +12,8 @@ const Main = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
+        paddingTop: "200px",
       }}
     >
       <Link to={`${location.pathname}/planetDefender`}>
@@ -22,7 +23,7 @@ const Main = () => {
           style={{
             background: "linear-gradient(to right, red, purple",
             padding: "3px",
-            height: "75px",
+            height: "155px",
             borderRadius: "5px",
             cursor: "pointer",
             marginBottom: "50px",
@@ -41,37 +42,10 @@ const Main = () => {
               padding: "3px",
             }}
           >
-            Planet Defender
+            <Typography sx={{ fontSize: "35px" }}>Planet Defender</Typography>
           </Box>
         </div>
       </Link>
-      <div
-        className="border"
-        // onClick={() => setTab("sentences")}
-        style={{
-          background: "linear-gradient(to right, red, purple",
-          padding: "3px",
-          height: "75px",
-          borderRadius: "5px",
-          cursor: "pointer",
-          marginBottom: "50px",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#1a1a1a",
-            alignItems: "center",
-            width: "500px",
-            height: "100%",
-            borderRadius: "5px",
-            padding: "3px",
-          }}
-        >
-          Sound Scape
-        </Box>
-      </div>
     </div>
   );
 };

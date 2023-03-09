@@ -1,9 +1,10 @@
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
-import { Box, Slider, Stack, Typography } from "@mui/material";
+import { Box, Slider, Stack, Tooltip, Typography } from "@mui/material";
+import { SpellingGame } from "../../utils/spelling";
 
 type Footer = {
-  GameClass: any;
+  GameClass: SpellingGame;
   speechRate: number | number[];
   setSpeechRate: (rate: number | number[]) => void;
 };
@@ -29,18 +30,20 @@ const Footer = ({ GameClass, speechRate, setSpeechRate }: Footer) => {
         sx={{ width: "300px" }}
         alignItems="center"
       >
-        <Slider
-          aria-label="Volume"
-          value={speechRate}
-          onChange={(event: Event, newValue: number | number[]) => {
-            if (event.type == "input") return;
-            setSpeechRate(newValue);
-          }}
-          color="secondary"
-          min={0.5}
-          max={2}
-          step={0.1}
-        />
+        <Tooltip title="Speech Rate">
+          <Slider
+            aria-label="Speech Rate"
+            value={speechRate}
+            onChange={(event: Event, newValue: number | number[]) => {
+              if (event.type == "input") return;
+              setSpeechRate(newValue);
+            }}
+            color="secondary"
+            min={0.2}
+            max={1}
+            step={0.1}
+          />
+        </Tooltip>
       </Stack>
       <div style={{ display: "flex" }}>
         <ArrowLeftIcon
