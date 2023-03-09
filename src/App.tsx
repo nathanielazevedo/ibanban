@@ -37,13 +37,22 @@ const App = () => {
             style={{ height: "calc(100vh - 70px)", marginTop: "70px" }}
           >
             <Routes>
-              <Route path="/" element={<Welcome />} />
-              <Route path="/deck/:deckName/overview" element={<Overview />} />
-              <Route path="/deck/:deckName/overview" element={<Overview />} />
-              <Route path="/deck/:deckName/spelling" element={<Spelling />} />
-              <Route path="/deck/:deckName/games" element={<Games />} />
+              <Route path="/ibanban/" element={<Welcome />} />
               <Route
-                path="/deck/:deckName/games/planetDefender"
+                path="/ibanban/deck/:deckName/overview"
+                element={<Overview />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/overview"
+                element={<Overview />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/spelling"
+                element={<Spelling />}
+              />
+              <Route path="/ibanban/deck/:deckName/games" element={<Games />} />
+              <Route
+                path="/ibanban/deck/:deckName/games/planetDefender"
                 element={
                   <PlanetDefenderWrapper>
                     <PlanetDefender />

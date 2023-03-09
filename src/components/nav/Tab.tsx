@@ -5,7 +5,7 @@ import { NavLink, useLocation } from "react-router-dom";
 const Tab = ({ name }: { name: string }) => {
   const location = useLocation();
   const splitLocation = location.pathname.split("/");
-  splitLocation[3] = name.toLowerCase();
+  splitLocation[4] = name.toLowerCase();
   const finalRoute = splitLocation.join("/");
 
   return (
