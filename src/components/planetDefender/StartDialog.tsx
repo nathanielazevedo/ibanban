@@ -31,7 +31,7 @@ const StartDialog = ({
 }: WinDialog) => {
   const location = useLocation();
   const splitLocation = location.pathname.split("/");
-  const backRoute = splitLocation.slice(0, 4).join("/");
+  const backRoute = splitLocation.slice(0, 5).join("/");
 
   return (
     <Dialog

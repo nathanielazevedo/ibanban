@@ -15,11 +15,12 @@ const Welcome = () => {
     >
       <img
         src={arrow}
+        height={300}
         style={{
           transform: "rotate(80deg) scaleX(-1)",
           position: "absolute",
-          top: 0,
-          left: 70,
+          top: 20,
+          left: 50,
         }}
       />
       <Typography variant="h2" color="lightblue">

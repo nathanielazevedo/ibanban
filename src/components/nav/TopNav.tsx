@@ -30,7 +30,7 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
           </div>
         )}
       </div>
-      <Link to="/">
+      <Link to="/ibanban/">
         <Typography sx={{ fontSize: "25px", color: "lightblue" }}>
           Ibanban
         </Typography>
