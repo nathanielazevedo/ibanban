@@ -26,7 +26,7 @@ const MainPage = () => {
       <directionalLight position={[0, 0, 5]} />
       <Suspense fallback={null}>
         <animated.primitive
-          onClick={() => setActive(!active)}
+          // onClick={() => setActive(!active)}
           object={gltf.scene}
           scale={scale}
           ref={myMesh}
