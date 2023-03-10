@@ -6,7 +6,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useSpring, animated, config } from "@react-spring/three";
 
 const MainPage = () => {
-  const gltf = useLoader(GLTFLoader, "/earth/scene.gltf");
+  const gltf = useLoader(GLTFLoader, "/ibanban/earth/scene.gltf");
   const myMesh = React.useRef<any>();
   // const [active, setActive] = useState(false);
 
