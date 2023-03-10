@@ -16,6 +16,8 @@ import MainPage from "../welcome/MainPage";
 import { Canvas } from "@react-three/fiber";
 import bg from "../../assets/bg.jpeg";
 import { Scene } from "../welcome/Shape";
+import { useInterval } from "../../hooks/useIntreval";
+import Loading from "./Loading";
 
 const PlanetDefender = () => {
   const context = useContext(GameContext);
@@ -29,7 +31,16 @@ const PlanetDefender = () => {
   const [difficulty, setDifficulty] = useState("easy");
   const [showCountDown, setShowCountDown] = useState(false);
   const planetRef = useRef<HTMLDivElement | null>(null);
+  const [count, setCount] = useState(0);
 
+  useInterval(
+    () => {
+      setCount((o) => o + 1);
+    },
+    count > 3 ? null : 1000
+  );
+
+  console.log(count);
   // starts countdown
   const startCountDown = () => {
     setShowCountDown(true);
@@ -64,7 +75,7 @@ const PlanetDefender = () => {
         playSound(Good);
         setCurrentWord(context.getNextWord());
         setTimeout(() => {
-          setBorderColor("blue");
+          setBorderColor("black");
           setInput("");
           setShowComet(true);
         }, 500);
@@ -80,7 +91,7 @@ const PlanetDefender = () => {
     context.shiftPush();
     setCurrentWord(context.getNextWord());
     setTimeout(() => {
-      setBorderColor("blue");
+      setBorderColor("black");
       setShowComet(true);
     }, 500);
   };
@@ -100,29 +111,21 @@ const PlanetDefender = () => {
     <>
       <div
         style={{
-          height: "100%",
+          // height: "100%",
           // maxWidth: "100%",
           background: `url(${bg}) repeat`,
           // backgroundSize: "cover",
           // imageRendering: "-webkit-optimize-contrast",
           backgroundPosition: "50% 50%",
+          position: "absolute",
+          zIndex: "5000",
+          bottom: "0",
+          height: "100vh",
+          width: "100%",
           // backgroundColor: "black",
         }}
       >
         {showCountDown ? <CountDown /> : null}
-        <CloseRoundedIcon
-          sx={{
-            fontSize: "75px",
-            color: "white",
-            position: "absolute",
-            left: "20px",
-            cursor: "pointer",
-          }}
-          onClick={() => {
-            setShowStartDialog(true);
-            setShowComet(false);
-          }}
-        />
         {showComet && (
           <Comet
             text={currentWord ?? "ni hao"}
@@ -158,6 +161,20 @@ const PlanetDefender = () => {
           </Canvas>
         </div>
         <Footer stack={context}>
+          <CloseRoundedIcon
+            sx={{
+              fontSize: "75px",
+              color: "white",
+              paddingRight: "20px",
+              // position: "absolute",
+              // left: "20px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setShowStartDialog(true);
+              setShowComet(false);
+            }}
+          />
           <TextField
             id="planet-defender-text-field"
             onChange={(evt) => handleInputChange(evt.target.value)}
@@ -166,12 +183,14 @@ const PlanetDefender = () => {
             inputRef={(input) => input && input.focus()}
             autoFocus={showComet}
             autoComplete={"off"}
-            sx={{ border: `solid ${borderColor} 1px` }}
+            sx={{ border: `solid ${borderColor} 1px`, borderRadius: "5px" }}
             disabled={!showComet}
+            // InputProps={{ style: { borderColor: `solid ${borderColor} 2px` } }}
           />
         </Footer>
       </div>
 
+      <Loading className={count > 3 ? "dropPage" : ""} />
       <WinDialog
         open={showWinDialog}
         setShowWinDialog={setShowWinDialog}

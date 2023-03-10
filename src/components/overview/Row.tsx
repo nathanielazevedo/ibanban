@@ -13,18 +13,17 @@ export type WordType = {
 
 const Row = ({ word }: { word: WordType }) => {
   return (
-    <TableRow>
+    <TableRow
+      onClick={() => speak(word.word.chinese)}
+      sx={{ cursor: "pointer" }}
+    >
       <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
         <Typography variant="h6">{word.word.english}</Typography>
       </TableCell>
       <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
         <Typography variant="h6">{word.word.pinyin}</Typography>
       </TableCell>
-      <TableCell
-        align="center"
-        sx={{ cursor: "pointer", borderBottomWidth: "0.01px" }}
-        onClick={() => speak(word.word.chinese)}
-      >
+      <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
         <Typography variant="h6">{word.word.chinese}</Typography>
       </TableCell>
     </TableRow>

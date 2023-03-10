@@ -1,10 +1,11 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { register } from "../data";
 import stack from "../utils/stack";
 import { Scene } from "../components/welcome/Shape";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useLoader } from "@react-three/fiber";
+import { useInterval } from "../hooks/useIntreval";
 
 type PlanetDefender = {
   word: {
@@ -21,11 +22,9 @@ const PlanetDefenderWrapper = ({ children }: { children: React.ReactNode }) => {
   const { deckName } = useParams();
   const deck = register[deckName ?? ""] as PlanetDefender;
   const thisStack = new stack(deck);
-  const comet = useMemo(() => {
-    return useLoader(GLTFLoader, "/comet/comet.gltf");
-  }, []);
+
   return (
-    <gltfContext.Provider value={comet}>
+    <gltfContext.Provider value={""}>
       <GameContext.Provider value={thisStack}>{children}</GameContext.Provider>
     </gltfContext.Provider>
   );

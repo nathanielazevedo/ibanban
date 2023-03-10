@@ -49,6 +49,19 @@ const LoadPage = ({
           Ibanban
         </Typography>
       )}
+      <Typography
+        className={showMainPage ? "dropWord" : ""}
+        variant="subtitle1"
+        color={"grey"}
+        sx={{
+          position: "absolute",
+          bottom: "0",
+          left: "auto",
+          marginBottom: "50px",
+        }}
+      >
+        Loading awesomeness...
+      </Typography>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import bg from "../assets/gamebg.jpeg";
 
 const Main = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const Main = () => {
         alignItems: "center",
         justifyContent: "flex-start",
         paddingTop: "200px",
+        background: `url(${bg}) no-repeat center center fixed`,
       }}
     >
       <Link to={`${location.pathname}/planetDefender`}>

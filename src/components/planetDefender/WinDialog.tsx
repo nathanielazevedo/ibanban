@@ -21,7 +21,7 @@ const WinDialog = ({
   prepareGame,
 }: WinDialog) => {
   return (
-    <Dialog open={open}>
+    <Dialog open={open} sx={{ zIndex: "5000" }}>
       <DialogTitle>You won!</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">

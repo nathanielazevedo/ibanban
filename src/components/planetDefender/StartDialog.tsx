@@ -37,7 +37,10 @@ const StartDialog = ({
     <Dialog
       open={open}
       fullWidth
-      PaperProps={{ sx: { height: "700px", backgroundColor: "black" } }}
+      sx={{ zIndex: "5000" }}
+      PaperProps={{
+        sx: { height: "700px", backgroundColor: "black" },
+      }}
     >
       <DialogTitle
         sx={{

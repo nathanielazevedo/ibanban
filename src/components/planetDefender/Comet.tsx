@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
@@ -15,6 +15,7 @@ type Comet = {
 
 const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
   const firstRender = useRef(true);
+  const [hit, setHit] = useState(false);
 
   const [spring] = useSpring(() => ({
     from: { x: -50 },
@@ -24,8 +25,11 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
     },
     onRest: (x) => {
       if (x.finished) {
-        handleWrong();
+        setHit(true);
         playSound(lose);
+        setTimeout(() => {
+          handleWrong();
+        }, 700);
       }
     },
   }));
@@ -38,6 +42,7 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
 
   return (
     <animated.div
+      className={hit ? "wobble" : "shake"}
       style={{
         width: 150,
         height: 150,
