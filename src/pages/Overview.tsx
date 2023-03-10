@@ -36,7 +36,7 @@ const Overview = () => {
         >
           <Table>
             <TableBody>
-              {deck && deck.map((word) => <Row word={word} />)}
+              {deck && deck.map((word, i) => <Row key={i} word={word} />)}
             </TableBody>
           </Table>
         </TableContainer>

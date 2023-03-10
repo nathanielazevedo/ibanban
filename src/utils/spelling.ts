@@ -4,6 +4,7 @@ import Win from "../assets/win.wav";
 import { WordType } from "../components/overview/Row";
 import { State } from "../components/spelling/Word";
 import { Dispatch, SetStateAction } from "react";
+import { stripTone } from "./stripTone";
 
 export class SpellingGame {
   words: WordType[];
@@ -11,7 +12,6 @@ export class SpellingGame {
   currentLetterIndex: number;
   deckName: string;
   setCurrentWord: (word: WordType) => void;
-  specialCharacters: string[];
   setState: any;
   setCompleted: (state: boolean) => void;
 
@@ -26,21 +26,20 @@ export class SpellingGame {
     this.currentWordIndex = 0;
     this.currentLetterIndex = 0;
     this.setCurrentWord = setCurrentWord;
-    this.specialCharacters = ["̄", "̀", "̌", "́"];
     this.setState = undefined;
     this.setCompleted = setCompleted;
   }
 
   //Word Getters
-  getCurrentEnglishWord() {
+  get getCurrentEnglishWord() {
     return this.words[this.currentWordIndex].word.english;
   }
 
-  getCurrentChineseWord() {
+  get getCurrentChineseWord() {
     return this.words[this.currentWordIndex].word.chinese;
   }
 
-  getCurrentPinyinWord() {
+  get getCurrentPinyinWord() {
     return this.words[this.currentWordIndex].word.pinyin.split("");
   }
 
@@ -82,7 +81,7 @@ export class SpellingGame {
       }
 
       // right, but not last letter
-      if (this.currentLetterIndex < this.getCurrentPinyinWord().length - 1) {
+      if (this.currentLetterIndex < this.getCurrentPinyinWord.length - 1) {
         this.currentLetterIndex++;
         setState((previous: State) => {
           previous[index].value = input;
@@ -111,26 +110,7 @@ export class SpellingGame {
   }
 
   generateState(): State {
-    return this.getCurrentPinyinWord().map((letter: string) => {
-      const tones = new Set([
-        "\u0304", // tone 1
-        "\u0301", // tone 2
-        "\u030c", // tone 3
-        "\u0300", // tone 4
-      ]);
-      // Returns the tone, and the index of the letter with the tone
-      function stripTone(w: string) {
-        const letters = w.normalize("NFD");
-        let newStr = undefined;
-        for (let i = 0; i < letters.length; i++) {
-          if (tones.has(letters[i])) {
-            const val = letters.slice(0, 1);
-            newStr = val;
-          }
-        }
-        return newStr ?? w;
-      }
-
+    return this.getCurrentPinyinWord.map((letter: string) => {
       return {
         targetValue: stripTone(letter).toLowerCase(),
         value: "",

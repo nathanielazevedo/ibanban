@@ -4,6 +4,7 @@ import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
 import lose from "../../assets/lose.wav";
 import { WordType } from "../overview/Row";
+import bg from "../../assets/asteroid.png";
 
 type Comet = {
   text: WordType;
@@ -17,7 +18,7 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
 
   const [spring] = useSpring(() => ({
     from: { x: -50 },
-    to: { x: planetRef?.getBoundingClientRect().left },
+    to: { x: planetRef ? planetRef.getBoundingClientRect().left - 55 : 500 },
     config: {
       duration: difficulty == "easy" ? 7000 : 5000,
     },
@@ -38,17 +39,21 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
   return (
     <animated.div
       style={{
-        width: 80,
-        height: 80,
+        width: 150,
+        height: 150,
         position: "absolute",
         top: "420px",
         borderRadius: "50%",
-        color: "black",
+        color: "white",
         display: "flex",
+        fontSize: "20px",
         justifyContent: "center",
         alignItems: "center",
-        background: `radial-gradient(circle at 5% 15%, pink 1px,
-            gray 4%,darkgray 60%, black 100%)`,
+        // background: `radial-gradient(circle at 5% 15%, pink 1px,
+        //     gray 4%,darkgray 60%, black 100%)`,
+        background: `url(${bg}) repeat center`,
+        backgroundSize: "cover",
+        filter: "brightness(200%)",
         ...spring,
       }}
     >

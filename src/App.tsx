@@ -59,6 +59,7 @@ const App = () => {
                   </PlanetDefenderWrapper>
                 }
               />
+              <Route path="*" element={<>Not found</>} />
             </Routes>
           </div>
         </Box>

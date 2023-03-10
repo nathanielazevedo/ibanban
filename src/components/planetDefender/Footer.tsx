@@ -12,7 +12,6 @@ const Footer = ({ stack, children }: Footer) => {
       sx={{
         height: "150px",
         width: "100%",
-        borderTop: "1px solid rgba(255, 255, 255, 0.12)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

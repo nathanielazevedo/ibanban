@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, useMemo } from "react";
 import { TextField } from "@mui/material";
 import { GameContext } from "../../pages/PlanetDefenderWrapper";
 //components
@@ -12,6 +12,10 @@ import playSound from "../../utils/playSound";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CountDown from "./CountDown";
 import Footer from "./Footer";
+import MainPage from "../welcome/MainPage";
+import { Canvas } from "@react-three/fiber";
+import bg from "../../assets/bg.jpeg";
+import { Scene } from "../welcome/Shape";
 
 const PlanetDefender = () => {
   const context = useContext(GameContext);
@@ -81,9 +85,30 @@ const PlanetDefender = () => {
     }, 500);
   };
 
+  // const CometMemo = useMemo(() => {
+  //   return (
+  //     <Comet
+  //       text={currentWord}
+  //       handleWrong={handleWrong}
+  //       difficulty={difficulty}
+  //       planetRef={planetRef.current}
+  //     />
+  //   );
+  // }, [currentWord]);
+
   return (
     <>
-      <div style={{ height: "100%", width: "100%" }}>
+      <div
+        style={{
+          height: "100%",
+          // maxWidth: "100%",
+          background: `url(${bg}) repeat`,
+          // backgroundSize: "cover",
+          // imageRendering: "-webkit-optimize-contrast",
+          backgroundPosition: "50% 50%",
+          // backgroundColor: "black",
+        }}
+      >
         {showCountDown ? <CountDown /> : null}
         <CloseRoundedIcon
           sx={{
@@ -100,13 +125,38 @@ const PlanetDefender = () => {
         />
         {showComet && (
           <Comet
-            text={currentWord}
+            text={currentWord ?? "ni hao"}
             handleWrong={handleWrong}
             difficulty={difficulty}
             planetRef={planetRef.current}
           />
         )}
-        <div ref={planetRef} className="planet" />
+
+        {/* // <div
+          //   ref={planetRef}
+          //   style={{
+          //     height: "500px",
+          //     width: "500px",
+          //     position: "absolute",
+          //     top: "270px",
+          //     left: "100px",
+          //   }}
+          // >
+          //   <Canvas>
+          //     <directionalLight position={[0, 0, 5]} />
+          //     <Scene />
+          //   </Canvas>
+          // </div>
+          // </Comet> */}
+        <div
+          ref={planetRef}
+          className="planet"
+          style={{ height: "500px", width: "500px" }}
+        >
+          <Canvas>
+            <MainPage />
+          </Canvas>
+        </div>
         <Footer stack={context}>
           <TextField
             id="planet-defender-text-field"

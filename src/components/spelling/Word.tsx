@@ -43,12 +43,10 @@ const Word = ({ GameClass, speechRate }: Word) => {
           height: "100px",
         }}
       >
-        <Typography variant="h2">
-          {GameClass.getCurrentEnglishWord()}
-        </Typography>
+        <Typography variant="h2">{GameClass.getCurrentEnglishWord}</Typography>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
-            onClick={() => speak(GameClass.getCurrentChineseWord(), speechRate)}
+            onClick={() => speak(GameClass.getCurrentChineseWord, speechRate)}
             sx={{
               fontSize: "50px",
               color: "gray",
@@ -66,7 +64,7 @@ const Word = ({ GameClass, speechRate }: Word) => {
           alignItems: "center",
         }}
       >
-        {GameClass.getCurrentPinyinWord()?.map(
+        {GameClass.getCurrentPinyinWord?.map(
           (letter: string, index: number) => (
             <Letter
               key={(Math.random() * index + 5) / Math.random()}

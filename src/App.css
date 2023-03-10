@@ -80,18 +80,18 @@ a {
   border-radius: 50%;
   position: absolute;
   right: 70px;
-  top: 300px;
+  top: 250px;
   width: 300px;
   height: 300px;
-  background-color: green;
-  box-shadow: black 0p 1px 10px;
-  background: radial-gradient(
+  /* background-color: green; */
+  /* box-shadow: black 0p 1px 10px; */
+  /* background: radial-gradient(
     circle at 5% 15%,
     grey 0.5px,
     green 40%,
     blue 90%,
     white 100%
-  );
+  ); */
 }
 
 .timer {
@@ -162,4 +162,37 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@keyframes dropPage {
+  from {
+    height: 100vh;
+    padding-top: 20rem;
+  }
+  to {
+    height: 0vh;
+    padding-top: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.dropPage {
+  animation-name: dropPage;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.dropWord {
+  /* animation-name: fadeOut;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; */
+  display: none;
 }
