@@ -25,6 +25,7 @@ const MainPage = () => {
       {/* <ambientLight intensity={0.1} /> */}
       <directionalLight position={[0, 0, 5]} />
       <Suspense fallback={null}>
+        {/* @ts-ignore */}
         <animated.primitive
           // onClick={() => setActive(!active)}
           object={gltf.scene}
