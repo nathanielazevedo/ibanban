@@ -9,15 +9,18 @@ import { keyDownListener } from "../utils/keyDownListener";
 
 const Words = () => {
   const [speechRate, setSpeechRate] = useState<number | number[]>(0.5);
-  const { deckName } = useParams();
-  if (!deckName) return <></>;
-  const setCurrentWord = useState(register[deckName][0])[1];
+  let { deckName } = useParams();
+  const setCurrentWord = useState(register[deckName ?? "Hello"][0])[1];
   const [completed, setCompleted] = useState(false);
+
+  const forRegister = deckName
+    ? register[deckName]
+    : register["Hello"].slice(0, 2);
 
   const GameClass = useMemo(() => {
     return new SpellingGame(
-      register[deckName],
-      deckName,
+      forRegister,
+      deckName ?? "Hello",
       setCurrentWord,
       setCompleted
     );
@@ -46,13 +49,14 @@ const Words = () => {
         </div>
       ) : (
         <>
-          {" "}
           <Word GameClass={GameClass} speechRate={speechRate} />
-          <Footer
-            GameClass={GameClass}
-            speechRate={speechRate}
-            setSpeechRate={setSpeechRate}
-          />
+          {deckName && (
+            <Footer
+              GameClass={GameClass}
+              speechRate={speechRate}
+              setSpeechRate={setSpeechRate}
+            />
+          )}
         </>
       )}
     </Box>

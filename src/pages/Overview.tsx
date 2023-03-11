@@ -9,7 +9,10 @@ import { Box, Typography } from "@mui/material";
 
 const Overview = () => {
   const { deckName } = useParams();
-  const deck = register[deckName ?? ""];
+  let deck = register[deckName ?? "Hello"];
+  if (!deckName) {
+    deck = deck.slice(0, 2);
+  }
   return (
     <>
       <div
@@ -41,25 +44,27 @@ const Overview = () => {
           </Table>
         </TableContainer>
       </div>
-      <Box
-        sx={{
-          height: "70px",
-          maxHeight: "70px",
-          width: "100%",
-          borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-          justifySelf: "flex-end",
-          alignItems: "center",
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "0 2rem",
-          position: "sticky",
-          bottom: "0",
-          backgroundColor: "#1a1a1a",
-        }}
-      >
-        <Typography>{deckName}</Typography>
-        <Typography>{deck.length}</Typography>
-      </Box>
+      {deckName && (
+        <Box
+          sx={{
+            height: "70px",
+            maxHeight: "70px",
+            width: "100%",
+            borderTop: "1px solid rgba(255, 255, 255, 0.12)",
+            justifySelf: "flex-end",
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "space-between",
+            padding: "0 2rem",
+            position: "sticky",
+            bottom: "0",
+            backgroundColor: "#1a1a1a",
+          }}
+        >
+          <Typography>{deckName}</Typography>
+          <Typography>{deck.length}</Typography>
+        </Box>
+      )}
     </>
   );
 };

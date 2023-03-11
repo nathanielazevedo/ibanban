@@ -3,6 +3,8 @@ import { Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
 import Tab from "./Tab";
+import logo from "../../assets/logo.png";
+import Panda from "../../assets/panda.svg";
 
 type TopNav = {
   setSideNavOpen: (state: boolean) => void;
@@ -30,7 +32,20 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
           </div>
         )}
       </div>
-      <Link to="/ibanban/">
+      <Link
+        to="/ibanban/"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          paddingRight: "40px",
+        }}
+      >
+        <img
+          src={Panda}
+          width="32px"
+          height="32px"
+          style={{ marginRight: "10px", paddingTop: "5px" }}
+        />
         <Typography sx={{ fontSize: "25px", color: "lightblue" }}>
           Ibanban
         </Typography>
