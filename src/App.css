@@ -199,10 +199,12 @@ a {
 
 @keyframes wobble {
   0% {
-    transform: translateX(710%);
+    /* transform: rotate(0deg); */
+    color: "white";
   }
   100% {
-    transform: translateX(650%) rotate(5deg);
+    /* transform: rotate(100deg); */
+    color: "red" !important;
   }
   /* 30% {
     transform: translateX(20%) rotate(3deg);
@@ -253,4 +255,27 @@ a {
 .shake {
   animation-name: shake;
   animation-duration: 4s;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background: orange;
+}
+
+.lineRight {
+  border-right: solid white 2px;
+}
+
+@keyframes wipe-enter {
+  0% {
+    border-right: solid white 2px;
+  }
+  100% {
+    border-right: solid transparent 1px;
+  }
+}
+.square-animation {
+  animation: wipe-enter 3s 1 forwards;
+  /* border-right: solid transparten 1px !important; */
 }

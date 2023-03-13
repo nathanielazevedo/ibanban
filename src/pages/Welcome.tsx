@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Chip } from "@mui/material";
 import { light } from "@mui/material/styles/createPalette";
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
@@ -46,6 +46,21 @@ const Welcome = () => {
       sessionStorage.setItem("loaded", "true");
       setShowMainPage(true);
     }, 2500);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      // If the element is visible
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add("square-animation");
+      }
+    });
+  });
+
+  // Tell the observer which elements to track
+  if (document.querySelector(".lineRight")) {
+    observer.observe(document.querySelector(".lineRight"));
   }
 
   return (
@@ -158,7 +173,7 @@ const Welcome = () => {
               justifySelf: "center",
             }}
           >
-            <div style={{ borderRight: "2px solid white" }}>
+            <div className="lineRight">
               <Typography
                 color="lightblue"
                 variant="h2"
@@ -182,29 +197,66 @@ const Welcome = () => {
         <div
           style={{
             height: "100vh",
-            width: "98vw",
+            width: "80vw",
             display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "center",
+            flexDirection: "row",
             alignItems: "center",
+            // flexDirection: "row",
           }}
         >
-          <div>
-            <Typography variant="h3" pb="50px" color="lightblue">
-              Review
-            </Typography>
-            <img src={review} style={{ height: "300px" }} />
-          </div>
           <div
-            style={{ border: "solid grey 1px", width: "1px", height: "500px" }}
-          ></div>
-          <div>
-            <Typography variant="h3" pb="50px" color="lightblue">
-              Practice
-            </Typography>
-            <img src={spell} style={{ height: "300px" }} />
+            style={{
+              display: "flex",
+              width: "90%",
+              flexDirection: "column",
+              gap: "100px",
+            }}
+          >
+            <div>
+              <Chip
+                label={
+                  <Typography variant="h6" color="lightblue">
+                    1. Review
+                  </Typography>
+                }
+              />
+              <Typography style={{ padding: "20px" }}>
+                View our list of curarated Mandarin words. Starting from the
+                basics
+              </Typography>
+            </div>
+            <div>
+              <Chip
+                label={
+                  <Typography variant="h6" color="lightblue">
+                    2. Practice
+                  </Typography>
+                }
+              />
+              <Typography style={{ padding: "20px" }}>
+                Practice spelling these words. No pressure, do your best.
+              </Typography>
+            </div>
+            <div>
+              <Chip
+                label={
+                  <Typography variant="h6" color="lightblue">
+                    3. Game
+                  </Typography>
+                }
+              />
+              <Typography style={{ padding: "20px" }}>
+                Have fun with using your newly learned vocabulary while playing
+                our games.
+              </Typography>
+            </div>
           </div>
+          <Canvas>
+            <MainPage2 />
+          </Canvas>
         </div>
-        <div
+        {/* <div
           style={{
             height: "50vh",
             width: "100vw",
@@ -226,7 +278,7 @@ const Welcome = () => {
           >
             <MainPage2 />
           </Canvas>
-        </div>
+        </div> */}
         {/* footer */}
         <div
           style={{
