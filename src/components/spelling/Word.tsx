@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Letter from "./Letter";
 import { speak } from "../../utils/speak";
 import { Tooltip, Typography } from "@mui/material";

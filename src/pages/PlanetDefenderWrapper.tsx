@@ -1,11 +1,7 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext } from "react";
 import { useParams } from "react-router-dom";
 import { register } from "../data";
 import stack from "../utils/stack";
-import { Scene } from "../components/welcome/Shape";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { useLoader } from "@react-three/fiber";
-import { useInterval } from "../hooks/useIntreval";
 
 type PlanetDefender = {
   word: {

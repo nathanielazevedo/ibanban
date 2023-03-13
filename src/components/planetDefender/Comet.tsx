@@ -54,8 +54,6 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
         fontSize: "20px",
         justifyContent: "center",
         alignItems: "center",
-        // background: `radial-gradient(circle at 5% 15%, pink 1px,
-        //     gray 4%,darkgray 60%, black 100%)`,
         background: `url(${bg}) repeat center`,
         backgroundSize: "cover",
         filter: "brightness(200%)",

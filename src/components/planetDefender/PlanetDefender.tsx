@@ -1,4 +1,4 @@
-import { useState, useContext, useRef, useMemo } from "react";
+import { useState, useContext, useRef } from "react";
 import { TextField } from "@mui/material";
 import { GameContext } from "../../pages/PlanetDefenderWrapper";
 //components
@@ -15,7 +15,6 @@ import Footer from "./Footer";
 import MainPage from "../welcome/MainPage";
 import { Canvas } from "@react-three/fiber";
 import bg from "../../assets/bg.jpeg";
-import { Scene } from "../welcome/Shape";
 import { useInterval } from "../../hooks/useIntreval";
 import Loading from "./Loading";
 
@@ -40,7 +39,6 @@ const PlanetDefender = () => {
     count > 3 ? null : 1000
   );
 
-  console.log(count);
   // starts countdown
   const startCountDown = () => {
     setShowCountDown(true);
@@ -166,8 +164,6 @@ const PlanetDefender = () => {
               fontSize: "75px",
               color: "white",
               paddingRight: "20px",
-              // position: "absolute",
-              // left: "20px",
               cursor: "pointer",
             }}
             onClick={() => {
@@ -185,7 +181,6 @@ const PlanetDefender = () => {
             autoComplete={"off"}
             sx={{ border: `solid ${borderColor} 1px`, borderRadius: "5px" }}
             disabled={!showComet}
-            // InputProps={{ style: { borderColor: `solid ${borderColor} 2px` } }}
           />
         </Footer>
       </div>

@@ -1,21 +1,13 @@
 import { Typography, Chip } from "@mui/material";
-import { light } from "@mui/material/styles/createPalette";
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import LoadPage from "../components/welcome/LoadPage";
 import MainPage from "../components/welcome/MainPage";
-import MainPage2 from "../components/welcome/MainPage2";
+import CometThreeD from "../components/welcome/CometThreeD";
 import { useInterval } from "../hooks/useIntreval";
-import logo from "../assets/logo.png";
 import bg from "../assets/gamebg.jpeg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import Overview from "./Overview";
-import Spelling from "./Spelling";
-import spell from "../assets/spell.png";
-import review from "../assets/review.png";
-import play from "../assets/play.png";
-import back from "../assets/bg.jpeg";
 import Panda from "../assets/panda.svg";
 
 const Welcome = () => {
@@ -48,6 +40,7 @@ const Welcome = () => {
     }, 2500);
   }
 
+  // On scroll animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       // If the element is visible
@@ -59,8 +52,9 @@ const Welcome = () => {
   });
 
   // Tell the observer which elements to track
-  if (document.querySelector(".lineRight")) {
-    observer.observe(document.querySelector(".lineRight"));
+  const line = document.querySelector(".lineRight");
+  if (line) {
+    observer.observe(line);
   }
 
   return (
@@ -75,12 +69,10 @@ const Welcome = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          // justifyContent: "center",
           maxWidth: "100vw",
           overflowX: "hidden",
           alignItems: "center",
           minHeight: "100vh",
-          // marginTop: "200px",
         }}
       >
         <div
@@ -101,7 +93,6 @@ const Welcome = () => {
               paddingBottom: "50px",
             }}
           >
-            {/* <Typography variant="h1">Welcome to&nbsp;</Typography> */}
             <div style={{ display: "flex", alignItems: "center" }}>
               <img
                 src={Panda}
@@ -109,7 +100,6 @@ const Welcome = () => {
                 height="154px"
                 style={{
                   marginRight: "30px",
-                  // marginBottom: "40px",
                   paddingTop: "20px",
                 }}
               />
@@ -122,12 +112,7 @@ const Welcome = () => {
                 >
                   Ibanban
                 </Typography>
-                <Typography
-                  // color="lightblue"
-                  variant="h5"
-                  fontWeight="bolder"
-                  // pl="120px"
-                >
+                <Typography variant="h5" fontWeight="bolder">
                   &nbsp;Learn Mandarin with games.
                 </Typography>
               </div>
@@ -168,7 +153,6 @@ const Welcome = () => {
           <div
             style={{
               display: "flex",
-              // marginTop: "130px",
               alignSelf: "center",
               justifySelf: "center",
             }}
@@ -202,7 +186,6 @@ const Welcome = () => {
             justifyContent: "center",
             flexDirection: "row",
             alignItems: "center",
-            // flexDirection: "row",
           }}
         >
           <div
@@ -253,32 +236,9 @@ const Welcome = () => {
             </div>
           </div>
           <Canvas>
-            <MainPage2 />
+            <CometThreeD />
           </Canvas>
         </div>
-        {/* <div
-          style={{
-            height: "50vh",
-            width: "100vw",
-            background: `url(${back})  `,
-            // backgroundColor: "white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Canvas
-            style={
-              {
-                // height: "400px",
-                // width: "400px",
-                // paddingRight: "700px",
-              }
-            }
-          >
-            <MainPage2 />
-          </Canvas>
-        </div> */}
         {/* footer */}
         <div
           style={{

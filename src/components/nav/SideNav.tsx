@@ -1,6 +1,6 @@
 import { Drawer as MuiDrawer, List } from "@mui/material";
 import { Titles } from "../../data/Titles";
-import SideTab from "./SideTab";
+import SideTab from "./SideNavTab";
 
 type SideNav = {
   sideNavOpen: boolean;

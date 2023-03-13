@@ -2,8 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import { Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
-import Tab from "./Tab";
-import logo from "../../assets/logo.png";
+import Tab from "./TopNavTab";
 import Panda from "../../assets/panda.svg";
 
 type TopNav = {
