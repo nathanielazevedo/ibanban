@@ -1,7 +1,9 @@
-import TableCell from "@mui/material/TableCell";
-import { Typography } from "@mui/material";
+//functionality
 import { speak } from "../../utils/speak";
+
+//components
 import TableRow from "@mui/material/TableRow";
+import Cell from "./Cell";
 
 export type WordType = {
   word: {
@@ -13,19 +15,10 @@ export type WordType = {
 
 const Row = ({ word }: { word: WordType }) => {
   return (
-    <TableRow
-      onClick={() => speak(word.word.chinese)}
-      sx={{ cursor: "pointer" }}
-    >
-      <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
-        <Typography variant="h6">{word.word.english}</Typography>
-      </TableCell>
-      <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
-        <Typography variant="h6">{word.word.pinyin}</Typography>
-      </TableCell>
-      <TableCell align="center" sx={{ borderBottomWidth: "0.01px" }}>
-        <Typography variant="h6">{word.word.chinese}</Typography>
-      </TableCell>
+    <TableRow className="pointer" onClick={() => speak(word.word.chinese)}>
+      <Cell word={word.word.english} />
+      <Cell word={word.word.pinyin} />
+      <Cell word={word.word.chinese} />
     </TableRow>
   );
 };

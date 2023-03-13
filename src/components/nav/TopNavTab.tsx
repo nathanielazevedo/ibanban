@@ -1,26 +1,22 @@
-import { Typography } from "@mui/material";
+//functionality
 import { NavLink, useLocation } from "react-router-dom";
 
-const Tab = ({ name }: { name: string }) => {
+//components
+import { Typography } from "@mui/material";
+
+const TopNavTab = ({ name }: { name: string }) => {
   const location = useLocation();
   const splitLocation = location.pathname.split("/");
   splitLocation[4] = name.toLowerCase();
   const finalRoute = splitLocation.join("/");
 
   return (
-    <Typography
-      variant="subtitle2"
-      sx={{ color: "rgb(255, 255, 255, 0.7)" }}
-      mr="20px"
-    >
-      <NavLink
-        to={finalRoute}
-        className={({ isActive }) => (isActive ? "active tab" : "tab")}
-      >
+    <Typography className="top-nav-tab" variant="subtitle2">
+      <NavLink to={finalRoute} className="tab">
         {name}
       </NavLink>
     </Typography>
   );
 };
 
-export default Tab;
+export default TopNavTab;

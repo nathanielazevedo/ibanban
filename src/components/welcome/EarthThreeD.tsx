@@ -7,9 +7,9 @@ const MainPage = () => {
   const gltf = useLoader(GLTFLoader, "/ibanban/earth/scene.gltf");
   const myMesh = React.useRef<any>();
 
-  useFrame(() => {
-    myMesh.current.rotation.y += 0.007;
-  });
+  // useFrame(() => {
+  //   myMesh.current.rotation.y += 0.007;
+  // });
 
   return (
     <>

@@ -1,3 +1,4 @@
+//components
 import {
   ListItem,
   ListItemButton,
@@ -14,17 +15,12 @@ type SideTab = {
 const SideTab = ({ title, setSideNavOpen }: SideTab) => {
   return (
     <NavLink
-      to={`/ibanban/deck/${title.replaceAll(" ", "_")}/overview`}
       replace
-      className={({ isActive }) => (isActive ? "side-tab-active" : "")}
       onClick={() => setSideNavOpen(false)}
+      to={`/ibanban/deck/${title.replaceAll(" ", "_")}/overview`}
+      className={({ isActive }) => (isActive ? "side-tab-active" : "")}
     >
-      <ListItem
-        sx={{
-          padding: "0 55px",
-        }}
-        onClick={() => {}}
-      >
+      <ListItem sx={{ padding: "0 4vw" }}>
         <ListItemButton>
           <ListItemText
             primary={<Typography variant="caption">{title}</Typography>}

@@ -1,5 +1,8 @@
-import { Drawer as MuiDrawer, List } from "@mui/material";
+//functionality
 import { Titles } from "../../data/Titles";
+
+//components
+import { Drawer as MuiDrawer, List } from "@mui/material";
 import SideTab from "./SideNavTab";
 
 type SideNav = {

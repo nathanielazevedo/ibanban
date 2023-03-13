@@ -12,7 +12,7 @@ import playSound from "../../utils/playSound";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CountDown from "./CountDown";
 import Footer from "./Footer";
-import MainPage from "../welcome/MainPage";
+import MainPage from "../welcome/EarthThreeD";
 import { Canvas } from "@react-three/fiber";
 import bg from "../../assets/bg.jpeg";
 import { useInterval } from "../../hooks/useIntreval";
