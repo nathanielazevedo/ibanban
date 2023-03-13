@@ -1,5 +1,5 @@
 //functionality
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { TextField } from "@mui/material";
 import PlanetDefenderGame from "../../utils/PlanetDefender";
 
@@ -27,14 +27,15 @@ type PlanetDefender = {
 
 const PlanetDefender = ({ pdClass }: PlanetDefender) => {
   const [currentWord, setCurrentWord] = useState(pdClass.getNextWord());
-  const [showComet, setShowComet] = useState<boolean>(false);
   const [input, setInput] = useState("");
+  const [difficulty, setDifficulty] = useState("easy");
+  const planetRef = useRef<HTMLDivElement | null>(null);
+
+  const [showComet, setShowComet] = useState<boolean>(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
   const [showStartDialog, setShowStartDialog] = useState(true);
   const [borderColor, setBorderColor] = useState("lightblue");
-  const [difficulty, setDifficulty] = useState("easy");
   const [showCountDown, setShowCountDown] = useState(false);
-  const planetRef = useRef<HTMLDivElement | null>(null);
 
   // Start countdown
   const startCountDown = () => {
@@ -92,6 +93,10 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
     }, 500);
   };
 
+  const Earth = useMemo(() => {
+    return <EarthThreeD />;
+  }, []);
+
   return (
     <>
       <div
@@ -116,9 +121,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
           className="planet"
           style={{ height: "500px", width: "500px" }}
         >
-          <Canvas>
-            <EarthThreeD />
-          </Canvas>
+          <Canvas>{Earth}</Canvas>
         </div>
         <Footer stack={pdClass}>
           <CloseRoundedIcon

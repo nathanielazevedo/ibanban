@@ -10,8 +10,9 @@ const MainPage = () => {
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
     loader.setDRACOLoader(dracoLoader);
   });
-  const myMesh = React.useRef<any>();
 
+  const myMesh = React.useRef<any>();
+  console.log("render");
   useFrame(() => {
     myMesh.current.rotation.y += 0.003;
   });

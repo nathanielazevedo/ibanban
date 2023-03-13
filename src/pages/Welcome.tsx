@@ -1,5 +1,5 @@
 //functionality
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useInterval } from "../hooks/useIntreval";
 
 //components
@@ -19,11 +19,8 @@ const Welcome = () => {
   const englishHello = "Hello - nǐ hǎo - 你好";
   const [englishIndex, setEnglishIndex] = useState(0);
   const getLoaded = () => {
-    if (false) {
-      return true;
-    } else {
-      return false;
-    }
+    if (false) return true;
+    return false;
   };
   const [showMainPage, setShowMainPage] = useState<boolean>(getLoaded());
   const [showIbanban, setShowIbanban] = useState(false);
@@ -55,6 +52,13 @@ const Welcome = () => {
       }
     });
   });
+
+  const Earth = useMemo(() => {
+    return <EarthThreeD />;
+  }, []);
+  const Comet = useMemo(() => {
+    return <CometThreeD />;
+  }, []);
 
   // Tell the observer which elements to track
   const line = document.querySelector(".fade-line");
@@ -100,7 +104,7 @@ const Welcome = () => {
               maxWidth: "400px",
             }}
           >
-            <EarthThreeD />
+            {Earth}
           </Canvas>
         </div>
         <div
@@ -194,9 +198,7 @@ const Welcome = () => {
               </Typography>
             </div>
           </div>
-          <Canvas>
-            <CometThreeD />
-          </Canvas>
+          <Canvas>{Comet}</Canvas>
         </div>
         {/* footer */}
         <div
