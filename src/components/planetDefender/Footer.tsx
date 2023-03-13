@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import stack from "../../utils/stack";
+import stack from "../../utils/PlanetDefender";
 
 type Footer = {
   stack: stack;

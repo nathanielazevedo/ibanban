@@ -1,10 +1,13 @@
-import { useState, useContext, useRef } from "react";
+//functionality
+import { useState, useRef } from "react";
 import { TextField } from "@mui/material";
-import { GameContext } from "../../pages/PlanetDefenderWrapper";
+import PlanetDefenderGame from "../../utils/PlanetDefender";
+
 //components
 import Comet from "./Comet";
 import WinDialog from "./WinDialog";
 import StartDialog from "./StartDialog";
+
 //assets
 import Win from "../../assets/win.wav";
 import Good from "../../assets/good.wav";
@@ -12,16 +15,18 @@ import playSound from "../../utils/playSound";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CountDown from "./CountDown";
 import Footer from "./Footer";
-import MainPage from "../welcome/EarthThreeD";
+import EarthThreeD from "../welcome/EarthThreeD";
 import { Canvas } from "@react-three/fiber";
 import bg from "../../assets/bg.jpeg";
-import { useInterval } from "../../hooks/useIntreval";
 import Loading from "./Loading";
+import CountdownSound from "../../assets/countdown.wav";
 
-const PlanetDefender = () => {
-  const context = useContext(GameContext);
-  if (!context) return <></>;
-  const [currentWord, setCurrentWord] = useState(context.getNextWord());
+type PlanetDefender = {
+  pdClass: PlanetDefenderGame;
+};
+
+const PlanetDefender = ({ pdClass }: PlanetDefender) => {
+  const [currentWord, setCurrentWord] = useState(pdClass.getNextWord());
   const [showComet, setShowComet] = useState<boolean>(false);
   const [input, setInput] = useState("");
   const [showWinDialog, setShowWinDialog] = useState(false);
@@ -30,17 +35,10 @@ const PlanetDefender = () => {
   const [difficulty, setDifficulty] = useState("easy");
   const [showCountDown, setShowCountDown] = useState(false);
   const planetRef = useRef<HTMLDivElement | null>(null);
-  const [count, setCount] = useState(0);
 
-  useInterval(
-    () => {
-      setCount((o) => o + 1);
-    },
-    count > 3 ? null : 1000
-  );
-
-  // starts countdown
+  // Start countdown
   const startCountDown = () => {
+    playSound(CountdownSound);
     setShowCountDown(true);
     setTimeout(() => {
       setShowCountDown(false);
@@ -48,30 +46,30 @@ const PlanetDefender = () => {
     }, 3000);
   };
 
-  // starts game
+  // Start game
   const startGame = () => {
     setShowStartDialog(false);
-    context.restoreDeck();
-    setCurrentWord(context.getNextWord());
+    pdClass.restoreDeck();
+    setCurrentWord(pdClass.getNextWord());
     setTimeout(() => {
       setShowComet(true);
       setInput("");
     }, 500);
   };
 
-  // Inputting characters into bar
+  // Handle Inputting characters
   const handleInputChange = (text: string) => {
     setInput(text);
-    if (context.checkWord(text)) {
-      context.shift();
+    if (pdClass.checkWord(text)) {
+      pdClass.shift();
       setShowComet(false);
-      if (context.isEmpty()) {
+      if (pdClass.isEmpty()) {
         setShowWinDialog(true);
         playSound(Win);
       } else {
         setBorderColor("green");
         playSound(Good);
-        setCurrentWord(context.getNextWord());
+        setCurrentWord(pdClass.getNextWord());
         setTimeout(() => {
           setBorderColor("black");
           setInput("");
@@ -86,41 +84,22 @@ const PlanetDefender = () => {
     setBorderColor("red");
     setShowComet(false);
     setInput("");
-    context.shiftPush();
-    setCurrentWord(context.getNextWord());
+    pdClass.shiftPush();
+    setCurrentWord(pdClass.getNextWord());
     setTimeout(() => {
       setBorderColor("black");
       setShowComet(true);
     }, 500);
   };
 
-  // const CometMemo = useMemo(() => {
-  //   return (
-  //     <Comet
-  //       text={currentWord}
-  //       handleWrong={handleWrong}
-  //       difficulty={difficulty}
-  //       planetRef={planetRef.current}
-  //     />
-  //   );
-  // }, [currentWord]);
-
   return (
     <>
       <div
         style={{
-          // height: "100%",
-          // maxWidth: "100%",
           background: `url(${bg}) repeat`,
-          // backgroundSize: "cover",
-          // imageRendering: "-webkit-optimize-contrast",
-          backgroundPosition: "50% 50%",
-          position: "absolute",
           zIndex: "5000",
-          bottom: "0",
-          height: "100vh",
+          height: "calc(100vh - 70px)",
           width: "100%",
-          // backgroundColor: "black",
         }}
       >
         {showCountDown ? <CountDown /> : null}
@@ -132,33 +111,16 @@ const PlanetDefender = () => {
             planetRef={planetRef.current}
           />
         )}
-
-        {/* // <div
-          //   ref={planetRef}
-          //   style={{
-          //     height: "500px",
-          //     width: "500px",
-          //     position: "absolute",
-          //     top: "270px",
-          //     left: "100px",
-          //   }}
-          // >
-          //   <Canvas>
-          //     <directionalLight position={[0, 0, 5]} />
-          //     <Scene />
-          //   </Canvas>
-          // </div>
-          // </Comet> */}
         <div
           ref={planetRef}
           className="planet"
           style={{ height: "500px", width: "500px" }}
         >
           <Canvas>
-            <MainPage />
+            <EarthThreeD />
           </Canvas>
         </div>
-        <Footer stack={context}>
+        <Footer stack={pdClass}>
           <CloseRoundedIcon
             sx={{
               fontSize: "75px",
@@ -184,15 +146,13 @@ const PlanetDefender = () => {
           />
         </Footer>
       </div>
-
-      <Loading className={count > 3 ? "dropPage" : ""} />
+      <Loading />
       <WinDialog
         open={showWinDialog}
         setShowWinDialog={setShowWinDialog}
         setShowStartDialog={setShowStartDialog}
         prepareGame={startCountDown}
       />
-
       <StartDialog
         open={showStartDialog}
         difficulty={difficulty}

@@ -1,9 +1,12 @@
-import { createContext } from "react";
+//functionality
 import { useParams } from "react-router-dom";
 import { register } from "../data";
-import stack from "../utils/stack";
+import PlanetDefenderGame from "../utils/PlanetDefender";
 
-type PlanetDefender = {
+//components
+import PlanetDefender from "../components/planetDefender/PlanetDefender";
+
+type PlanetDefenderDeck = {
   word: {
     chinese: string;
     pinyin: string;
@@ -11,19 +14,12 @@ type PlanetDefender = {
   };
 }[];
 
-export const GameContext = createContext<stack | undefined>(undefined);
-export const gltfContext = createContext<any>(undefined);
-
-const PlanetDefenderWrapper = ({ children }: { children: React.ReactNode }) => {
+const PlanetDefenderWrapper = () => {
   const { deckName } = useParams();
-  const deck = register[deckName ?? ""] as PlanetDefender;
-  const thisStack = new stack(deck);
+  const deck = register[deckName ?? ""] as PlanetDefenderDeck;
+  const PDClass = new PlanetDefenderGame(deck);
 
-  return (
-    <gltfContext.Provider value={""}>
-      <GameContext.Provider value={thisStack}>{children}</GameContext.Provider>
-    </gltfContext.Provider>
-  );
+  return <PlanetDefender pdClass={PDClass} />;
 };
 
 export default PlanetDefenderWrapper;

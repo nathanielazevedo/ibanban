@@ -1,15 +1,20 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
+import { useInterval } from "../../hooks/useIntreval";
+import { useState } from "react";
 
-export default function CircularIndeterminate({
-  className,
-}: {
-  className: string;
-}) {
+const Loading = () => {
+  const [count, setCount] = useState(0);
+  useInterval(
+    () => {
+      setCount((o) => o + 1);
+    },
+    count > 3 ? null : 1000
+  );
   return (
     <Box
-      className={className}
+      className={count > 3 ? "dropPage" : ""}
       sx={{
         background: "black",
         display: "flex",
@@ -25,14 +30,13 @@ export default function CircularIndeterminate({
     >
       <CircularProgress
         size={"7rem"}
-        sx={{ display: className == "dropPage" ? "none" : "" }}
+        sx={{ display: count > 3 ? "none" : "" }}
       />
-      <Typography
-        mt="50px"
-        sx={{ display: className == "dropPage" ? "none" : "" }}
-      >
+      <Typography mt="50px" sx={{ display: count > 3 ? "none" : "" }}>
         Preparing awesomeness...
       </Typography>
     </Box>
   );
-}
+};
+
+export default Loading;

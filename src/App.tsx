@@ -53,11 +53,7 @@ const App = () => {
               <Route path="/ibanban/deck/:deckName/games" element={<Games />} />
               <Route
                 path="/ibanban/deck/:deckName/games/planetDefender"
-                element={
-                  <PlanetDefenderWrapper>
-                    <PlanetDefender />
-                  </PlanetDefenderWrapper>
-                }
+                element={<PlanetDefenderWrapper />}
               />
               <Route path="*" element={<>Not found</>} />
             </Routes>

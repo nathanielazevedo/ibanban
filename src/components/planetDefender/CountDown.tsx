@@ -1,31 +1,19 @@
 import { useEffect, useState } from "react";
 import playSound from "../../utils/playSound";
 import Countdown from "../../assets/countdown.wav";
+import { useInterval } from "../../hooks/useIntreval";
 
 const CountDown = () => {
-  const [timer, setTimer] = useState<number | undefined>(undefined);
+  const [time, setTime] = useState<number>(3);
 
-  let time: number;
-  const startCountDown = () => {
-    playSound(Countdown);
-    setTimer(3);
-    let count = 3;
+  useInterval(
+    () => {
+      setTime((o) => o - 1);
+    },
+    time == 0 ? null : 1000
+  );
 
-    time = setInterval(() => {
-      count--;
-      if (count === 0) {
-        clearInterval(time);
-        setTimer(undefined);
-      } else setTimer((o) => (o && o > 0 ? o - 1 : undefined));
-    }, 1000);
-  };
-
-  useEffect(() => {
-    !timer && startCountDown();
-    return () => clearInterval(time);
-  }, []);
-
-  return <div className="timer">{timer}</div>;
+  return <div className="timer">{time}</div>;
 };
 
 export default CountDown;

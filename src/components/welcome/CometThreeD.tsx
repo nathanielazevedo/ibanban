@@ -8,12 +8,11 @@ const CometThreeD = () => {
 
   useFrame(({ clock }) => {
     const a = clock.getElapsedTime();
-    myMesh.current.rotation.y += 0.01;
+    myMesh.current.rotation.y += 0.002;
   });
 
   return (
     <mesh position={[1, 0, 0]}>
-      <meshPhysicalMaterial attach="material" color={"gray"} />
       <primitive
         position={[0, 0, -3]}
         object={gltf.scene}
