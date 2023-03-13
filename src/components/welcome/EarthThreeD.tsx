@@ -2,9 +2,14 @@ import React, { Suspense } from "react";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useFrame } from "@react-three/fiber";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 const MainPage = () => {
-  const gltf = useLoader(GLTFLoader, "/ibanban/earth/scene.gltf");
+  const gltf = useLoader(GLTFLoader, "/ibanban/earth/earth.glb", (loader) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+    loader.setDRACOLoader(dracoLoader);
+  });
   const myMesh = React.useRef<any>();
 
   useFrame(() => {

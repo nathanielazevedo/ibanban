@@ -1,13 +1,17 @@
 import { useRef } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 
 const CometThreeD = () => {
-  const gltf = useLoader(GLTFLoader, "/ibanban/comet/comet.gltf");
+  const gltf = useLoader(GLTFLoader, "/ibanban/comet/comet.glb", (loader) => {
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
+    loader.setDRACOLoader(dracoLoader);
+  });
   const myMesh = useRef<any>();
 
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
+  useFrame(() => {
     myMesh.current.rotation.y += 0.002;
   });
 
