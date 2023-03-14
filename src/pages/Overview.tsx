@@ -3,20 +3,22 @@ import { register } from "../data";
 import { useParams } from "react-router-dom";
 
 //components
+import { Box } from "@mui/material";
 import Table from "@mui/material/Table";
 import Paper from "@mui/material/Paper";
 import Row from "../components/overview/Row";
 import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
 import Footer from "../components/overview/Footer";
+import TableContainer from "@mui/material/TableContainer";
 
 const Overview = () => {
   const { deckName } = useParams();
-  const deck = register[deckName ?? ""];
+  if (!deckName) return <></>;
+  const deck = register[deckName];
 
   return (
     <>
-      <div className="overview-container">
+      <Box className="overview-container">
         <TableContainer
           component={Paper}
           variant="outlined"
@@ -24,12 +26,14 @@ const Overview = () => {
         >
           <Table>
             <TableBody>
-              {deck && deck.map((word, i) => <Row key={i} word={word} />)}
+              {deck.map((word, i) => (
+                <Row key={i} word={word} />
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
-      </div>
-      <Footer deckName={deckName ?? ""} deckLength={deck.length} />
+      </Box>
+      <Footer deckName={deckName} deckLength={deck.length} />
     </>
   );
 };

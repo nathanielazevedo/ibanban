@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import { useLoader, useFrame } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
@@ -16,15 +16,17 @@ const CometThreeD = () => {
   });
 
   return (
-    <mesh position={[1, 0, 0]}>
-      <primitive
-        position={[0, 0, -3]}
-        object={gltf.scene}
-        scale={3}
-        ref={myMesh}
-      />
-      <ambientLight />
-    </mesh>
+    <>
+      <directionalLight position={[0, 0, 5]} />
+      <Suspense fallback={null}>
+        <primitive
+          position={[0, 0, -3]}
+          object={gltf.scene}
+          scale={3}
+          ref={myMesh}
+        />
+      </Suspense>
+    </>
   );
 };
 

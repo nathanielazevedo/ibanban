@@ -1,25 +1,17 @@
 //functionality
-import { useParams } from "react-router-dom";
 import { register } from "../data";
+import { useParams } from "react-router-dom";
 import PlanetDefenderGame from "../utils/PlanetDefender";
 
 //components
 import PlanetDefender from "../components/planetDefender/PlanetDefender";
 
-type PlanetDefenderDeck = {
-  word: {
-    chinese: string;
-    pinyin: string;
-    english: string;
-  };
-}[];
-
 const PlanetDefenderWrapper = () => {
   const { deckName } = useParams();
-  const deck = register[deckName ?? ""] as PlanetDefenderDeck;
-  const PDClass = new PlanetDefenderGame(deck);
+  if (!deckName) return <></>;
+  const pdClass = new PlanetDefenderGame(register[deckName]);
 
-  return <PlanetDefender pdClass={PDClass} />;
+  return <PlanetDefender pdClass={pdClass} />;
 };
 
 export default PlanetDefenderWrapper;

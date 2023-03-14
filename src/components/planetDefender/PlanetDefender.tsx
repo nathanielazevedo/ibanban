@@ -110,7 +110,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         {showCountDown ? <CountDown /> : null}
         {showComet && (
           <Comet
-            text={currentWord ?? "ni hao"}
+            word={currentWord}
             handleWrong={handleWrong}
             difficulty={difficulty}
             planetRef={planetRef.current}

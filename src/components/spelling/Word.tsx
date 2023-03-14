@@ -1,84 +1,83 @@
+//functionality
 import { useEffect, useState } from "react";
-import Letter from "./Letter";
-import { speak } from "../../utils/speak";
-import { Tooltip, Typography } from "@mui/material";
-import HearingIcon from "@mui/icons-material/Hearing";
 import { SpellingGame } from "../../utils/spelling";
+import { speak } from "../../utils/speak";
 
-type Word = {
+//components
+import { Box, Tooltip, Typography } from "@mui/material";
+
+//assets
+import HearingIcon from "@mui/icons-material/Hearing";
+
+type WordType = {
   GameClass: SpellingGame;
   speechRate: number | number[];
 };
 
-export type State = {
+export type WordsState = {
   targetValue: string;
   value: string;
   ref: Element | undefined;
   status: string;
 }[];
 
-const Word = ({ GameClass, speechRate }: Word) => {
-  const [state, setState] = useState<State>(GameClass.generateState());
+const Word = ({ GameClass, speechRate }: WordType) => {
+  const [wordsState, setWordsState] = useState<WordsState>(
+    GameClass.generateState()
+  );
+  const chinese = GameClass.getCurrentChineseWord;
+  const english = GameClass.getCurrentEnglishWord;
+  const pinyin = GameClass.getCurrentPinyinWord;
 
   useEffect(() => {
+    GameClass.setState = setWordsState;
     const inputRefs = document.getElementById("inputs")?.children;
-    GameClass.setState = setState;
     if (!inputRefs) return;
-    //applys refs to each letter
-    setState((previous) => {
-      previous?.forEach((e, i) => {
+    setWordsState((o) => {
+      o?.forEach((e, i) => {
         e.ref = inputRefs[i];
       });
-      return previous;
+      return o;
     });
   }, []);
 
+  const getBorderColor = (state: string) => {
+    let borderColor = "white";
+    if (state == "completed") borderColor = "green";
+    else if (state == "error") borderColor = "red";
+    return borderColor;
+  };
+
   return (
-    <div style={{ padding: "15rem 0 0 5rem" }}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          paddingBottom: "40px",
-          height: "100px",
-        }}
-      >
-        <Typography variant="h2">{GameClass.getCurrentEnglishWord}</Typography>
+    <>
+      <Box className="spelling-word-container">
+        <Typography variant="h2">{english}</Typography>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
-            onClick={() => speak(GameClass.getCurrentChineseWord, speechRate)}
-            sx={{
-              fontSize: "50px",
-              color: "gray",
-              marginLeft: "30px",
-              cursor: "pointer",
-            }}
+            className="hearing-icon"
+            onClick={() => speak(chinese, speechRate)}
           />
         </Tooltip>
-      </div>
-      <div
-        id="inputs"
-        style={{
-          width: "fit-content",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        {GameClass.getCurrentPinyinWord?.map(
-          (letter: string, index: number) => (
-            <Letter
-              key={(Math.random() * index + 5) / Math.random()}
-              value={state[index]?.value ?? ""}
-              focused={GameClass.currentLetterIndex === index}
-              state={state[index]?.status}
-              handleChange={() => {
-                return GameClass.handleChange(index, state, setState);
-              }}
-            />
-          )
-        )}
-      </div>
-    </div>
+      </Box>
+      <Box id="inputs" className="spelling-letters">
+        {pinyin?.map((l: string, i: number) => (
+          <input
+            key={Math.random() * 1000}
+            value={wordsState[i]?.value ?? ""}
+            autoFocus={GameClass.currentLetterIndex === i}
+            className="spelling-input"
+            style={{ borderColor: getBorderColor(wordsState[i].status) }}
+            onChange={(evt) =>
+              GameClass.handleChange(
+                i,
+                wordsState,
+                setWordsState
+              )(evt.target.value)
+            }
+          />
+        ))}
+      </Box>
+    </>
   );
 };
 

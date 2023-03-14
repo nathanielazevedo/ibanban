@@ -11,18 +11,7 @@ type Footer = {
 
 const Footer = ({ GameClass, speechRate, setSpeechRate }: Footer) => {
   return (
-    <Box
-      sx={{
-        height: "70px",
-        width: "100%",
-        borderTop: "1px solid rgba(255, 255, 255, 0.12)",
-        justifySelf: "flex-end",
-        alignItems: "center",
-        display: "flex",
-        justifyContent: "space-between",
-        padding: "0 2rem",
-      }}
-    >
+    <Box className="overview-footer">
       <Typography>{GameClass.deckName}</Typography>
       <Stack
         spacing={2}

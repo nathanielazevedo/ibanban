@@ -12,14 +12,14 @@ const MainPage = () => {
   });
 
   const myMesh = React.useRef<any>();
-  console.log("render");
+
   useFrame(() => {
     myMesh.current.rotation.y += 0.003;
   });
 
   return (
     <>
-      <directionalLight position={[0, 0, 5]} />
+      <directionalLight position={[0, 1, 1]} />
       <Suspense fallback={null}>
         <primitive object={gltf.scene} scale={0.3} ref={myMesh} />
       </Suspense>

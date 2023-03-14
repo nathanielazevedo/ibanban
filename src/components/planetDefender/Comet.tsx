@@ -1,19 +1,22 @@
+//functionality
 import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
+import { WordType } from "../../data";
+
+//assets
 import lose from "../../assets/lose.wav";
-import { WordType } from "../overview/Row";
 import bg from "../../assets/asteroid.png";
 
 type Comet = {
-  text: WordType;
+  word: WordType;
   handleWrong: () => void;
   difficulty: string;
   planetRef: HTMLDivElement | null;
 };
 
-const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
+const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
   const firstRender = useRef(true);
   const [hit, setHit] = useState(false);
 
@@ -27,16 +30,14 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
       if (x.finished) {
         setHit(true);
         playSound(lose);
-        setTimeout(() => {
-          handleWrong();
-        }, 700);
+        handleWrong();
       }
     },
   }));
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
-      speak(text.word.chinese);
+      speak(word.word.chinese);
     }
   }, []);
 
@@ -60,7 +61,7 @@ const Comet = ({ text, handleWrong, difficulty, planetRef }: Comet) => {
         ...spring,
       }}
     >
-      {difficulty == "easy" && text?.word?.pinyin}
+      {difficulty == "easy" && word.word.pinyin}
     </animated.div>
   );
 };

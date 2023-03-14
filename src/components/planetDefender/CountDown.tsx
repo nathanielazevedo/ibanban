@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import playSound from "../../utils/playSound";
-import Countdown from "../../assets/countdown.wav";
+//functionality
+import { useState } from "react";
 import { useInterval } from "../../hooks/useIntreval";
 
 const CountDown = () => {

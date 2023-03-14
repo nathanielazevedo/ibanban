@@ -4,7 +4,7 @@ import { useInterval } from "../hooks/useIntreval";
 
 //components
 import { Canvas } from "@react-three/fiber";
-import { Typography, Chip } from "@mui/material";
+import { Typography, Chip, Button } from "@mui/material";
 import LoadPage from "../components/welcome/LoadPage";
 import CometThreeD from "../components/welcome/CometThreeD";
 import EarthThreeD from "../components/welcome/EarthThreeD";
@@ -77,25 +77,36 @@ const Welcome = () => {
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <img
-              src={Panda}
-              width="154px"
-              height="154px"
+            <div
               style={{
-                marginRight: "30px",
-                paddingTop: "20px",
+                display: "flex",
+                alignItems: "center",
               }}
-            />
-            <div>
-              <Typography variant="h1" color="lightblue">
-                Ibanban
-              </Typography>
-              <Typography variant="h5">
-                &nbsp;Learn Mandarin with games.
-              </Typography>
+            >
+              <div>
+                <Typography variant="h1" color="lightblue" fontWeight="bold">
+                  Ibanban
+                </Typography>
+                <Typography variant="h5">
+                  &nbsp;Learn Mandarin with games.
+                </Typography>
+                <Button
+                  variant="contained"
+                  style={{
+                    padding: "10px",
+                    justifySelf: "flex-start",
+                    width: "100%",
+                    marginTop: "20px",
+                    fontSize: "20px",
+                  }}
+                >
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
           <Canvas
@@ -198,7 +209,6 @@ const Welcome = () => {
               </Typography>
             </div>
           </div>
-          <Canvas>{Comet}</Canvas>
         </div>
         {/* footer */}
         <div
