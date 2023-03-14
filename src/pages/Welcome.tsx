@@ -1,54 +1,38 @@
 //functionality
-import { useMemo, useState } from "react";
-import { useInterval } from "../hooks/useIntreval";
+import { useMemo } from "react";
 
 //components
 import { Canvas } from "@react-three/fiber";
-import { Typography, Chip, Button } from "@mui/material";
-import LoadPage from "../components/welcome/LoadPage";
-import CometThreeD from "../components/welcome/CometThreeD";
+import {
+  Typography,
+  Button,
+  Box,
+  Stepper,
+  Step,
+  StepLabel,
+  Card,
+} from "@mui/material";
 import EarthThreeD from "../components/welcome/EarthThreeD";
+import SpellcheckIcon from "@mui/icons-material/Spellcheck";
 
 //assets
 import bg from "../assets/gamebg.jpeg";
 import Panda from "../assets/panda.svg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import planetDefender from "../assets/planetDefender.png";
+import spellingNinja from "../assets/spellingNinja.png";
 
 const Welcome = () => {
-  const englishHello = "Hello - nǐ hǎo - 你好";
-  const [englishIndex, setEnglishIndex] = useState(0);
-  const getLoaded = () => {
-    if (false) return true;
-    return false;
-  };
-  const [showMainPage, setShowMainPage] = useState<boolean>(getLoaded());
-  const [showIbanban, setShowIbanban] = useState(false);
-
-  useInterval(
-    () => {
-      setEnglishIndex((o) => o + 1);
-    },
-    englishIndex < englishHello.length ? 150 : null
-  );
-
-  if (englishIndex >= englishHello.length && !showMainPage) {
-    setTimeout(() => {
-      setShowIbanban(true);
-    }, 1000);
-    setTimeout(() => {
-      sessionStorage.setItem("loaded", "true");
-      setShowMainPage(true);
-    }, 2500);
-  }
-
   // On scroll animation
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       // If the element is visible
       if (entry.isIntersecting) {
         // Add the animation class
-        entry.target.classList.add("line-fade");
+        entry.target.classList.add("game-1");
       }
     });
   });
@@ -56,22 +40,17 @@ const Welcome = () => {
   const Earth = useMemo(() => {
     return <EarthThreeD />;
   }, []);
-  const Comet = useMemo(() => {
-    return <CometThreeD />;
-  }, []);
 
   // Tell the observer which elements to track
-  const line = document.querySelector(".fade-line");
-  if (line) observer.observe(line);
+  setTimeout(() => {
+    const gameCard = document.querySelector(".gameCard");
+    if (gameCard) observer.observe(gameCard);
+    const stepper = document.querySelector(".stepper");
+    if (stepper) observer.observe(stepper);
+  }, 500);
 
   return (
     <>
-      <LoadPage
-        showMainPage={showMainPage}
-        englishIndex={englishIndex}
-        showIbanban={showIbanban}
-        text={englishHello}
-      />
       <div>
         <div className="overview-1-container">
           <div
@@ -82,6 +61,7 @@ const Welcome = () => {
             }}
           >
             <div
+              className="pop-in"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -110,6 +90,7 @@ const Welcome = () => {
             </div>
           </div>
           <Canvas
+            className="pop"
             style={{
               height: "400px",
               maxWidth: "400px",
@@ -122,127 +103,144 @@ const Welcome = () => {
           style={{
             minHeight: "100vh",
             background: `url(${bg}) no-repeat center center fixed`,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            alignItems: "center",
           }}
         >
           <div
             style={{
-              maxWidth: "85vw",
-              minHeight: "100vh",
-              margin: "0 auto",
+              maxWidth: "65vw",
               display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
               justifyContent: "center",
+              alignItems: "center",
+              // borderBottom: "solid grey 2px",
             }}
           >
-            <div style={{ textAlign: "center" }}>
-              <Typography display="inline-block" variant="h3">
-                We blur the line between&nbsp;
+            <img
+              src={Panda}
+              width="170px"
+              height="170px"
+              style={{
+                marginRight: "30px",
+                paddingTop: "20px",
+              }}
+            />
+            <div>
+              <Typography variant="h4" color="lightblue">
+                The worlds #1 way to learn Mandarin.
               </Typography>
-              <Typography display="inline-block" color="lightblue" variant="h3">
-                learning&nbsp;
-              </Typography>
-              <Typography display="inline-block" variant="h3">
-                and&nbsp;
-              </Typography>
-              <Typography display="inline-block" color="lightblue" variant="h3">
-                gaming.
+              <Typography variant="subtitle1" pt="10px">
+                Learning with Ibanban is fun, and it works! With quick,
+                bite-sized voabulary decks, your vocabulary will improve in no
+                time. Play games that reinforce your learning. Enjoy!
               </Typography>
             </div>
-            <div className="fade-line"></div>
+          </div>
+          <div className="gameCard" style={{ display: "flex", gap: "100px" }}>
+            <Card
+              sx={{
+                maxWidth: 275,
+                display: "flex",
+                alignItems: "center",
+                padding: "30px 0",
+              }}
+            >
+              <img src={spellingNinja} style={{ width: "200px" }} />
+            </Card>
+            <Card sx={{ maxWidth: 275, display: "flex", alignItems: "center" }}>
+              <img src={planetDefender} style={{ width: "200px" }} />
+            </Card>
+            <Card sx={{ maxWidth: 275, display: "flex", alignItems: "center" }}>
+              <img src={planetDefender} style={{ width: "200px" }} />
+            </Card>
           </div>
         </div>
         {/* demonstration */}
         <div
           style={{
-            height: "100vh",
-            width: "80vw",
+            height: "50vh",
+
             display: "flex",
             justifyContent: "center",
             flexDirection: "row",
             alignItems: "center",
           }}
         >
+          <Box>
+            <Stepper alternativeLabel activeStep={2} className="stepper">
+              {[
+                {
+                  title: "Learn",
+                  description:
+                    "View our list of curarated Mandarin words. Starting from the basics",
+                  icon: LocalLibraryIcon,
+                },
+                {
+                  title: "Practice",
+                  description: "Practice spelling. No pressure, do your best.",
+                  icon: SpellcheckIcon,
+                },
+                {
+                  title: "Play",
+                  description:
+                    "Have fun with using your newly learned vocabulary. Play games.",
+                  icon: SportsEsportsIcon,
+                },
+              ].map((label, i) => (
+                <Step key={i} sx={{ fontSize: "50px", padding: "0 30px" }}>
+                  <StepLabel
+                    sx={{ fontSize: "50px" }}
+                    StepIconComponent={label.icon}
+                  >
+                    <Typography color="lightblue" variant="h5">
+                      {label.title}
+                    </Typography>
+                    <Typography style={{ color: "white", maxWidth: "300px" }}>
+                      {label.description}
+                    </Typography>
+                  </StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </Box>
+        </div>
+        {/* footer */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div
             style={{
+              height: "200px",
+              width: "85vw",
+              borderTop: "solid rgba(255, 255, 255, 0.12) 1px",
               display: "flex",
-              width: "90%",
-              flexDirection: "column",
-              gap: "100px",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "0 100px",
             }}
           >
             <div>
-              <Chip
-                label={
-                  <Typography variant="h6" color="lightblue">
-                    1. Review
-                  </Typography>
-                }
-              />
-              <Typography style={{ padding: "20px" }}>
-                View our list of curarated Mandarin words. Starting from the
-                basics
+              <Typography variant="h5" color="lightblue" fontWeight="bolder">
+                Ibanban
+              </Typography>
+              <Typography style={{ fontStyle: "italic" }}>
+                © Copyright 2022
+              </Typography>
+              <Typography style={{ fontStyle: "italic" }}>
+                All rights reserved.
               </Typography>
             </div>
             <div>
-              <Chip
-                label={
-                  <Typography variant="h6" color="lightblue">
-                    2. Practice
-                  </Typography>
-                }
-              />
-              <Typography style={{ padding: "20px" }}>
-                Practice spelling. No pressure, do your best.
-              </Typography>
+              <LinkedInIcon style={{ fontSize: "45px", marginRight: "20px" }} />
+              <GitHubIcon style={{ fontSize: "45px" }} />
             </div>
-            <div>
-              <Chip
-                label={
-                  <Typography variant="h6" color="lightblue">
-                    3. Game
-                  </Typography>
-                }
-              />
-              <Typography style={{ padding: "20px" }}>
-                Have fun with using your newly learned vocabulary. Play games.
-              </Typography>
-            </div>
+            <img
+              src={Panda}
+              width="104px"
+              height="104px"
+              style={{ paddingTop: "10px" }}
+            />
           </div>
-        </div>
-        {/* footer */}
-        <div
-          style={{
-            height: "200px",
-            width: "99vw",
-            borderTop: "solid rgba(255, 255, 255, 0.12) 1px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 100px",
-          }}
-        >
-          <div>
-            <Typography variant="h5" color="lightblue">
-              Ibanban
-            </Typography>
-            <Typography style={{ fontStyle: "italic" }}>
-              © Copyright 2022
-            </Typography>
-            <Typography style={{ fontStyle: "italic" }}>
-              All rights reserved.
-            </Typography>
-          </div>
-          <div>
-            <LinkedInIcon style={{ fontSize: "45px", marginRight: "20px" }} />
-            <GitHubIcon style={{ fontSize: "45px" }} />
-          </div>
-          <img
-            src={Panda}
-            width="104px"
-            height="104px"
-            style={{ paddingTop: "10px" }}
-          />
         </div>
       </div>
     </>
