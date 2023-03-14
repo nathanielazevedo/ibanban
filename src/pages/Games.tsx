@@ -1,7 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import bg from "../assets/gamebg.jpeg";
+import planetDefender from "../assets/planetDefender.png";
+import spellingNinja from "../assets/spellingNinja.png";
 
 const Main = () => {
   const location = useLocation();
@@ -18,36 +20,41 @@ const Main = () => {
         background: `url(${bg}) no-repeat center center fixed`,
       }}
     >
-      <Link to={`${location.pathname}/planetDefender`}>
-        <div
-          className="border"
-          // onClick={() => setTab("planet")}
-          style={{
-            background: "linear-gradient(to right, red, purple",
-            padding: "3px",
-            height: "155px",
-            borderRadius: "5px",
-            cursor: "pointer",
-            marginBottom: "50px",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "#1a1a1a",
-              alignItems: "center",
-              width: "500px",
-              height: "100%",
+      <Paper
+        sx={{
+          minWidth: "70vw",
+          width: "70vw",
+          padding: "50px 30px",
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexDirection: "row",
+        }}
+      >
+        <Link to={`${location.pathname}/spellingNinja`}>
+          <img
+            src={spellingNinja}
+            className="border"
+            style={{
+              background: "linear-gradient(to right, red, purple",
+              height: "255px",
               borderRadius: "5px",
-              marginBottom: "50px",
-              padding: "3px",
+              cursor: "pointer",
             }}
-          >
-            <Typography sx={{ fontSize: "35px" }}>Planet Defender</Typography>
-          </Box>
-        </div>
-      </Link>
+          />
+        </Link>
+        <Link to={`${location.pathname}/planetDefender`}>
+          <img
+            src={planetDefender}
+            className="border"
+            style={{
+              background: "linear-gradient(to right, red, purple",
+              height: "255px",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          />
+        </Link>
+      </Paper>
     </div>
   );
 };

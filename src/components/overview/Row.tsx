@@ -5,14 +5,20 @@ import { speak } from "../../utils/speak";
 import TableRow from "@mui/material/TableRow";
 import Cell from "./Cell";
 import { WordType } from "../../data";
+import { Paper } from "@mui/material";
 
 const Row = ({ word }: { word: WordType }) => {
   return (
-    <TableRow className="pointer" onClick={() => speak(word.word.chinese)}>
-      <Cell word={word.word.english} />
-      <Cell word={word.word.pinyin} />
-      <Cell word={word.word.chinese} />
-    </TableRow>
+    <Paper sx={{ padding: "20px", margin: "20px" }}>
+      <TableRow
+        className="pointer"
+        onClick={() => speak(word.word.chinese)}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        <Cell word={word.word.english} type={1} />
+        <Cell word={word.word.pinyin} type={2} />
+      </TableRow>
+    </Paper>
   );
 };
 

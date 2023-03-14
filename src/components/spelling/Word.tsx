@@ -51,7 +51,9 @@ const Word = ({ GameClass, speechRate }: WordType) => {
   return (
     <>
       <Box className="spelling-word-container">
-        <Typography variant="h2">{english}</Typography>
+        <Typography variant="h2" color="lightblue" fontWeight="20">
+          {english}
+        </Typography>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
             className="hearing-icon"

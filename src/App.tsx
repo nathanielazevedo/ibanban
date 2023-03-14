@@ -7,7 +7,6 @@ import Welcome from "./pages/Welcome";
 import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
 import Games from "./pages/Games";
-import PlanetDefender from "./components/planetDefender/PlanetDefender";
 import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
 
 const darkTheme = createTheme({
@@ -39,11 +38,7 @@ const App = () => {
             <Routes>
               <Route path="/ibanban/" element={<Welcome />} />
               <Route
-                path="/ibanban/deck/:deckName/overview"
-                element={<Overview />}
-              />
-              <Route
-                path="/ibanban/deck/:deckName/overview"
+                path="/ibanban/deck/:deckName/review"
                 element={<Overview />}
               />
               <Route
@@ -54,6 +49,10 @@ const App = () => {
               <Route
                 path="/ibanban/deck/:deckName/games/planetDefender"
                 element={<PlanetDefenderWrapper />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/games/spellingNinja"
+                element={<Spelling />}
               />
               <Route path="*" element={<>Not found</>} />
             </Routes>

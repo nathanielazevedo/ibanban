@@ -17,7 +17,7 @@ const SideTab = ({ title, setSideNavOpen }: SideTab) => {
     <NavLink
       replace
       onClick={() => setSideNavOpen(false)}
-      to={`/ibanban/deck/${title.replaceAll(" ", "_")}/overview`}
+      to={`/ibanban/deck/${title.replaceAll(" ", "_")}/review`}
       className={({ isActive }) => (isActive ? "side-tab-active" : "")}
     >
       <ListItem sx={{ padding: "0 4vw" }}>

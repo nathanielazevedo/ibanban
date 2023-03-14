@@ -15,7 +15,7 @@ type TopNav = {
 
 const TopNav = ({ setSideNavOpen }: TopNav) => {
   const location = useLocation();
-  const tabNames = ["Overview", "Spelling", "Games"];
+  const tabNames = ["Review", "Games"];
   const showTabs = location.pathname.split("/").includes("deck");
 
   return (

@@ -8,10 +8,12 @@ const Footer = ({
   deckLength: number;
 }) => {
   return (
-    <Box className="overview-footer">
-      <Typography>{deckName}</Typography>
-      <Typography>{deckLength}</Typography>
-    </Box>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Box className="overview-footer">
+        <Typography>{deckName}</Typography>
+        <Typography>{deckLength}</Typography>
+      </Box>
+    </div>
   );
 };
 

@@ -130,6 +130,7 @@ a {
   width: 50%;
   margin: 0 auto;
   padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .overview-table {
@@ -144,6 +145,7 @@ a {
   justify-content: space-between;
   height: 70px;
   max-height: 70px;
+  width: 1000px !important;
   padding: 0 1.5rem;
   border-top: 1px solid var(--border);
 }
@@ -157,9 +159,10 @@ a {
   flex-direction: column;
   justify-content: center;
   gap: 40px;
-  max-width: 85vw;
+  max-width: 70vw;
   min-height: 92%;
   margin: 0 auto;
+  padding-bottom: 100px;
 }
 
 .spelling-input {
@@ -176,7 +179,7 @@ a {
 .spelling-word-container {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
 }
 
 .hearing-icon {
