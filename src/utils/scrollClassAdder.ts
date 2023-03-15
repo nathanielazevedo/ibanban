@@ -5,15 +5,17 @@ export const scrollClassAdder = () => {
       // If the element is visible
       if (entry.isIntersecting) {
         // Add the animation class
-        entry.target.classList.add("game-1");
+        entry.target.classList.add("pop-in-animation");
       }
     });
   });
   // Tell the observer which elements to track
   setTimeout(() => {
-    const gameCard = document.querySelector(".gameCard");
-    if (gameCard) observer.observe(gameCard);
-    const stepper = document.querySelector(".stepper");
-    if (stepper) observer.observe(stepper);
+    const gameCard = document.querySelectorAll(".pop-in");
+    if (gameCard) {
+      gameCard.forEach((e) => {
+        observer.observe(e);
+      });
+    }
   }, 500);
 };

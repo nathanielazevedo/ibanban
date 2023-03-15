@@ -9,17 +9,14 @@ import WinDialog from "./WinDialog";
 import StartDialog from "./StartDialog";
 
 //assets
-import Win from "../../assets/win.wav";
-import Good from "../../assets/good.wav";
 import playSound from "../../utils/playSound";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CountDown from "./CountDown";
 import Footer from "./Footer";
-import EarthThreeD from "../welcome/EarthThreeD";
+import EarthThreeD from "../../assets/EarthThreeD";
 import { Canvas } from "@react-three/fiber";
 import bg from "../../assets/bg.jpeg";
 import Loading from "./Loading";
-import CountdownSound from "../../assets/countdown.wav";
 
 type PlanetDefender = {
   pdClass: PlanetDefenderGame;
@@ -39,7 +36,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
 
   // Start countdown
   const startCountDown = () => {
-    playSound(CountdownSound);
+    playSound("CountdownSound");
     setShowCountDown(true);
     setTimeout(() => {
       setShowCountDown(false);
@@ -66,10 +63,10 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
       setShowComet(false);
       if (pdClass.isEmpty()) {
         setShowWinDialog(true);
-        playSound(Win);
+        playSound("Win");
       } else {
         setBorderColor("green");
-        playSound(Good);
+        playSound("Good");
         setCurrentWord(pdClass.getNextWord());
         setTimeout(() => {
           setBorderColor("black");

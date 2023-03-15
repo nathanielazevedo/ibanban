@@ -2,10 +2,11 @@
 import { scrollClassAdder } from "../utils/scrollClassAdder";
 
 //components
-import SectionOne from "../components/welcome/sectionOne";
-import SectionTwo from "../components/welcome/SectionTwo";
-import SectionThree from "../components/welcome/SectionThree";
+import SectionOne from "../components/welcome/SectionOne";
+// import SectionTwo from "../components/welcome/SectionTwo";
+// import SectionThree from "../components/welcome/SectionThree";
 import Footer from "../components/welcome/Footer";
+import { Box } from "@mui/material";
 
 const Welcome = () => {
   scrollClassAdder();
@@ -13,8 +14,8 @@ const Welcome = () => {
   return (
     <>
       <SectionOne />
-      <SectionTwo />
-      <SectionThree />
+      {/* <SectionTwo />
+      <SectionThree /> */}
       <Footer />
     </>
   );

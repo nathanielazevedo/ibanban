@@ -1,48 +1,23 @@
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import earth from "../../assets/earth.png";
 
 const SectionOne = () => {
-  console.log("hello");
   return (
-    <div className="overview-1-container">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div
-          className="pop-in"
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <Typography variant="h1" color="lightblue" fontWeight="bold">
-              Ibanban
-            </Typography>
-            <Typography variant="h5">
-              &nbsp;Learn Mandarin with games.
-            </Typography>
-            <Button
-              variant="contained"
-              style={{
-                padding: "10px",
-                justifySelf: "flex-start",
-                width: "100%",
-                marginTop: "20px",
-                fontSize: "20px",
-              }}
-            >
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </div>
-      <img src={earth} style={{ width: "400px", maxHeight: "400px" }} />
-    </div>
+    <Box className="section-1-container">
+      <Box className="pop-in">
+        <Typography className="section-1-ibanban" color="lightblue">
+          Learn Mandarin with games.
+        </Typography>
+        <Typography className="section-1-text">
+          Ibanban makes learning Mandarin fun. Stop bailing on the 20 learning
+          apps you downloaded. Play games, learn Mandarin.
+        </Typography>
+        <Button className="section-1-button" variant="contained">
+          Get Started
+        </Button>
+      </Box>
+      <img src={earth} />
+    </Box>
   );
 };
 

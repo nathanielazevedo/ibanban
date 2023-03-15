@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 //components
 import TopNavTab from "./TopNavTab";
 import AppBar from "@mui/material/AppBar";
-import { Button, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 //assets
 import Panda from "../../assets/panda.svg";
@@ -20,25 +20,30 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
 
   return (
     <AppBar elevation={0} style={{ minWidth: "100vw" }}>
-      <div className="top-nav">
-        <div className="flex-center">
+      <Box className="top-nav">
+        <Box className="flex-center">
           <Button
-            style={{ marginRight: "20px" }}
-            variant="outlined"
+            style={{ marginRight: "20px", padding: "2px 12px" }}
+            variant="contained"
             onClick={() => setSideNavOpen(true)}
           >
             Decks
           </Button>
           {showTabs &&
             tabNames.map((name) => <TopNavTab key={name} name={name} />)}
-        </div>
+        </Box>
         <Link to="/ibanban/" className="flex-center">
           <img src={Panda} className="top-nav-logo" />
-          <Typography color="lightblue" variant="h4" fontWeight="bold">
+          <Typography
+            className="top-nav-ibanban"
+            color="lightblue"
+            variant="h4"
+            fontWeight="bold"
+          >
             Ibanban
           </Typography>
         </Link>
-      </div>
+      </Box>
     </AppBar>
   );
 };

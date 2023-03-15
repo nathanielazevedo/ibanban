@@ -15,8 +15,8 @@ const Row = ({ word }: { word: WordType }) => {
         onClick={() => speak(word.word.chinese)}
         sx={{ display: "flex", justifyContent: "center" }}
       >
-        <Cell word={word.word.english} type={1} />
-        <Cell word={word.word.pinyin} type={2} />
+        <Cell word={word.word.pinyin} type={1} />
+        <Cell word={word.word.english} type={2} />
       </TableRow>
     </Paper>
   );

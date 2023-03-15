@@ -20,7 +20,7 @@ const Main = () => {
         background: `url(${bg}) no-repeat center center fixed`,
       }}
     >
-      <Paper
+      <Box
         sx={{
           minWidth: "70vw",
           width: "70vw",
@@ -54,7 +54,7 @@ const Main = () => {
             }}
           />
         </Link>
-      </Paper>
+      </Box>
     </div>
   );
 };

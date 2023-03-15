@@ -27,7 +27,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={darkTheme}>
-        <Box sx={{ maxheight: "100vh", maxWidth: "100vw" }}>
+        <Box
+          sx={{ maxheight: "100vh", maxWidth: "100vw", overflowX: "hidden" }}
+        >
           <CssBaseline />
           <TopNav setSideNavOpen={setSideNavOpen} />
           <SideNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />

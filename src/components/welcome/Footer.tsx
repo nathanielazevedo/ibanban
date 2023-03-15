@@ -6,18 +6,8 @@ import { Typography } from "@mui/material";
 const Footer = () => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div
-        style={{
-          height: "200px",
-          width: "85vw",
-          borderTop: "solid rgba(255, 255, 255, 0.12) 1px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 100px",
-        }}
-      >
-        <div>
+      <div className="welcome-footer">
+        <div className="welcome-footer-text">
           <Typography variant="h5" color="lightblue" fontWeight="bolder">
             Ibanban
           </Typography>
@@ -28,10 +18,10 @@ const Footer = () => {
             All rights reserved.
           </Typography>
         </div>
-        <div>
+        {/* <div className="welcome-footer-icons">
           <LinkedInIcon style={{ fontSize: "45px", marginRight: "20px" }} />
           <GitHubIcon style={{ fontSize: "45px" }} />
-        </div>
+        </div> */}
         <img
           src={Panda}
           width="104px"

@@ -8,10 +8,12 @@ const Cell = ({ word, type }: { word: string | undefined; type: number }) => {
         borderBottomWidth: "0px",
         width: "200px",
         margin: "0 20px",
-        borderLeft: type == 2 ? "solid grey 1px" : "",
+        borderLeft: type == 2 ? "solid grey 3px" : "",
       }}
     >
-      <Typography variant="h6">{word}</Typography>
+      <Typography color={"white"} variant="h5">
+        {word}
+      </Typography>
     </TableCell>
   );
 };
