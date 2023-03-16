@@ -1,10 +1,10 @@
 import playSound from "./playSound";
 import Good from "../assets/good.wav";
 import Win from "../assets/win.wav";
-import { WordType } from "../components/review/WordCard";
 import { WordsState } from "../components/spelling/Word";
 import { Dispatch, SetStateAction } from "react";
 import { stripTone } from "./stripTone";
+import { WordType } from "../data";
 
 export class SpellingGame {
   deckName: string;
