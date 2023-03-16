@@ -27,15 +27,13 @@ const App = () => {
   return (
     <BrowserRouter>
       <ThemeProvider theme={darkTheme}>
-        <Box
-          sx={{ maxheight: "100vh", maxWidth: "100vw", overflowX: "hidden" }}
-        >
+        <Box sx={{ maxWidth: "100vw", overflowX: "hidden" }}>
           <CssBaseline />
           <TopNav setSideNavOpen={setSideNavOpen} />
           <SideNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />
           <div
             id="main"
-            style={{ height: "calc(100vh - 70px)", marginTop: "70px" }}
+            style={{ minHeight: "calc(100vh - 70px)", marginTop: "70px" }}
           >
             <Routes>
               <Route path="/ibanban/" element={<Welcome />} />

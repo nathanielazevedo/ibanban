@@ -16,7 +16,7 @@ const Loading = () => {
     <Box
       className={count > 3 ? "dropPage" : ""}
       sx={{
-        background: "black",
+        background: "#1a1a1a",
         display: "flex",
         position: "absolute",
         bottom: "0",

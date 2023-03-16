@@ -20,10 +20,10 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
 
   return (
     <AppBar elevation={0} style={{ minWidth: "100vw" }}>
-      <Box className="top-nav">
-        <Box className="flex-center">
+      <Box className="top-nav fc">
+        <Box className="fc">
           <Button
-            style={{ marginRight: "20px", padding: "2px 12px" }}
+            className="top-nav-button"
             variant="contained"
             onClick={() => setSideNavOpen(true)}
           >
@@ -32,7 +32,7 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
           {showTabs &&
             tabNames.map((name) => <TopNavTab key={name} name={name} />)}
         </Box>
-        <Link to="/ibanban/" className="flex-center">
+        <Link to="/ibanban/" className="fc">
           <img src={Panda} className="top-nav-logo" />
           <Typography
             className="top-nav-ibanban"
