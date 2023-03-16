@@ -343,11 +343,10 @@ a {
   flex-direction: column;
   justify-content: center;
   gap: 40px;
-  width: 1000px;
+  width: 900px;
   min-height: calc(100vh - 140px);
   margin: 0 auto;
   padding-bottom: 100px;
-  /* border: solid white 1px; */
 }
 
 .spelling-input {
@@ -362,7 +361,6 @@ a {
 }
 
 .spelling-word-container {
-  /* border: solid white 1px; */
   display: flex;
   align-items: center;
   gap: 50px;
@@ -449,7 +447,6 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* border: solid white 1px; */
 }
 
 .planet {
@@ -457,7 +454,6 @@ a {
   width: 300px !important;
   height: 300px !important;
   margin-top: 70px;
-  /* border: solid white 1px; */
 }
 
 .comet {
@@ -488,7 +484,6 @@ a {
 
 #planet-defender-text-field {
   background-color: black;
-  /* border: solid #04a2fc 1px; */
   border-radius: 5px;
   width: 500px;
   text-align: center;
@@ -514,8 +509,6 @@ a {
     padding-top: 100px;
   }
   .planet {
-    /* right: 0px !important;
-    top: 200px !important; */
     width: 100px !important;
     height: 100px !important;
     margin: 0;
@@ -540,13 +533,10 @@ a {
     justify-content: center;
     margin: auto;
     padding-bottom: 300px;
-    /* height: 00px; */
-    /* border: solid white 1px; */
   }
 
   #planet-defender-text-field {
     background-color: black;
-    /* border: solid #04a2fc 1px; */
     height: 10px !important;
     width: 500px;
     text-align: center;
