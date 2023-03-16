@@ -10,12 +10,8 @@ import Loading from "./Loading";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
 import StartDialog from "./StartDialog";
-import { Canvas } from "@react-three/fiber";
 import { Box, TextField } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
-//assets
-import EarthThreeD from "../../assets/EarthThreeD";
 
 type PlanetDefender = {
   pdClass: PlanetDefenderGame;
@@ -89,10 +85,6 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
     }, 500);
   };
 
-  const Earth = useMemo(() => {
-    return <EarthThreeD />;
-  }, []);
-
   return (
     <>
       <Box className="planet-defender-container">
@@ -105,9 +97,9 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        <Canvas ref={planetRef} className="planet">
+        {/* <Canvas ref={planetRef} className="planet">
           {Earth}
-        </Canvas>
+        </Canvas> */}
         <Footer stack={pdClass}>
           <CloseRoundedIcon
             className="planet-defender-close"
