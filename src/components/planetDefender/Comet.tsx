@@ -5,15 +5,11 @@ import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
 import { WordType } from "../../data";
 
-//assets
-import lose from "../../assets/lose.wav";
-import bg from "../../assets/asteroid.png";
-
 type Comet = {
   word: WordType;
   handleWrong: () => void;
   difficulty: string;
-  planetRef: HTMLDivElement | null;
+  planetRef: HTMLCanvasElement | null;
 };
 
 const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
@@ -29,7 +25,7 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
     onRest: (x) => {
       if (x.finished) {
         setHit(true);
-        playSound(lose);
+        playSound("Lose");
         handleWrong();
       }
     },
@@ -42,25 +38,7 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
   }, []);
 
   return (
-    <animated.div
-      className={hit ? "wobble" : "shake"}
-      style={{
-        width: 150,
-        height: 150,
-        position: "absolute",
-        top: "420px",
-        borderRadius: "50%",
-        color: "white",
-        display: "flex",
-        fontSize: "20px",
-        justifyContent: "center",
-        alignItems: "center",
-        background: `url(${bg}) repeat center`,
-        backgroundSize: "cover",
-        filter: "brightness(200%)",
-        ...spring,
-      }}
-    >
+    <animated.div className={"comet"} style={{ ...spring }}>
       {difficulty == "easy" && word.word.pinyin}
     </animated.div>
   );

@@ -11,8 +11,10 @@ import {
   Radio,
   RadioGroup,
   Typography,
+  Switch,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
+import { speak } from "../../utils/speak";
 
 type WinDialog = {
   open: boolean;
@@ -91,6 +93,8 @@ const StartDialog = ({
               You will have 5 seconds to input the correct response.
             </Typography>
           </RadioGroup>
+          <Typography mt="20px">Allow voice speech</Typography>
+          <Switch onChange={(evt) => speak("你好")} />
         </FormControl>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>

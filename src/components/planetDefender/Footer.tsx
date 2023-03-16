@@ -7,22 +7,7 @@ type Footer = {
 };
 
 const Footer = ({ stack, children }: Footer) => {
-  return (
-    <Box
-      sx={{
-        height: "150px",
-        width: "100%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0 2rem",
-        position: "absolute",
-        bottom: 0,
-      }}
-    >
-      {children}
-    </Box>
-  );
+  return <Box className="planet-defender-footer">{children}</Box>;
 };
 
 export default Footer;

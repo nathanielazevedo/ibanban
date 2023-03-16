@@ -1,22 +1,21 @@
 //functionality
+import playSound from "../../utils/playSound";
 import { useState, useRef, useMemo } from "react";
-import { TextField } from "@mui/material";
 import PlanetDefenderGame from "../../utils/PlanetDefender";
 
 //components
 import Comet from "./Comet";
+import Footer from "./Footer";
+import Loading from "./Loading";
 import WinDialog from "./WinDialog";
+import CountDown from "./CountDown";
 import StartDialog from "./StartDialog";
+import { Canvas } from "@react-three/fiber";
+import { Box, TextField } from "@mui/material";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 //assets
-import playSound from "../../utils/playSound";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import CountDown from "./CountDown";
-import Footer from "./Footer";
 import EarthThreeD from "../../assets/EarthThreeD";
-import { Canvas } from "@react-three/fiber";
-import bg from "../../assets/bg.jpeg";
-import Loading from "./Loading";
 
 type PlanetDefender = {
   pdClass: PlanetDefenderGame;
@@ -26,7 +25,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
   const [currentWord, setCurrentWord] = useState(pdClass.getNextWord());
   const [input, setInput] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
-  const planetRef = useRef<HTMLDivElement | null>(null);
+  const planetRef = useRef<HTMLCanvasElement | null>(null);
 
   const [showComet, setShowComet] = useState<boolean>(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
@@ -69,7 +68,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         playSound("Good");
         setCurrentWord(pdClass.getNextWord());
         setTimeout(() => {
-          setBorderColor("black");
+          setBorderColor("blue");
           setInput("");
           setShowComet(true);
         }, 500);
@@ -96,14 +95,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
 
   return (
     <>
-      <div
-        style={{
-          background: `url(${bg}) repeat`,
-          zIndex: "5000",
-          height: "calc(100vh - 70px)",
-          width: "100%",
-        }}
-      >
+      <Box className="planet-defender-container">
         {showCountDown ? <CountDown /> : null}
         {showComet && (
           <Comet
@@ -113,39 +105,28 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        <div
-          ref={planetRef}
-          className="planet"
-          style={{ height: "500px", width: "500px" }}
-        >
-          <Canvas>{Earth}</Canvas>
-        </div>
+        <Canvas ref={planetRef} className="planet">
+          {Earth}
+        </Canvas>
         <Footer stack={pdClass}>
           <CloseRoundedIcon
-            sx={{
-              fontSize: "75px",
-              color: "white",
-              paddingRight: "20px",
-              cursor: "pointer",
-            }}
+            className="planet-defender-close"
             onClick={() => {
               setShowStartDialog(true);
               setShowComet(false);
             }}
           />
           <TextField
-            id="planet-defender-text-field"
-            onChange={(evt) => handleInputChange(evt.target.value)}
             value={input}
-            focused={showComet}
-            inputRef={(input) => input && input.focus()}
-            autoFocus={showComet}
-            autoComplete={"off"}
-            sx={{ border: `solid ${borderColor} 1px`, borderRadius: "5px" }}
+            autoComplete="off"
             disabled={!showComet}
+            id="planet-defender-text-field"
+            inputRef={(input) => input && input.focus()}
+            onChange={(evt) => handleInputChange(evt.target.value)}
+            sx={{ border: `solid ${borderColor} 1px`, borderRadius: "5px" }}
           />
         </Footer>
-      </div>
+      </Box>
       <Loading />
       <WinDialog
         open={showWinDialog}
