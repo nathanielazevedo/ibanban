@@ -7,7 +7,9 @@ import Welcome from "./pages/Welcome";
 import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
 import Games from "./pages/Games";
+import Jumper from "./pages/Jumper";
 import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
+import FourOFour from "./pages/FourOFour";
 
 const darkTheme = createTheme({
   palette: {
@@ -54,7 +56,11 @@ const App = () => {
                 path="/ibanban/deck/:deckName/games/spellingNinja"
                 element={<Spelling />}
               />
-              <Route path="*" element={<>Not found</>} />
+              <Route
+                path="/ibanban/deck/:deckName/games/jumperJiao"
+                element={<Jumper />}
+              />
+              <Route path="*" element={<FourOFour />} />
             </Routes>
           </div>
         </Box>

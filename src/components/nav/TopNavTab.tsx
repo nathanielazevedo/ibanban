@@ -8,7 +8,7 @@ const TopNavTab = ({ name }: { name: string }) => {
   const location = useLocation();
   const splitLocation = location.pathname.split("/");
   splitLocation[4] = name.toLowerCase();
-  const finalRoute = splitLocation.join("/");
+  const finalRoute = splitLocation.slice(0, 5).join("/");
 
   return (
     <Typography className="top-nav-tab" variant="subtitle2">
