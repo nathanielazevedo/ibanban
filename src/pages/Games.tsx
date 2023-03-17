@@ -3,7 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 
 const Main = () => {
   const location = useLocation();
-  const games = ["Spelling Ninja", "Planet Defender", "Jumper Jiao"];
+  const games = [
+    "Spelling Ninja",
+    "Planet Defender",
+    "Jumper Jiao",
+    "Self Hearing",
+  ];
   return (
     <Box className="overview-container">
       {games.map((title, i) => (

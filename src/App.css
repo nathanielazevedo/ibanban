@@ -240,7 +240,7 @@ a {
 }
 
 .pop-in-animation {
-  animation: pop-in 0.9s forwards;
+  animation: pop-in 1s forwards;
   display: flex !important;
 }
 
@@ -391,7 +391,7 @@ a {
 }
 
 .spelling-win-container {
-  min-height: 100%;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

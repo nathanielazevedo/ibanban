@@ -3,7 +3,6 @@ import { register } from "../data";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { SpellingGame } from "../utils/spelling";
-import { keyDownListener } from "../utils/keyDownListener";
 
 //components
 import { Box } from "@mui/material";
@@ -28,7 +27,6 @@ const Words = () => {
     );
   }, []);
 
-  document.onkeydown = (e) => keyDownListener(e, GameClass);
   if (completed) return <WinPage GameClass={GameClass} />;
 
   return (

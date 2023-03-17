@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import earth from "../../assets/earth.png";
 
 const SectionOne = () => {
@@ -9,12 +10,14 @@ const SectionOne = () => {
           Learn Mandarin with games.
         </Typography>
         <Typography className="section-1-text">
-          Ibanban makes learning Mandarin fun. You bailed on the 20 other
-          learning apps you downloaded. Play games, learn Mandarin. Try Ibanban.
+          You bailed on the 20 other learning apps you downloaded. Now try
+          Ibanban. Play games, learn Mandarin.
         </Typography>
-        <Button className="section-1-button" variant="contained">
-          Get Started
-        </Button>
+        <Link to="/ibanban/deck/Hello/review">
+          <Button className="section-1-button" variant="contained">
+            Get Started
+          </Button>
+        </Link>
       </Box>
       <img src={earth} />
     </Box>

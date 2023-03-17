@@ -17,5 +17,5 @@ export const scrollClassAdder = () => {
         observer.observe(e);
       });
     }
-  }, 500);
+  }, 100);
 };

@@ -19,8 +19,12 @@ const Footer = () => {
           </Typography>
         </div>
         <div className="welcome-footer-icons">
-          <LinkedInIcon style={{ fontSize: "45px", marginRight: "20px" }} />
-          <GitHubIcon style={{ fontSize: "45px" }} />
+          <a href="https://www.linkedin.com/in/nateazevedo/" target="_blank">
+            <LinkedInIcon style={{ fontSize: "45px", marginRight: "20px" }} />
+          </a>
+          <a href="https://github.com/nathanielazevedo" target="_blank">
+            <GitHubIcon style={{ fontSize: "45px" }} />
+          </a>
         </div>
         <img
           src={Panda}

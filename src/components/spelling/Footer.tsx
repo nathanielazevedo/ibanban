@@ -1,5 +1,3 @@
-import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { Box, Slider, Stack, Tooltip, Typography } from "@mui/material";
 import { SpellingGame } from "../../utils/spelling";
 
@@ -35,20 +33,9 @@ const Footer = ({ GameClass, speechRate, setSpeechRate }: Footer) => {
             />
           </Tooltip>
         </Stack>
-        <div style={{ display: "flex" }}>
-          <ArrowLeftIcon
-            onClick={() => GameClass.goPreviousWord()}
-            sx={{ cursor: "pointer" }}
-          />
-
-          <Typography>
-            {GameClass.currentWordIndex + 1 + " - " + GameClass.getDeckLength()}
-          </Typography>
-          <ArrowRightIcon
-            onClick={() => GameClass.goNextWord()}
-            sx={{ cursor: "pointer" }}
-          />
-        </div>
+        <Typography>
+          {GameClass.currentWordIndex + 1 + " - " + GameClass.getDeckLength()}
+        </Typography>
       </Box>
     </div>
   );

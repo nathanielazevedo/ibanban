@@ -1,0 +1,16 @@
+{
+  "name": "Ibanban",
+  "short_name": "Ibanban",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/panda.svg",
+      "type": "image/svg",
+      "sizes": "72x72"
+    }
+  ]
+}
