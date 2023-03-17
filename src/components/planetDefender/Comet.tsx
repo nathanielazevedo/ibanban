@@ -9,7 +9,7 @@ type Comet = {
   word: WordType;
   handleWrong: () => void;
   difficulty: string;
-  planetRef: HTMLCanvasElement | null;
+  planetRef: HTMLImageElement | null;
 };
 
 const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {

@@ -36,7 +36,6 @@ const WordCard = ({ word }: { word: WordType }) => {
       <Tooltip title="Hear word" placement="top">
         <HearingIcon
           className="hearing-icon"
-          sx={{ fontSize: "30px !important" }}
           onClick={() => speak(word.word.chinese, 0.5)}
         />
       </Tooltip>

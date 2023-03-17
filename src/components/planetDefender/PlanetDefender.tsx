@@ -6,7 +6,7 @@ import PlanetDefenderGame from "../../utils/PlanetDefender";
 //components
 import Comet from "./Comet";
 import Footer from "./Footer";
-import Loading from "./Loading";
+import earth from "../../assets/earth.png";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
 import StartDialog from "./StartDialog";
@@ -21,7 +21,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
   const [currentWord, setCurrentWord] = useState(pdClass.getNextWord());
   const [input, setInput] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
-  const planetRef = useRef<HTMLCanvasElement | null>(null);
+  const planetRef = useRef<HTMLImageElement | null>(null);
 
   const [showComet, setShowComet] = useState<boolean>(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
@@ -97,9 +97,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        {/* <Canvas ref={planetRef} className="planet">
-          {Earth}
-        </Canvas> */}
+        <img className="planet" ref={planetRef} src={earth} />
         <Footer stack={pdClass}>
           <CloseRoundedIcon
             className="planet-defender-close"
@@ -119,7 +117,6 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
           />
         </Footer>
       </Box>
-      <Loading />
       <WinDialog
         open={showWinDialog}
         setShowWinDialog={setShowWinDialog}

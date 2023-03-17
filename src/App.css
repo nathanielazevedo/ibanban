@@ -213,10 +213,10 @@ a {
 }
 
 .section-1-container img:last-child {
-  /* animation: floating;
+  animation: floating;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out; */
+  animation-timing-function: ease-in-out;
   width: 400px;
   height: 400px;
 }
@@ -379,7 +379,7 @@ a {
 }
 
 .hearing-icon {
-  font-size: 50px !important;
+  font-size: 40px !important;
   color: var(--grey) !important;
   cursor: pointer !important;
 }
@@ -424,7 +424,7 @@ a {
 
   .overview-footer,
   .hearing-icon {
-    display: none !important;
+    font-size: 30px !important;
   }
 
   .spelling-win-container {
@@ -454,9 +454,16 @@ a {
   width: 300px !important;
   height: 300px !important;
   margin-top: 70px;
+  margin-right: 50px;
+  border-radius: 50%;
+  animation: floating;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 .comet {
+  z-index: 100;
   width: 150px;
   height: 150px;
   position: absolute;

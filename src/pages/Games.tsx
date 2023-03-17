@@ -13,19 +13,22 @@ const Main = () => {
             elevation={2}
             sx={{
               display: "flex",
+              justifyContent: "space-between",
               alignItems: "center",
               marginTop: "20px",
-              padding: "30px 50px",
+              padding: "30px 20px",
               ":hover": {
                 boxShadow: 20,
               },
             }}
           >
-            <Box width="100%">
-              <Typography color="white" variant="h5">
-                {title}
-              </Typography>
-            </Box>
+            <Typography color="white" variant="h5">
+              {title}
+            </Typography>
+
+            <Typography color="lightgreen" variant="h6">
+              easy
+            </Typography>
           </Paper>
         </Link>
       ))}

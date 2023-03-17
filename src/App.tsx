@@ -8,7 +8,6 @@ import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
 import Games from "./pages/Games";
 import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
-import Journey from "./pages/Journey";
 
 const darkTheme = createTheme({
   palette: {
@@ -55,7 +54,6 @@ const App = () => {
                 path="/ibanban/deck/:deckName/games/spellingNinja"
                 element={<Spelling />}
               />
-              <Route path="/ibanban/journey" element={<Journey />} />
               <Route path="*" element={<>Not found</>} />
             </Routes>
           </div>
