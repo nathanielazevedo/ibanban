@@ -20,10 +20,10 @@ const SideTab = ({ title, setSideNavOpen }: SideTab) => {
       to={`/ibanban/deck/${title.replaceAll(" ", "_")}/review`}
       className={({ isActive }) => (isActive ? "side-tab-active" : "")}
     >
-      <ListItem sx={{ padding: "0 4vw" }}>
+      <ListItem sx={{ padding: "0 3vw" }}>
         <ListItemButton>
           <ListItemText
-            primary={<Typography variant="caption">{title}</Typography>}
+            primary={<Typography variant="h6">{title}</Typography>}
           />
         </ListItemButton>
       </ListItem>

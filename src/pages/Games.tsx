@@ -4,15 +4,15 @@ import { Link, useLocation } from "react-router-dom";
 const Main = () => {
   const location = useLocation();
   const games = [
-    "Spelling Ninja",
-    "Planet Defender",
-    "Jumper Jiao",
-    "Self Hearing",
+    { title: "Spelling Ninja", difficulty: "easy" },
+    { title: "Planet Defender", difficulty: "easy" },
+    { title: "Jumper Jiao", difficulty: "In Dev" },
+    { title: "Self Hearing", difficulty: "In Dev" },
   ];
   return (
     <Box className="overview-container">
-      {games.map((title, i) => (
-        <Link to={location.pathname + "/" + title.replace(/\s+/g, "")}>
+      {games.map((game, i) => (
+        <Link to={location.pathname + "/" + game.title.replace(/\s+/g, "")}>
           <Paper
             key={i}
             elevation={2}
@@ -23,16 +23,22 @@ const Main = () => {
               marginTop: "20px",
               padding: "30px 20px",
               ":hover": {
-                boxShadow: 20,
+                boxShadow: game.difficulty == "In Dev" ? 0 : 20,
               },
             }}
           >
-            <Typography color="white" variant="h5">
-              {title}
+            <Typography
+              color={game.difficulty == "In Dev" ? "grey" : "white"}
+              variant="h5"
+            >
+              {game.title}
             </Typography>
 
-            <Typography color="lightgreen" variant="h6">
-              easy
+            <Typography
+              color={game.difficulty == "In Dev" ? "grey" : "lightgreen"}
+              variant="h6"
+            >
+              {game.difficulty}
             </Typography>
           </Paper>
         </Link>
