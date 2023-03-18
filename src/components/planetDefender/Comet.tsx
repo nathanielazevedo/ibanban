@@ -39,7 +39,7 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
 
   return (
     <animated.div className={"comet"} style={{ ...spring }}>
-      {difficulty == "easy" && word.word.pinyin}
+      {/* {difficulty == "easy" && word.word.pinyin} */}
     </animated.div>
   );
 };

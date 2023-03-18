@@ -7,7 +7,7 @@ import Welcome from "./pages/Welcome";
 import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
 import Games from "./pages/Games";
-import Jumper from "./pages/Jumper";
+import Jumper from "./pages/JumpingJIao";
 import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
 import FourOFour from "./pages/FourOFour";
 
@@ -35,7 +35,11 @@ const App = () => {
           <SideNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />
           <div
             id="main"
-            style={{ minHeight: "calc(100vh - 70px)", marginTop: "70px" }}
+            style={{
+              minHeight: "calc(100vh - 70px)",
+              height: "calc(100vh - 70px)",
+              marginTop: "70px",
+            }}
           >
             <Routes>
               <Route path="/ibanban/" element={<Welcome />} />
@@ -57,7 +61,7 @@ const App = () => {
                 element={<Spelling />}
               />
               <Route
-                path="/ibanban/deck/:deckName/games/jumperJiao"
+                path="/ibanban/deck/:deckName/games/jumpingJiao"
                 element={<Jumper />}
               />
               <Route path="*" element={<FourOFour />} />

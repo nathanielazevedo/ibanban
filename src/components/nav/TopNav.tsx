@@ -33,7 +33,7 @@ const TopNav = ({ setSideNavOpen }: TopNav) => {
             tabNames.map((name) => <TopNavTab key={name} name={name} />)}
         </Box>
         <Link to="/ibanban/" className="fc">
-          <img src={Panda} className="top-nav-logo" />
+          <img alt="logo" src={Panda} className="top-nav-logo" />
           <Typography
             className="top-nav-ibanban"
             color="lightblue"

@@ -6,7 +6,7 @@ import PlanetDefenderGame from "../../utils/PlanetDefender";
 //components
 import Comet from "./Comet";
 import Footer from "./Footer";
-import earth from "../../assets/earth.png";
+import earth from "../../assets/earth.svg";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
 import StartDialog from "./StartDialog";
@@ -99,13 +99,13 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         )}
         <img className="planet" ref={planetRef} src={earth} />
         <Footer stack={pdClass}>
-          <CloseRoundedIcon
+          {/* <CloseRoundedIcon
             className="planet-defender-close"
             onClick={() => {
               setShowStartDialog(true);
               setShowComet(false);
             }}
-          />
+          /> */}
           <TextField
             value={input}
             autoComplete="off"

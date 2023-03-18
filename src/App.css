@@ -31,17 +31,6 @@
   }
 }
 
-@keyframes dropPage {
-  from {
-    height: 100vh;
-    padding-top: 20rem;
-  }
-  to {
-    height: 0vh;
-    padding-top: 0;
-  }
-}
-
 @keyframes wobble {
   0% {
     color: "white";
@@ -78,6 +67,26 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.dropPage {
+  animation-name: dropPage;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.dropWord {
+  display: none;
+}
+
+.wobble {
+  animation-name: wobble;
+  animation-duration: 0.7s;
+}
+
+.shake {
+  animation-name: shake;
+  animation-duration: 4s;
 }
 
 /* ///////////////////////////////// */
@@ -457,12 +466,17 @@ a {
 /* ///////////////////////////////// */
 
 .planet-defender-container {
-  background: url("/src/assets/bg.jpeg") repeat;
-  height: calc(100vh - 70px);
+  background: url("/src/assets/bg.png") repeat;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 5500;
+  border: solid white 1px;
 }
 
 .planet {
@@ -476,6 +490,7 @@ a {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
+  border: solid white 1px;
 }
 
 .comet {
@@ -486,14 +501,15 @@ a {
   top: 210px;
   left: -10px;
   border-radius: 50%;
-  color: white;
+  color: var(--white);
   display: flex;
   font-size: 20px;
   justify-content: center;
   align-items: center;
-  background: url("/src/assets/asteroid.png") repeat center;
+  background: url("/src/assets/comet.svg") repeat center;
   background-size: cover;
   filter: brightness(200%);
+  border: solid white 1px;
 }
 
 .timer {
@@ -503,6 +519,7 @@ a {
   left: 50%;
   top: 35.5%;
   z-index: 5500;
+  border: solid white 1px;
 }
 
 #planet-defender-text-field {
@@ -510,6 +527,7 @@ a {
   border-radius: 5px;
   width: 500px;
   text-align: center;
+  border: solid white 1px;
 }
 
 .planet-defender-close {
@@ -524,13 +542,18 @@ a {
   justify-content: center;
   justify-self: end !important;
   margin-bottom: 250px;
-  /* border: solid white 1px; */
+  border: solid white 1px;
 }
+
+/* ///////////////////////////////// */
+/* Planet Defender Media Queries */
+/* ///////////////////////////////// */
 
 @media only screen and (max-width: 1010px) {
   .planet-defender-container {
     padding-top: 100px;
   }
+
   .planet {
     width: 100px !important;
     height: 100px !important;
@@ -564,24 +587,4 @@ a {
     width: 500px;
     text-align: center;
   }
-}
-
-.dropPage {
-  animation-name: dropPage;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-}
-
-.dropWord {
-  display: none;
-}
-
-.wobble {
-  animation-name: wobble;
-  animation-duration: 0.7s;
-}
-
-.shake {
-  animation-name: shake;
-  animation-duration: 4s;
 }

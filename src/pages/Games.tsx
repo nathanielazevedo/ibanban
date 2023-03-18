@@ -6,7 +6,7 @@ const Main = () => {
   const games = [
     { title: "Spelling Ninja", difficulty: "easy" },
     { title: "Planet Defender", difficulty: "easy" },
-    { title: "Jumper Jiao", difficulty: "In Dev" },
+    { title: "Jumping Jiao", difficulty: "In Dev" },
     { title: "Self Hearing", difficulty: "In Dev" },
   ];
   return (
