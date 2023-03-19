@@ -145,7 +145,7 @@ a {
 }
 
 .top-nav-button {
-  margin-right: 2vw !important;
+  /* margin-right: 2vw !important; */
   padding: 2px 12px !important;
   font-weight: bold !important;
 }

@@ -15,7 +15,7 @@ const Welcome = () => {
       <SectionOne />
       {/* <SectionTwo />
       <SectionThree /> */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
