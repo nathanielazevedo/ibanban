@@ -132,6 +132,8 @@ a {
 /* Navigation */
 /* ///////////////////////////////// */
 
+*{}
+
 .top-nav {
   height: 70px;
   justify-content: space-between;
@@ -193,11 +195,16 @@ a {
 /* ///////////////////////////////// */
 
 .section-1-container {
-  height: calc(100vh - 173px);
-  max-width: 1000px;
+  height: calc(100vh - 73px);
+  /* max-width: 1000px; */
   justify-content: space-between;
-  margin: 0 auto;
-  padding-bottom: 70px;
+  /* margin: 0 auto; */
+  /* padding-bottom: 70px; */
+  background: url("/src/assets/hero-bg.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .section-1-container div:first-child {
@@ -476,7 +483,6 @@ a {
   width: 100%;
   top: 0;
   z-index: 5500;
-  border: solid white 1px;
 }
 
 .planet {
@@ -490,7 +496,6 @@ a {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-  border: solid white 1px;
 }
 
 .comet {
@@ -498,7 +503,7 @@ a {
   width: 150px;
   height: 150px;
   position: absolute;
-  top: 210px;
+  top: 150px;
   left: -10px;
   border-radius: 50%;
   color: var(--white);
@@ -509,7 +514,6 @@ a {
   background: url("/src/assets/comet.svg") repeat center;
   background-size: cover;
   filter: brightness(200%);
-  border: solid white 1px;
 }
 
 .timer {
@@ -519,7 +523,6 @@ a {
   left: 50%;
   top: 35.5%;
   z-index: 5500;
-  border: solid white 1px;
 }
 
 #planet-defender-text-field {
@@ -527,7 +530,6 @@ a {
   border-radius: 5px;
   width: 500px;
   text-align: center;
-  border: solid white 1px;
 }
 
 .planet-defender-close {
@@ -542,7 +544,6 @@ a {
   justify-content: center;
   justify-self: end !important;
   margin-bottom: 250px;
-  border: solid white 1px;
 }
 
 /* ///////////////////////////////// */

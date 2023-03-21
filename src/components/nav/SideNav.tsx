@@ -15,6 +15,7 @@ const SideNav = ({ sideNavOpen, setSideNavOpen }: SideNav) => {
     <MuiDrawer
       open={sideNavOpen}
       variant="temporary"
+      anchor="right"
       onClose={() => setSideNavOpen(false)}
       PaperProps={{
         elevation: 0,

@@ -99,13 +99,13 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         )}
         <img className="planet" ref={planetRef} src={earth} />
         <Footer stack={pdClass}>
-          {/* <CloseRoundedIcon
+          <CloseRoundedIcon
             className="planet-defender-close"
             onClick={() => {
               setShowStartDialog(true);
               setShowComet(false);
             }}
-          /> */}
+          />
           <TextField
             value={input}
             autoComplete="off"
