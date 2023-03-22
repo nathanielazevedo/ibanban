@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Titles } from "../data/Titles";
 import styles from "../style";
-import star from "../assets/star.svg";
+import star from "../assets/Star.svg";
 
 const Map = () => {
   return (
