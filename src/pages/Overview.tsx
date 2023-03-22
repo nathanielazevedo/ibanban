@@ -12,10 +12,12 @@ const Overview = () => {
   const deck = register[deckName];
 
   return (
-    <Box className="overview-container">
-      {deck.map((word, i) => (
-        <WordCard key={i} word={word} />
-      ))}
+    <Box className="bg-primary">
+      <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
+        {deck.map((word, i) => (
+          <WordCard key={i} word={word} />
+        ))}
+      </Box>
     </Box>
   );
 };

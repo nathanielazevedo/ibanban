@@ -7,11 +7,9 @@ import { SpellingGame } from "../utils/spelling";
 //components
 import { Box } from "@mui/material";
 import Word from "../components/spelling/Word";
-import Footer from "../components/spelling/Footer";
 import WinPage from "../components/spelling/WinPage";
 
 const Words = () => {
-  const [speechRate, setSpeechRate] = useState<number | number[]>(0.5);
   const { deckName } = useParams();
   if (!deckName) return <></>;
 
@@ -30,16 +28,11 @@ const Words = () => {
   if (completed) return <WinPage GameClass={GameClass} />;
 
   return (
-    <>
-      <Box className="spelling-container">
-        <Word GameClass={GameClass} speechRate={speechRate} />
+    <Box className="bg-primary">
+      <Box className="spelling-container bg-primary">
+        <Word GameClass={GameClass} />
       </Box>
-      <Footer
-        GameClass={GameClass}
-        speechRate={speechRate}
-        setSpeechRate={setSpeechRate}
-      />
-    </>
+    </Box>
   );
 };
 

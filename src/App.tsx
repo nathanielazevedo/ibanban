@@ -1,8 +1,5 @@
-import { Box, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import TopNav from "./components/nav/TopNav";
-import SideNav from "./components/nav/SideNav";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Overview from "./pages/Overview";
 import Spelling from "./pages/Spelling";
@@ -11,60 +8,66 @@ import Jumper from "./pages/JumpingJIao";
 import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
 import FourOFour from "./pages/FourOFour";
 import Map from "./pages/Map";
+import { useMemo } from "react";
+import { themeSettings } from "./theme";
+import Navbar from "./components/nav/Navbar";
+import LoginPage from "./pages/loginPage";
+import { useSelector } from "react-redux";
+import ProfilePage from "./pages/social/profilePage";
+import HomePage from "./pages/social/homepage";
+import { useAppSelector } from "./hooks/redux";
 
-const darkTheme = createTheme({
-  palette: {
-    mode: "dark",
-    background: {
-      default: "#1a1a1a",
-      paper: "#1a1a1a",
-    },
-  },
-  typography: {
-    fontFamily: "Rubik, sans-serif;",
-  },
-});
 const App = () => {
-  const [sideNavOpen, setSideNavOpen] = useState(false);
+  const mode = useSelector((state) => "dark");
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuth = Boolean(useAppSelector((state) => state.token));
+  console.log("isAuth", isAuth);
   return (
     <BrowserRouter>
-      <ThemeProvider theme={darkTheme}>
-        {/* <Box sx={{ maxWidth: "100vw", overflowX: "hidden" }}> */}
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {/* <TopNav setSideNavOpen={setSideNavOpen} /> */}
-        <SideNav sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />
         <div id="main">
           <Routes>
-            <Route
-              path="/ibanban/"
-              element={<Welcome set={setSideNavOpen} />}
-            />
-            <Route path="/ibanban/map" element={<Map />} />
-            <Route
-              path="/ibanban/deck/:deckName/review"
-              element={<Overview />}
-            />
-            <Route
-              path="/ibanban/deck/:deckName/spelling"
-              element={<Spelling />}
-            />
-            <Route path="/ibanban/deck/:deckName/games" element={<Games />} />
-            <Route
-              path="/ibanban/deck/:deckName/games/planetDefender"
-              element={<PlanetDefenderWrapper />}
-            />
-            <Route
-              path="/ibanban/deck/:deckName/games/spellingNinja"
-              element={<Spelling />}
-            />
-            <Route
-              path="/ibanban/deck/:deckName/games/jumpingJiao"
-              element={<Jumper />}
-            />
-            <Route path="*" element={<FourOFour />} />
+            <Route path="/ibanban/login" element={<LoginPage />} />
+            <Route path="/ibanban/social">
+              <Route
+                path="home"
+                element={isAuth ? <HomePage /> : <Navigate to="/ibanban" />}
+              />
+              <Route
+                path="ibanban/social/profile/:userId"
+                element={isAuth ? <ProfilePage /> : <Navigate to="/ibanban" />}
+              />
+            </Route>
+            <Route element={<Navbar />}>
+              <Route path="/ibanban/" element={<Welcome />} />
+              <Route path="/ibanban/map" element={<Map />} />
+              <Route
+                path="/ibanban/deck/:deckName/review"
+                element={<Overview />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/spelling"
+                element={<Spelling />}
+              />
+              <Route path="/ibanban/deck/:deckName/games" element={<Games />} />
+              <Route
+                path="/ibanban/deck/:deckName/games/planetDefender"
+                element={<PlanetDefenderWrapper />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/games/spellingNinja"
+                element={<Spelling />}
+              />
+              <Route
+                path="/ibanban/deck/:deckName/games/jumpingJiao"
+                element={<Jumper />}
+              />
+              <Route path="*" element={<FourOFour />} />
+            </Route>
           </Routes>
         </div>
-        {/* </Box> */}
       </ThemeProvider>
     </BrowserRouter>
   );

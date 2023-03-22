@@ -11,7 +11,6 @@ import HearingIcon from "@mui/icons-material/Hearing";
 
 type WordType = {
   GameClass: SpellingGame;
-  speechRate: number | number[];
 };
 
 export type WordsState = {
@@ -21,7 +20,7 @@ export type WordsState = {
   status: string;
 }[];
 
-const Word = ({ GameClass, speechRate }: WordType) => {
+const Word = ({ GameClass }: WordType) => {
   const [wordsState, setWordsState] = useState<WordsState>(
     GameClass.generateState()
   );
@@ -57,7 +56,7 @@ const Word = ({ GameClass, speechRate }: WordType) => {
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
             className="hearing-icon"
-            onClick={() => speak(chinese, speechRate)}
+            onClick={() => speak(chinese, 0.5)}
           />
         </Tooltip>
       </Box>

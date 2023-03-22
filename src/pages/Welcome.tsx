@@ -1,5 +1,4 @@
 import styles from "../style";
-import Navbar from "../components/nav/Navbar";
 import Hero from "../components/welcome/Hero";
 import Stats from "../components/welcome/Stats";
 import Footer from "../components/welcome/Footer";
@@ -8,14 +7,8 @@ import Business from "../components/welcome/Business";
 import Billing from "../components/welcome/Billing";
 import CardDeal from "../components/welcome/CardDeal";
 
-const Welcome = ({ set }: any) => (
+const Welcome = () => (
   <div className="bg-primary w-full overflow-hidden">
-    <div className={`${styles.paddingX} ${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Navbar set={set} />
-      </div>
-    </div>
-
     <div className={`bg-primary ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
         <Hero />
