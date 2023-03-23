@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { close, logo, menu } from "../../assets";
-import { navLinks } from "../../apps/welcome/constants";
+import { close, logo, menu } from "../assets";
+import { navLinks } from "../apps/welcome/constants";
 import { Link, useLocation } from "react-router-dom";
-import Button from "../Button";
+import Button from "./Button";
 import { Outlet } from "react-router-dom";
-import styles from "../../style";
+import styles from "../style";
 import { Typography, useTheme } from "@mui/material";
 
 const Navbar = () => {

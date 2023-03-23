@@ -9,7 +9,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Map from "./apps/ibanban";
 import Welcome from "./apps/welcome";
 import LoginPage from "./apps/login";
-import Navbar from "./components/nav/Navbar";
+import Navbar from "./components/Navbar";
 import HomePage from "./apps/social/homepage";
 import FourOFour from "./components/FourOFour";
 import Overview from "./apps/ibanban/main";

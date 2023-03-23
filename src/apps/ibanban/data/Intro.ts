@@ -1,4 +1,4 @@
-const deck = {
+export default {
   id: "1",
   name: "Hello",
   version: "1.0.0",
@@ -27,5 +27,3 @@ const deck = {
     },
   ],
 };
-
-export default deck;

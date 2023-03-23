@@ -1,7 +1,7 @@
 import styles from "../../style";
 import { star } from "../../assets";
 import { Link } from "react-router-dom";
-import { Titles } from "./data/Titles";
+import titles from "./data/Titles";
 import LockIcon from "@mui/icons-material/Lock";
 
 const Level = ({ title, isFirst }: any) => {
@@ -27,21 +27,21 @@ const Level = ({ title, isFirst }: any) => {
 const Map = () => {
   return (
     <div className="w-full flex flex-col items-center bg-primary">
-      {Titles.map((title, index) => {
+      {titles.map((title, index) => {
         index = index + 1;
         const isSingle = index === 0 || index % 3 === 1;
         const isFirst = index === 1;
         if (!isSingle && (index + 1) % 3 !== 1) {
           return (
             <div className="flex flex-row mt-10 gap-20">
-              <Level title={title.english} />
-              <Level title={Titles[index].english} />
+              <Level title={title} />
+              <Level title={titles[index]} />
             </div>
           );
         } else {
           return (
             <div className="mt-10">
-              {isSingle && <Level title={title.english} isFirst={isFirst} />}
+              {isSingle && <Level title={title} isFirst={isFirst} />}
             </div>
           );
         }
