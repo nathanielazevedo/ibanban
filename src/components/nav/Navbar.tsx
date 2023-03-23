@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { close, logo, menu } from "../../assets";
-import { navLinks } from "../../constants";
+import { navLinks } from "../../apps/welcome/constants";
 import { Link, useLocation } from "react-router-dom";
-import Button from "../welcome/Button";
+import Button from "../Button";
 import { Outlet } from "react-router-dom";
 import styles from "../../style";
 import { Typography, useTheme } from "@mui/material";

@@ -1,20 +1,22 @@
-import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Welcome from "./pages/Welcome";
-import Overview from "./pages/Overview";
-import Spelling from "./pages/Spelling";
-import Jumper from "./pages/JumpingJIao";
-import PlanetDefenderWrapper from "./pages/PlanetDefenderWrapper";
-import FourOFour from "./pages/FourOFour";
-import Map from "./pages/Map";
 import { useMemo } from "react";
 import { themeSettings } from "./theme";
-import Navbar from "./components/nav/Navbar";
-import LoginPage from "./pages/loginPage";
 import { useSelector } from "react-redux";
-import ProfilePage from "./pages/social/profilePage";
-import HomePage from "./pages/social/homepage";
 import { useAppSelector } from "./hooks/redux";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+
+// PAGES
+import Map from "./apps/ibanban";
+import Welcome from "./apps/welcome";
+import LoginPage from "./apps/login";
+import Navbar from "./components/nav/Navbar";
+import HomePage from "./apps/social/homepage";
+import FourOFour from "./components/FourOFour";
+import Overview from "./apps/ibanban/main";
+import ProfilePage from "./apps/social/profilePage";
+import Spelling from "./apps/ibanban/games/spellingNinja";
+import Jumper from "./apps/ibanban/games/jumpingJiao/JumpingJIao";
+import PlanetDefenderWrapper from "./apps/ibanban/games/planetDefender/PlanetDefenderWrapper";
 
 const App = () => {
   const mode = useSelector((state) => "dark");
