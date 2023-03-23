@@ -63,7 +63,7 @@ const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
       <FlexBetween gap="1.5rem">
         <UserImage image={picturePath} />
         <InputBase
-          placeholder="What's on your mind..."
+          placeholder="Share your Chinese experiences..."
           onChange={(e) => setPost(e.target.value)}
           value={post}
           sx={{
@@ -134,7 +134,7 @@ const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
 
         {isNonMobileScreens ? (
           <>
-            <FlexBetween gap="0.25rem">
+            {/* <FlexBetween gap="0.25rem">
               <GifBoxOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Clip</Typography>
             </FlexBetween>
@@ -147,7 +147,7 @@ const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
             <FlexBetween gap="0.25rem">
               <MicOutlined sx={{ color: mediumMain }} />
               <Typography color={mediumMain}>Audio</Typography>
-            </FlexBetween>
+            </FlexBetween> */}
           </>
         ) : (
           <FlexBetween gap="0.25rem">

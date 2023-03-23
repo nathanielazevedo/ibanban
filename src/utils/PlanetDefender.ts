@@ -1,9 +1,7 @@
 type PlanetDefener = {
-  word: {
-    chinese: string;
-    pinyin: string;
-    english: string;
-  };
+  chinese: string;
+  pinyin: string;
+  english: string;
 }[];
 export default class PlanetDefenderGame {
   stack: PlanetDefener;
@@ -27,7 +25,7 @@ export default class PlanetDefenderGame {
   }
 
   checkWord(input: string) {
-    if (input === this.stack[0].word.english) return true;
+    if (input === this.stack[0].english) return true;
     return false;
   }
 

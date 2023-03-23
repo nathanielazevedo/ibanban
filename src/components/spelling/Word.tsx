@@ -49,7 +49,7 @@ const Word = ({ GameClass }: WordType) => {
 
   return (
     <>
-      <Box className="spelling-word-container">
+      <Box className="flex items-center gap-[50px]">
         <Typography variant="h2" color="lightblue" fontWeight="20">
           {english}
         </Typography>
@@ -60,13 +60,13 @@ const Word = ({ GameClass }: WordType) => {
           />
         </Tooltip>
       </Box>
-      <Box id="inputs" className="spelling-letters">
+      <Box id="inputs" className="flex w-[84vw] gap-[10px]">
         {pinyin?.map((l: string, i: number) => (
           <input
             key={Math.random() * 1000}
             value={wordsState[i]?.value ?? ""}
             autoFocus={GameClass.currentLetterIndex === i}
-            className="spelling-input"
+            className="text-[30px] bg-primary text-white border-2 border-white rounded-md w-[50px]"
             style={{ borderColor: getBorderColor(wordsState[i].status) }}
             onChange={(evt) =>
               GameClass.handleChange(

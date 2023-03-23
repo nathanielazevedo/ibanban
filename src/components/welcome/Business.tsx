@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { features } from "../../constants";
 import styles, { layout } from "../../style";
 import Button from "./Button";
@@ -34,8 +35,9 @@ const Business = () => (
         Learning with Ibanban is fun, and it works! With quick, bite-sized
         voabulary decks, your vocabulary will improve in no time.
       </p>
-
-      <Button styles={`mt-10`} />
+      <Link to="/ibanban/map">
+        <Button styles={`mt-10`} />
+      </Link>
     </div>
 
     <div className={`${layout.sectionImg} flex-col`}>

@@ -1,6 +1,7 @@
 import styles, { layout } from "../../style";
 import Button from "./Button";
 import { social } from "../../assets";
+import { Link } from "react-router-dom";
 
 const Billing = () => (
   <section id="product" className={layout.sectionReverse}>
@@ -27,7 +28,9 @@ const Billing = () => (
       </p>
 
       <div className="flex flex-row flex-wrap sm:mt-10 mt-6">
-        <Button text="Get Social" />
+        <Link to="/ibanban/social/home">
+          <Button text="Get Social" />
+        </Link>
       </div>
     </div>
   </section>

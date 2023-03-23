@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "../welcome/Button";
 import { Outlet } from "react-router-dom";
 import styles from "../../style";
+import { Typography, useTheme } from "@mui/material";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -13,6 +14,7 @@ const Navbar = () => {
   const isHome = pathname === "/ibanban";
   const isMap = pathname === "/ibanban/map";
   const tabNames = ["Review", "Games"];
+  const { palette } = useTheme();
 
   const getNav = () => {
     if (isHome) {
@@ -39,33 +41,38 @@ const Navbar = () => {
         </>
       );
     } else if (isMap) {
-      return null;
+      return (
+        <Link to="/ibanban/social/home" onClick={() => setActive("Review")}>
+          <Typography
+            sx={{
+              textDecoration: "underline",
+              color: palette.primary.main,
+              "&:hover": {
+                cursor: "pointer",
+                color: palette.primary.light,
+              },
+            }}
+          >
+            Get social
+          </Typography>
+        </Link>
+      );
     } else {
       return (
         <>
-          <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-            {tabNames.map((name, index) => {
-              const splitLocation = pathname.split("/");
-              splitLocation[4] = name.toLowerCase();
-              const finalRoute = splitLocation.slice(0, 5).join("/");
-              return (
-                <li
-                  key={name}
-                  className={`font-poppins font-normal cursor-pointer text-[16px] ${
-                    active === name ? "text-white" : "text-dimWhite"
-                  } ${index === tabNames.length - 1 ? "mr-0" : "mr-10"}`}
-                  onClick={() => setActive(name)}
-                >
-                  <Link to={finalRoute}>{name}</Link>
-                </li>
-              );
-            })}
-          </ul>
           <Link to="/ibanban/map" onClick={() => setActive("Review")}>
-            <Button
-              styles={"text-[12px] px-1.5 py-0.5 ml-10 sm:block hidden"}
-              text="Map"
-            />
+            <Typography
+              sx={{
+                textDecoration: "underline",
+                color: palette.primary.main,
+                "&:hover": {
+                  cursor: "pointer",
+                  color: palette.primary.light,
+                },
+              }}
+            >
+              Back to Map
+            </Typography>
           </Link>
         </>
       );

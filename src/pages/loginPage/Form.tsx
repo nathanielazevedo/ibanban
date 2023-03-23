@@ -10,7 +10,7 @@ import {
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../state";
 import Dropzone from "react-dropzone";
@@ -96,7 +96,7 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-      navigate("/ibanban");
+      navigate("/ibanban/social/home");
     }
   };
 
@@ -267,6 +267,20 @@ const Form = () => {
                 ? "Don't have an account? Sign Up here."
                 : "Already have an account? Login here."}
             </Typography>
+            <Link to="/ibanban/map">
+              <Typography
+                sx={{
+                  textDecoration: "underline",
+                  color: palette.primary.main,
+                  "&:hover": {
+                    cursor: "pointer",
+                    color: palette.primary.light,
+                  },
+                }}
+              >
+                Go back to Ibanban Map.
+              </Typography>
+            </Link>
           </Box>
         </form>
       )}

@@ -13,12 +13,12 @@ const Words = () => {
   const { deckName } = useParams();
   if (!deckName) return <></>;
 
-  const setCurrentWord = useState(register[deckName][0])[1];
+  const setCurrentWord = useState(register[deckName].words[0])[1];
   const [completed, setCompleted] = useState(false);
 
   const GameClass = useMemo(() => {
     return new SpellingGame(
-      register[deckName],
+      register[deckName].words,
       deckName,
       setCurrentWord,
       setCompleted
@@ -28,8 +28,8 @@ const Words = () => {
   if (completed) return <WinPage GameClass={GameClass} />;
 
   return (
-    <Box className="bg-primary">
-      <Box className="spelling-container bg-primary">
+    <Box className="bg-primary h-[88vh]">
+      <Box className="flex flex-col justify-center gap-[40px] bg-primary mx-auto h-[88vh] w-[900px]">
         <Word GameClass={GameClass} />
       </Box>
     </Box>

@@ -9,7 +9,7 @@ import PlanetDefender from "../components/planetDefender/PlanetDefender";
 const PlanetDefenderWrapper = () => {
   const { deckName } = useParams();
   if (!deckName) return <></>;
-  const pdClass = new PlanetDefenderGame(register[deckName]);
+  const pdClass = new PlanetDefenderGame(register[deckName].words);
 
   return <PlanetDefender pdClass={pdClass} />;
 };

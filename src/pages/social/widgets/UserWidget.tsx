@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/redux";
+import twitter from "../../../assets/twitter.svg";
+import linkedin from "../../../assets/linkedin.svg";
 
 const UserWidget = ({ userId, picturePath }: any) => {
   const [user, setUser] = useState(null);
@@ -55,7 +57,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
       <FlexBetween
         gap="0.5rem"
         pb="1.1rem"
-        onClick={() => navigate(`/profile/${userId}`)}
+        onClick={() => navigate(`/ibanban/social/profile/${userId}`)}
       >
         <FlexBetween gap="1rem">
           <UserImage image={picturePath} />
@@ -95,9 +97,9 @@ const UserWidget = ({ userId, picturePath }: any) => {
         </Box>
       </Box>
 
-      <Divider />
+      {/* <Divider /> */}
 
-      {/* THIRD ROW */}
+      {/* THIRD ROW
       <Box p="1rem 0">
         <FlexBetween mb="0.5rem">
           <Typography color={medium}>Who's viewed your profile</Typography>
@@ -113,9 +115,9 @@ const UserWidget = ({ userId, picturePath }: any) => {
         </FlexBetween>
       </Box>
 
-      <Divider />
+      <Divider /> */}
 
-      {/* FOURTH ROW */}
+      {/* FOURTH ROW
       <Box p="1rem 0">
         <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
           Social Profiles
@@ -123,7 +125,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
 
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
+            <img src={twitter} alt="twitter" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Twitter
@@ -136,7 +138,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
 
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
+            <img src={linkedin} alt="linkedin" />
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
@@ -146,7 +148,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
           </FlexBetween>
           <EditOutlined sx={{ color: main }} />
         </FlexBetween>
-      </Box>
+      </Box> */}
     </WidgetWrapper>
   );
 };

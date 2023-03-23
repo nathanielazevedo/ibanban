@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { game } from "../../assets";
 import styles, { layout } from "../../style";
 import Button from "./Button";
@@ -13,8 +14,9 @@ const CardDeal = () => (
         You won't want to stop playing. We have a huge library of games for you
         to play. And words to make you laugh.
       </p>
-
-      <Button styles={`mt-10`} />
+      <Link to="/ibanban/map">
+        <Button styles={`mt-10`} />
+      </Link>
     </div>
 
     <div className={layout.sectionImg}>

@@ -12,7 +12,7 @@ const HomePage = () => {
   const { _id, picturePath } = useAppSelector((state) => state.user as any);
 
   return (
-    <Box>
+    <Box className="bg-primary">
       <Navbar />
       <Box
         width="100%"
@@ -33,8 +33,8 @@ const HomePage = () => {
         </Box>
         {isNonMobileScreens && (
           <Box flexBasis="26%">
-            <AdvertWidget />
-            <Box m="2rem 0" />
+            {/* <AdvertWidget /> */}
+            {/* <Box m="2rem 0" /> */}
             <FriendListWidget userId={_id} />
           </Box>
         )}

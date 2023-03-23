@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../../style";
 import Button from "./Button";
 
@@ -14,7 +15,9 @@ const CTA = () => (
     </div>
 
     <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
-      <Button />
+      <Link to="/ibanban/map">
+        <Button />
+      </Link>
     </div>
   </section>
 );

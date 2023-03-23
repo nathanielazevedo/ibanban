@@ -4,21 +4,21 @@ import Win from "../assets/win.wav";
 import { WordsState } from "../components/spelling/Word";
 import { Dispatch, SetStateAction } from "react";
 import { stripTone } from "./stripTone";
-import { WordType } from "../data";
+import { Word } from "../data";
 
 export class SpellingGame {
   deckName: string;
-  words: WordType[];
+  words: Word[];
   currentWordIndex: number;
   currentLetterIndex: number;
-  setCurrentWord: (word: WordType) => void;
+  setCurrentWord: (word: Word) => void;
   setState: any;
   setCompleted: (state: boolean) => void;
 
   constructor(
-    deck: WordType[],
+    deck: Word[],
     deckName: string,
-    setCurrentWord: (word: WordType) => void,
+    setCurrentWord: (word: Word) => void,
     setCompleted: (state: boolean) => void
   ) {
     this.deckName = deckName;
@@ -32,15 +32,15 @@ export class SpellingGame {
 
   //Word Getters
   get getCurrentEnglishWord() {
-    return this.words[this.currentWordIndex].word.english;
+    return this.words[this.currentWordIndex].english;
   }
 
   get getCurrentChineseWord() {
-    return this.words[this.currentWordIndex].word.chinese;
+    return this.words[this.currentWordIndex].chinese;
   }
 
   get getCurrentPinyinWord() {
-    return this.words[this.currentWordIndex].word.pinyin.split("");
+    return this.words[this.currentWordIndex].pinyin.split("");
   }
 
   //Word Actions

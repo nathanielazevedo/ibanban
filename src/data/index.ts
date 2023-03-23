@@ -69,39 +69,49 @@ import Hello from "./Hello";
 import Food from "./Food";
 import Money from "./Money";
 
-export type WordType = {
-  word: {
-    chinese: string;
+export type Word = {
+  chinese: string;
+  pinyin: string;
+  english: string;
+};
+
+export type Deck = {
+  id: string;
+  name: string;
+  version: string;
+  words: Word[];
+  sentences: {
     english: string;
+    chinese: string;
     pinyin: string;
-  };
+  }[];
 };
 
-type registerType = {
-  [key: string]: WordType[];
+type Decks = {
+  [key: string]: Deck;
 };
 
-export const register: registerType = {
+export const register: Decks = {
   Hello,
-  Food,
-  School1,
-  Money,
-  Dates,
-  Locations,
-  Personal_Information,
-  Time,
-  Hometown,
-  Taste,
-  Restaurants_1,
-  Daily_Schedule,
-  Leisure,
-  Appearance,
-  Clothes,
-  Colors,
-  Shopping,
-  Sports,
-  Spare_Time,
-  Transport,
+  // Food,
+  // School1,
+  // Money,
+  // Dates,
+  // Locations,
+  // Personal_Information,
+  // Time,
+  // Hometown,
+  // Taste,
+  // Restaurants_1,
+  // Daily_Schedule,
+  // Leisure,
+  // Appearance,
+  // Clothes,
+  // Colors,
+  // Shopping,
+  // Sports,
+  // Spare_Time,
+  // Transport,
   // Directions,
   // Rooms,
   // Weather,
