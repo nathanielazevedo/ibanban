@@ -13,7 +13,7 @@ import {
   Typography,
   Switch,
 } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { speak } from "../../utils/speak";
 
 type WinDialog = {
@@ -31,9 +31,7 @@ const StartDialog = ({
   prepareGame,
   difficulty,
 }: WinDialog) => {
-  const location = useLocation();
-  const splitLocation = location.pathname.split("/");
-  const backRoute = splitLocation.slice(0, 5).join("/");
+  const navigate = useNavigate();
 
   return (
     <Dialog
@@ -98,9 +96,8 @@ const StartDialog = ({
         </FormControl>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
-        <Link to={backRoute}>
-          <Button>Leave Game</Button>
-        </Link>
+        <Button onClick={() => navigate(-1)}>Leave Game</Button>
+
         <Button
           onClick={() => {
             setShowStartDialog(false);

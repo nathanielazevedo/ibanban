@@ -1,11 +1,12 @@
 //functionality
 import { register } from "../data";
 import { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SpellingGame } from "../utils/spelling";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 //components
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import Word from "../components/spelling/Word";
 import WinPage from "../components/spelling/WinPage";
 
@@ -15,6 +16,7 @@ const Words = () => {
 
   const setCurrentWord = useState(register[deckName].words[0])[1];
   const [completed, setCompleted] = useState(false);
+  const navigate = useNavigate();
 
   const GameClass = useMemo(() => {
     return new SpellingGame(
@@ -28,8 +30,15 @@ const Words = () => {
   if (completed) return <WinPage GameClass={GameClass} />;
 
   return (
-    <Box className="bg-primary h-[88vh]">
-      <Box className="flex flex-col justify-center gap-[40px] bg-primary mx-auto h-[88vh] w-[900px]">
+    <Box className="h-[58vh] flex relative">
+      <Box className="flex flex-col justify-center gap-[40px] bg-primary mx-auto w-[900px]">
+        <CloseRoundedIcon
+          className="absolute top-0 left-0 m-5 cursor-pointer"
+          fontSize="large"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
         <Word GameClass={GameClass} />
       </Box>
     </Box>

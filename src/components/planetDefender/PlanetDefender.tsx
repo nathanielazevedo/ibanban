@@ -1,11 +1,10 @@
 //functionality
 import playSound from "../../utils/playSound";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef } from "react";
 import PlanetDefenderGame from "../../utils/PlanetDefender";
 
 //components
 import Comet from "./Comet";
-import Footer from "./Footer";
 import earth from "../../assets/earth.svg";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
@@ -87,8 +86,16 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
 
   return (
     <>
-      <Box className="planet-defender-container">
+      <Box className="h-[50vh] flex flex-col items-center justify-evenly relative">
         {showCountDown ? <CountDown /> : null}
+        <CloseRoundedIcon
+          className="absolute top-0 left-0 m-5 cursor-pointer"
+          fontSize="large"
+          onClick={() => {
+            setShowStartDialog(true);
+            setShowComet(false);
+          }}
+        />
         {showComet && (
           <Comet
             word={currentWord}
@@ -97,25 +104,18 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        <img className="planet" ref={planetRef} src={earth} />
-        <Footer stack={pdClass}>
-          <CloseRoundedIcon
-            className="planet-defender-close"
-            onClick={() => {
-              setShowStartDialog(true);
-              setShowComet(false);
-            }}
-          />
+        <img className="h-32 w-32 self-end r-5" ref={planetRef} src={earth} />
+        <Box className="flex flex-col items-center">
+          {currentWord.pinyin}
           <TextField
             value={input}
             autoComplete="off"
             disabled={!showComet}
-            id="planet-defender-text-field"
+            id="border-2 outline-none"
             inputRef={(input) => input && input.focus()}
             onChange={(evt) => handleInputChange(evt.target.value)}
-            sx={{ border: `solid ${borderColor} 1px`, borderRadius: "5px" }}
           />
-        </Footer>
+        </Box>
       </Box>
       <WinDialog
         open={showWinDialog}

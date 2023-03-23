@@ -132,26 +132,6 @@ a {
 /* Spelling Page */
 /* ///////////////////////////////// */
 
-.overview-footer {
-  position: sticky;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  max-height: 70px;
-  width: 1000px !important;
-  padding: 0 1.5rem;
-  border-top: 1px solid var(--border);
-}
-
-.spelling-win-container {
-  min-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 @media only screen and (max-width: 1010px) {
   .spelling-container {
     height: calc(100vh - 70px);
@@ -194,50 +174,6 @@ a {
 /* Planet Defender */
 /* ///////////////////////////////// */
 
-.planet-defender-container {
-  background: url("/src/assets/bg.png") repeat;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  z-index: 5500;
-}
-
-.planet {
-  align-self: flex-end;
-  width: 300px !important;
-  height: 300px !important;
-  margin-top: 70px;
-  margin-right: 50px;
-  border-radius: 50%;
-  animation: floating;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-}
-
-.comet {
-  z-index: 100;
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  top: 150px;
-  left: -10px;
-  border-radius: 50%;
-  color: var(--white);
-  display: flex;
-  font-size: 20px;
-  justify-content: center;
-  align-items: center;
-  background: url("/src/assets/comet.svg") repeat center;
-  background-size: cover;
-  filter: brightness(200%);
-}
-
 .timer {
   font-size: 50px;
   color: var(--white);
@@ -245,69 +181,4 @@ a {
   left: 50%;
   top: 35.5%;
   z-index: 5500;
-}
-
-#planet-defender-text-field {
-  background-color: black;
-  border-radius: 5px;
-  width: 500px;
-  text-align: center;
-}
-
-.planet-defender-close {
-  font-size: 75px !important;
-  color: var(--white);
-  cursor: pointer;
-}
-
-.planet-defender-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: end !important;
-  margin-bottom: 250px;
-}
-
-/* ///////////////////////////////// */
-/* Planet Defender Media Queries */
-/* ///////////////////////////////// */
-
-@media only screen and (max-width: 1010px) {
-  .planet-defender-container {
-    padding-top: 100px;
-  }
-
-  .planet {
-    width: 100px !important;
-    height: 100px !important;
-    margin: 0;
-  }
-
-  .planet-defender-close {
-    font-size: 35px !important;
-    color: var(--white);
-    cursor: pointer;
-  }
-
-  .comet {
-    top: 190px;
-    width: 75px;
-    height: 75px;
-  }
-
-  .planet-defender-footer {
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    padding-bottom: 300px;
-  }
-
-  #planet-defender-text-field {
-    background-color: black;
-    height: 10px !important;
-    width: 500px;
-    text-align: center;
-  }
 }

@@ -25,7 +25,7 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <div id="main">
+        <div id="main" className="min-h-[100vh] bg-primary">
           <Routes>
             <Route path="/ibanban/login" element={<LoginPage />} />
             <Route path="/ibanban/social">

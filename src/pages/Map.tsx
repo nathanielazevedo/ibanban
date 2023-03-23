@@ -5,6 +5,26 @@ import styles from "../style";
 import star from "../assets/Star.svg";
 import LockIcon from "@mui/icons-material/Lock";
 
+const Level = ({ title, isFirst }: any) => {
+  return (
+    <Link to={isFirst ? `/ibanban/deck/${title}` : ""}>
+      <div className="flex flex-col items-center">
+        <div
+          className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer hover:bg-sky-700"
+          key={title}
+        >
+          <div
+            className={`${styles.flexCenter} flex-col bg-primary hover:bg-sky-900 rounded-full w-[100%] h-[100%]`}
+          >
+            {!isFirst ? <LockIcon fontSize="large" /> : <img src={star} />}
+          </div>
+        </div>
+        <h4 className="text-[30px] pt-3">{title}</h4>
+      </div>
+    </Link>
+  );
+};
+
 const Map = () => {
   return (
     <div className="w-full flex flex-col items-center bg-primary">
@@ -15,69 +35,15 @@ const Map = () => {
         if (!isSingle && (index + 1) % 3 !== 1) {
           return (
             <div className="flex flex-row mt-10 gap-20">
-              <Link to={`/ibanban/deck/${title.english}`}>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer hover:bg-sky-700"
-                    key={title.english}
-                  >
-                    <div
-                      className={`${styles.flexCenter} flex-col bg-primary hover:bg-sky-900 rounded-full w-[100%] h-[100%]`}
-                    >
-                      {!isFirst ? (
-                        <LockIcon fontSize="large" />
-                      ) : (
-                        <img src={star} />
-                      )}
-                    </div>
-                  </div>
-                  <h4 className="text-[30px] pt-3">{title.english}</h4>
-                </div>
-              </Link>
-              <Link to={`/ibanban/deck/${title.english}`}>
-                <div className="flex flex-col items-center">
-                  <div
-                    className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer hover:bg-sky-700"
-                    key={title.english}
-                  >
-                    <div
-                      className={`${styles.flexCenter} flex-col bg-primary hover:bg-sky-900 rounded-full w-[100%] h-[100%]`}
-                    >
-                      {!isFirst ? (
-                        <LockIcon fontSize="large" />
-                      ) : (
-                        <img src={star} />
-                      )}
-                    </div>
-                  </div>
-                  <h4 className="text-[30px] pt-3">{Titles[index].english}</h4>
-                </div>
-              </Link>
+              <Level title={title.english} />
+              <Level title={Titles[index].english} />
             </div>
           );
         } else {
           return (
             <div className="mt-10">
               {isSingle ? (
-                <Link to={`/ibanban/deck/${title.english}`}>
-                  <div className="flex flex-col items-center">
-                    <div
-                      className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer hover:bg-sky-700"
-                      key={title.english}
-                    >
-                      <div
-                        className={`${styles.flexCenter} flex-col hover:bg-sky-900 bg-primary rounded-full w-[100%] h-[100%]`}
-                      >
-                        {!isFirst ? (
-                          <LockIcon fontSize="large" />
-                        ) : (
-                          <img src={star} />
-                        )}
-                      </div>
-                    </div>
-                    <h4 className="text-[30px] pt-3">{title.english}</h4>
-                  </div>
-                </Link>
+                <Level title={title.english} isFirst={isFirst} />
               ) : null}
             </div>
           );

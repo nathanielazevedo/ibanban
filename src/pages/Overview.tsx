@@ -53,7 +53,7 @@ const Overview = () => {
   };
 
   return (
-    <Box className="bg-primary">
+    <Box className="bg-primary h-[90vh]">
       <Box className="bg-primary w-[90vw] m-auto">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs

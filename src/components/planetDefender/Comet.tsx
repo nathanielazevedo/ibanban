@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import playSound from "../../utils/playSound";
 import { speak } from "../../utils/speak";
-import { WordType } from "../../data";
+import { Word } from "../../data";
+import comet from "../../assets/comet.svg";
 
 type Comet = {
-  word: WordType;
+  word: Word;
   handleWrong: () => void;
   difficulty: string;
   planetRef: HTMLImageElement | null;
@@ -14,17 +15,15 @@ type Comet = {
 
 const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
   const firstRender = useRef(true);
-  const [hit, setHit] = useState(false);
 
   const [spring] = useSpring(() => ({
     from: { x: -50 },
-    to: { x: planetRef ? planetRef.getBoundingClientRect().left - 55 : 500 },
+    to: { x: planetRef ? planetRef.getBoundingClientRect().left - 120 : 500 },
     config: {
       duration: difficulty == "easy" ? 7000 : 5000,
     },
     onRest: (x) => {
       if (x.finished) {
-        setHit(true);
         playSound("Lose");
         handleWrong();
       }
@@ -33,14 +32,18 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
-      speak(word.word.chinese);
+      speak(word.chinese);
     }
   }, []);
 
   return (
-    <animated.div className={"comet"} style={{ ...spring }}>
+    <animated.img
+      className="z-100 w-[150px] h-[150px] absolute top-[100px] left-[10px]"
+      style={{ ...spring }}
+      src={comet}
+    >
       {/* {difficulty == "easy" && word.word.pinyin} */}
-    </animated.div>
+    </animated.img>
   );
 };
 

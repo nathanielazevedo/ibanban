@@ -2,7 +2,7 @@
 import { speak } from "../../utils/speak";
 
 //components
-import { Deck, Word } from "../../data";
+import { Word } from "../../data";
 import { Box, Paper, Tooltip, Typography } from "@mui/material";
 
 //assets
@@ -12,30 +12,19 @@ const WordCard = ({ word }: { word: Word }) => {
   return (
     <Paper
       elevation={2}
-      sx={{
-        marginBottom: "20px",
-        padding: "20px",
-        display: "flex",
-        alignItems: "center",
-        width: "100%",
-      }}
+      className="mt-[20px] p-[20px] flex items-center justify-between"
     >
-      <Box
-        width="100%"
-        sx={{
-          width: "100%",
-        }}
-      >
+      <Box>
         <Typography color="white" variant="h5">
           {word.pinyin}
         </Typography>
-        <Typography color="grey" variant="h5">
+        <Typography color="grey" variant="h5" className="pt-2">
           {word.english}
         </Typography>
       </Box>
       <Tooltip title="Hear word" placement="top">
         <HearingIcon
-          className="hearing-icon"
+          className="hearing-icon cursor-pointer"
           onClick={() => speak(word.chinese, 0.5)}
         />
       </Tooltip>

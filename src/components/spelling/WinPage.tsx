@@ -7,7 +7,7 @@ type WinPage = {
 
 const WinPage = ({ GameClass }: WinPage) => {
   return (
-    <div className="spelling-win-container">
+    <div className="h-[90vh] flex flex-col items-center pt-48">
       <Typography variant="h1">Great Job!</Typography>
       <Button onClick={() => GameClass.newGame()}>
         <Typography variant="h4">Spell Them Again</Typography>

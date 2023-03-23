@@ -12,7 +12,7 @@ const CountDown = () => {
     time == 0 ? null : 1000
   );
 
-  return <div className="timer">{time}</div>;
+  return <div className="text-[50px] absolute m-auto">{time}</div>;
 };
 
 export default CountDown;
