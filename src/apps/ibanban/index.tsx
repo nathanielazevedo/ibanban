@@ -6,7 +6,7 @@ import LockIcon from "@mui/icons-material/Lock";
 
 const Level = ({ title, isFirst }: { title: string; isFirst?: boolean }) => {
   return (
-    <Link to={isFirst ? `/ibanban/deck/${title}` : ""}>
+    <Link to={isFirst ? `/deck/${title}` : ""}>
       <div className="flex flex-col items-center">
         <div
           className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer"
