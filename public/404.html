@@ -23,7 +23,7 @@
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
       var pathSegmentsToKeep = 1;
-
+      console.log("404");
       var l = window.location;
       l.replace(
         l.protocol +
@@ -44,7 +44,7 @@
           (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
           l.hash
       );
-      console.log(l);
+      console.log("404", l);
     </script>
   </head>
   <body></body>
