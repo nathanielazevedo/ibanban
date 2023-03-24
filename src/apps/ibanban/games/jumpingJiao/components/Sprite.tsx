@@ -7,9 +7,13 @@ export class Sprite {
   positionX: number;
   positionY: number;
   ctx: CanvasRenderingContext2D;
-  img: any;
+  img: CanvasImageSource;
 
-  constructor(position: Position, ctx: CanvasRenderingContext2D, img: any) {
+  constructor(
+    position: Position,
+    ctx: CanvasRenderingContext2D,
+    img: CanvasImageSource
+  ) {
     this.ctx = ctx;
     this.positionX = position.x;
     this.positionY = position.y;

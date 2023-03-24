@@ -1,6 +1,12 @@
 import { Box } from "@mui/material";
 
-const userImage = ({ image, size = "60px" }: any) => {
+const userImage = ({
+  image,
+  size = "60px",
+}: {
+  image: string;
+  size?: string;
+}) => {
   return (
     <Box width={size} height={size}>
       <img

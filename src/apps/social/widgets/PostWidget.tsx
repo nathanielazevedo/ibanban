@@ -14,6 +14,20 @@ import { setPost } from "../../../state";
 import Friend from "../Friend";
 import WidgetWrapper from "../WidgetWrapper";
 
+type PostType = {
+  postId: string;
+  postUserId: string;
+  name: string;
+  description: string;
+  location: string;
+  picturePath: string;
+  userPicturePath: string;
+  likes: {
+    [key: string]: boolean;
+  };
+  comments: [];
+};
+
 const PostWidget = ({
   postId,
   postUserId,
@@ -24,15 +38,15 @@ const PostWidget = ({
   userPicturePath,
   likes,
   comments,
-}: any) => {
+}: PostType) => {
   const [isComments, setIsComments] = useState(false);
   const dispatch = useDispatch();
   const token = useAppSelector((state) => state.token);
-  const loggedInUserId = useAppSelector((state) => state?.user?._id as any);
+  const loggedInUserId = useAppSelector((state) => state?.user?._id as string);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
 
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const main = palette.neutral.main;
   const primary = palette.primary.main;
 

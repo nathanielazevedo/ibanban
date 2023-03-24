@@ -1,5 +1,6 @@
 import { Box, useMediaQuery } from "@mui/material";
 import { useAppSelector } from "../../../hooks/redux";
+import { UserType } from "../../../state";
 import Navbar from "../navbar";
 import AdvertWidget from "../widgets/AdvertWidget";
 import FriendListWidget from "../widgets/FriendListWidget";
@@ -9,7 +10,9 @@ import UserWidget from "../widgets/UserWidget";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  const { _id, picturePath } = useAppSelector((state) => state.user as any);
+  const { _id, picturePath } = useAppSelector(
+    (state) => state.user as UserType
+  );
 
   return (
     <Box className="bg-primary">

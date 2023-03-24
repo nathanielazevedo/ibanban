@@ -25,8 +25,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const user = useAppSelector((state) => state.user);
   const isNoneMobileScreens = useMediaQuery("(min-width: 1000px)");
-  const { palette } = useTheme() as any;
-  const theme = useTheme() as any;
+  const { palette } = useTheme();
+  const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
   const background = theme.palette.background.default;

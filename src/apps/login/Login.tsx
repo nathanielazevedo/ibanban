@@ -15,20 +15,24 @@ const initialValuesLogin = {
   password: "",
 };
 
+type Values = {
+  email: string;
+  password: string;
+};
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const login = async (values: any, onSubmitProps: any) => {
+  const login = async (values: Values) => {
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();
-    onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
         setLogin({
@@ -40,8 +44,8 @@ const Login = () => {
     }
   };
 
-  const handleFormSubmit = async (values: any, onSubmitProps: any) => {
-    await login(values, onSubmitProps);
+  const handleFormSubmit = async (values: Values) => {
+    await login(values);
   };
 
   return (
@@ -95,7 +99,7 @@ const Login = () => {
             sx={{
               m: "2rem 0",
               p: "1rem",
-              backgroundColor: palette.primary.main,
+              backgroundColor: palette?.primary.main,
               color: palette.background.alt,
               "&:hover": { color: palette.primary.main },
             }}

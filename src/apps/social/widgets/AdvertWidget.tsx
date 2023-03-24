@@ -3,7 +3,7 @@ import FlexBetween from "../../../components/FlexBetween";
 import WidgetWrapper from "../WidgetWrapper";
 
 const AdvertWidget = () => {
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const dark = palette.neutral.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;

@@ -4,24 +4,40 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../../components/FlexBetween";
 import { useAppSelector } from "../../hooks/redux";
-import { setFriends } from "../../state";
+import { setFriends, UserType } from "../../state";
 
 import UserImage from "./UserImage";
 
-const Friend = ({ friendId, name, subtitle, userPicturePath }: any) => {
+type Friend = {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  occupation: string;
+  location: string;
+  picturePath: string;
+};
+
+type FriendProps = {
+  friendId: string;
+  name: string;
+  subtitle: string;
+  userPicturePath: string;
+};
+
+const Friend = ({ friendId, name, subtitle, userPicturePath }: FriendProps) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { _id } = useAppSelector((state) => state.user as any);
+  const { _id } = useAppSelector((state) => state.user as UserType);
   const token = useAppSelector((state) => state.token);
-  const friends = useAppSelector((state) => state?.user?.friends as any);
+  const friends = useAppSelector((state) => state?.user?.friends as Friend[]);
 
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const primaryLight = palette.primary.light;
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
 
-  const isFriend = friends.find((friend: any) => friend._id === friendId);
+  const isFriend = friends.find((friend) => friend._id === friendId);
 
   const patchFriend = async () => {
     const response = await fetch(

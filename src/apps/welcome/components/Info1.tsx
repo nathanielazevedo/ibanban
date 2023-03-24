@@ -3,7 +3,17 @@ import { features } from "../constants";
 import styles, { layout } from "../../../style";
 import Button from "../../../components/Button";
 
-const FeatureCard = ({ icon, title, content, index }: any) => (
+const FeatureCard = ({
+  icon,
+  title,
+  content,
+  index,
+}: {
+  icon: string;
+  title: string;
+  content: string;
+  index: number;
+}) => (
   <div
     className={`flex flex-row p-6 rounded-[20px] ${
       index !== features.length - 1 ? "mb-6" : "mb-0"

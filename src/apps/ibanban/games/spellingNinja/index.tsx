@@ -32,7 +32,9 @@ const Words = () => {
 
   useEffect(() => {
     if (lost == true || showStartDialog === true || completed === true) return;
-    let circularProgress = document.querySelector(".circular-progress") as any,
+    let circularProgress = document.querySelector(
+        ".circular-progress"
+      ) as HTMLDivElement,
       progressValue = document.querySelector(".progress-value");
 
     let progressStartValue = 0,

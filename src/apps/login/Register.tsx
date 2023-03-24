@@ -33,14 +33,25 @@ const initialValuesRegister = {
   picture: { name: "" },
 };
 
-const Register = ({ setPageType }: any) => {
-  const { palette } = useTheme() as any;
+type Values = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  location: string;
+  occupation: string;
+  picture: { name: string };
+};
+
+const Register = ({ setPageType }: { setPageType: (type: string) => void }) => {
+  const { palette } = useTheme();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const register = async (values: any, onSubmitProps: any) => {
+
+  const register = async (values: Values) => {
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
-      formData.append(value, values[value]);
+      formData.append(value, values[value as keyof Values] as string | Blob);
     }
     formData.append("picturePath", values.picture.name);
 
@@ -52,15 +63,14 @@ const Register = ({ setPageType }: any) => {
       }
     );
     const savedUser = await savedUserResponse.json();
-    onSubmitProps.resetForm();
 
     if (savedUser) {
       setPageType("login");
     }
   };
 
-  const handleFormSubmit = async (values: any, onSubmitProps: any) => {
-    await register(values, onSubmitProps);
+  const handleFormSubmit = async (values: Values) => {
+    await register(values);
   };
   return (
     <Formik

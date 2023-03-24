@@ -11,12 +11,19 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/redux";
 import { twitter, linkedin } from "../../../assets";
+import { UserType } from "../../../state";
 
-const UserWidget = ({ userId, picturePath }: any) => {
+const UserWidget = ({
+  userId,
+  picturePath,
+}: {
+  userId: string;
+  picturePath: string;
+}) => {
   const [user, setUser] = useState(null);
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const navigate = useNavigate();
-  const token = useAppSelector((state) => state?.token as any);
+  const token = useAppSelector((state) => state?.token as string);
   const dark = palette.neutral.dark;
   const medium = palette.neutral.medium;
   const main = palette.neutral.main;
@@ -46,7 +53,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
     viewedProfile,
     impressions,
     friends,
-  } = user as any;
+  } = user as UserType;
 
   return (
     <WidgetWrapper>
@@ -72,9 +79,7 @@ const UserWidget = ({ userId, picturePath }: any) => {
             >
               {firstName} {lastName}
             </Typography>
-            <Typography color={medium}>
-              {friends?.length as any} friends
-            </Typography>
+            <Typography color={medium}>{friends.length} friends</Typography>
           </Box>
         </FlexBetween>
         <ManageAccountsOutlined />

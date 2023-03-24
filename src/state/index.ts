@@ -1,16 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type UserType = {
+  friends: [];
+  _id: string;
+  picturePath: string;
+  firstName: string;
+  lastName: string;
+  location?: string;
+  occupation?: string;
+  viewedProfile?: string;
+  impressions?: string;
+};
+
+export type PostType = {
+  _id: string;
+};
+
 export type initialStateType = {
   mode: "light" | "dark";
-  user: {
-    friends: [];
-    _id: string;
-    picturePath: string;
-    firstName: string;
-    lastName: string;
-  } | null;
+  user: UserType | null;
   token: string | null;
-  posts: any[];
+  posts: PostType[];
 };
 
 const initialState = {
@@ -50,7 +60,7 @@ export const authSlice = createSlice({
         if (post._id === action.payload.post._id) return action.payload.post;
         return post;
       });
-      state.posts = updatedPosts;
+      state.posts = updatedPosts as PostType[];
     },
   },
 });

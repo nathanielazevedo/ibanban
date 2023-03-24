@@ -22,17 +22,17 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FlexBetween from "../../../components/FlexBetween";
 import { useAppSelector } from "../../../hooks/redux";
-import { setPosts } from "../../../state";
+import { setPosts, UserType } from "../../../state";
 import UserImage from "../UserImage";
 import WidgetWrapper from "../WidgetWrapper";
 
 const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
   const dispatch = useDispatch();
   const [isImage, setIsImage] = useState(false);
-  const [image, setImage] = useState<any>(null);
+  // const [image, setImage] = useState(null);
   const [post, setPost] = useState("");
-  const { palette } = useTheme() as any;
-  const { _id } = useAppSelector((state) => state.user as any);
+  const { palette } = useTheme();
+  const { _id } = useAppSelector((state) => state.user as UserType);
   const token = useAppSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
   const mediumMain = palette.neutral.mediumMain;
@@ -42,10 +42,10 @@ const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
     const formData = new FormData();
     formData.append("userId", _id);
     formData.append("description", post);
-    if (image) {
-      formData.append("picture", image);
-      formData.append("picturePath", image.name);
-    }
+    // if (image) {
+    //   formData.append("picture", image);
+    //   formData.append("picturePath", image.name);
+    // }
 
     const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
@@ -54,7 +54,7 @@ const MyPostWidget = ({ picturePath }: { picturePath: string }) => {
     });
     const posts = await response.json();
     dispatch(setPosts({ posts }));
-    setImage(null);
+    // setImage(null);
     setPost("");
   };
 

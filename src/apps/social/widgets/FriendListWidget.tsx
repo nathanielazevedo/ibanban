@@ -2,15 +2,15 @@ import { Box, Typography, useTheme } from "@mui/material";
 import Friend from "../Friend";
 import WidgetWrapper from "../WidgetWrapper";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setFriends } from "../../../state";
+import { useDispatch } from "react-redux";
+import { setFriends, UserType } from "../../../state";
 import { useAppSelector } from "../../../hooks/redux";
 
 const FriendListWidget = ({ userId }: { userId: string }) => {
   const dispatch = useDispatch();
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
   const token = useAppSelector((state) => state.token);
-  const friends = useAppSelector((state) => state?.user?.friends as any);
+  const friends = useAppSelector((state) => state?.user?.friends as []);
 
   const getFriends = async () => {
     const response = await fetch(
@@ -40,12 +40,12 @@ const FriendListWidget = ({ userId }: { userId: string }) => {
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
         {friends &&
-          friends.map((friend: any) => (
+          friends.map((friend: UserType) => (
             <Friend
               key={friend._id}
               friendId={friend._id}
               name={`${friend.firstName} ${friend.lastName}`}
-              subtitle={friend.occupation}
+              subtitle={friend.occupation ?? ""}
               userPicturePath={friend.picturePath}
             />
           ))}

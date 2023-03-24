@@ -2,7 +2,7 @@ import Form from "./Form";
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 
 const LoginPage = () => {
-  const theme = useTheme() as any;
+  const theme = useTheme();
   const isNoneMobileScreens = useMediaQuery("(min-width: 1000px)");
   return (
     <Box>
