@@ -106,7 +106,9 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         )}
         <img className="h-32 w-32 self-end r-5" ref={planetRef} src={earth} />
         <Box className="flex flex-col items-center">
-          {currentWord.pinyin}
+          <h5 className="text-gradient text-[20px] pb-[10px]">
+            {currentWord.pinyin}
+          </h5>
           <TextField
             value={input}
             autoComplete="off"

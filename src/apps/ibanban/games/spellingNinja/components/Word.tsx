@@ -50,12 +50,11 @@ const Word = ({ GameClass }: WordType) => {
   return (
     <>
       <Box className="flex items-center gap-[50px]">
-        <Typography variant="h2" color="lightblue" fontWeight="20">
-          {english}
-        </Typography>
+        <h3 className="text-[50px] text-gradient">{english}</h3>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
             className="hearing-icon"
+            fontSize="large"
             onClick={() => speak(chinese, 0.5)}
           />
         </Tooltip>
@@ -66,7 +65,7 @@ const Word = ({ GameClass }: WordType) => {
             key={Math.random() * 1000}
             value={wordsState[i]?.value ?? ""}
             autoFocus={GameClass.currentLetterIndex === i}
-            className="text-[30px] bg-primary text-white border-2 border-white rounded-md w-[50px]"
+            className="text-[40px] bg-primary text-white border-2 border-white rounded-md w-[70px] h-[70px] text-center"
             style={{ borderColor: getBorderColor(wordsState[i].status) }}
             onChange={(evt) =>
               GameClass.handleChange(

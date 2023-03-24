@@ -21,11 +21,13 @@ const WinDialog = ({
   prepareGame,
 }: WinDialog) => {
   return (
-    <Dialog open={open} sx={{ zIndex: "5000" }}>
-      <DialogTitle>You won!</DialogTitle>
+    <Dialog open={open} sx={{ zIndex: "5000" }} fullWidth>
+      <DialogTitle>
+        <h3 className="text-[30px]">You won!</h3>
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-          You so smart!
+          <h4 className="text-[20px]">You defended the planet!</h4>
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
