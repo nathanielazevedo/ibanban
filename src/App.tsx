@@ -3,13 +3,7 @@ import { themeSettings } from "./theme";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "./hooks/redux";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  HashRouter,
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // PAGES
 import Map from "./apps/ibanban";
@@ -30,7 +24,7 @@ const App = () => {
   const isAuth = Boolean(useAppSelector((state) => state.token));
 
   return (
-    <HashRouter basename="/">
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div id="main" className="min-h-[100vh] bg-primary">
@@ -72,7 +66,7 @@ const App = () => {
           </Routes>
         </div>
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
