@@ -63,6 +63,7 @@ const App = () => {
             </Route>
             <Route element={<Navbar />}>
               <Route path="/" element={<Welcome />} />
+              <Route path="/home" element={<Welcome />} />
               <Route path="/map" element={<Map />} />
               <Route path="/deck/:deckName" element={<Overview />} />
               <Route
@@ -76,7 +77,6 @@ const App = () => {
               <Route path="/deck/:deckName/jumpingJiao" element={<Jumper />} />
               <Route path="*" element={<FourOFour />} />
             </Route>
-            <Route path="/" element={<Welcome />} />
           </Routes>
         </div>
       </ThemeProvider>

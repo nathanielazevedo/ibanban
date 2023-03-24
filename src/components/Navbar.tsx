@@ -85,7 +85,7 @@ const Navbar = () => {
       >
         <div className={`${styles.boxWidth} bg-primary`}>
           <nav className="w-full flex py-6 justify-between items-center navbar">
-            <Link to="">
+            <Link to="/home">
               <img src={logo} alt="Ibanban" className="w-[135px] h-[48px]" />
             </Link>
             {getNav()}

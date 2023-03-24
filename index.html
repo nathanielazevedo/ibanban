@@ -23,6 +23,7 @@
       // When the single page app is loaded further down in this file,
       // the correct url will be waiting in the browser's history for
       // the single page app to route accordingly.
+      console.log("Hello from index.html", window.location);
       (function (l) {
         if (l.search[1] === "/") {
           var decoded = l.search
@@ -35,6 +36,10 @@
           window.history.replaceState(
             null,
             null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+          console.log(
+            "Hello from index.html",
             l.pathname.slice(0, -1) + decoded + l.hash
           );
         }
