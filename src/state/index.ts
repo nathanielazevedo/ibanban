@@ -14,6 +14,17 @@ export type UserType = {
 
 export type PostType = {
   _id: string;
+  userId: string;
+  firstName: string;
+  lastName: string;
+  description: string;
+  location: string;
+  picturePath: string;
+  userPicturePath: string;
+  likes: {
+    [key: string]: boolean;
+  };
+  comments: [];
 };
 
 export type initialStateType = {

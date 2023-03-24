@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppSelector } from "../../../hooks/redux";
-import { setPosts } from "../../../state";
+import { PostType, setPosts } from "../../../state";
 import PostWidget from "./PostWidget";
 
 const PostsWidget = ({ userId = "", isProfile = false }) => {
   const dispatch = useDispatch();
-  const posts = useAppSelector((state) => state.posts);
+  const posts = useAppSelector((state) => state.posts as PostType[]);
   const token = useAppSelector((state) => state.token);
 
   const getPosts = async () => {
