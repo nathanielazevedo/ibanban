@@ -28,7 +28,7 @@ const Info2 = () => (
       </p>
 
       <div className="flex flex-row flex-wrap sm:mt-10 mt-6">
-        <Link to="/ibanban/social/home">
+        <Link to="/social/home">
           <Button text="Get Social" />
         </Link>
       </div>

@@ -30,7 +30,7 @@ const Form = () => {
             ? "Don't have an account? Sign Up here."
             : "Already have an account? Login here."}
         </Typography>
-        <Link to="/ibanban/map">
+        <Link to="/map">
           <Typography
             sx={{
               textDecoration: "underline",

@@ -32,7 +32,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <Link to="/ibanban/map">
+          <Link to="/map">
             <Button
               styles={"text-[12px] px-1.5 py-0.5 ml-10 sm:block hidden"}
             />
@@ -41,7 +41,7 @@ const Navbar = () => {
       );
     } else if (isMap) {
       return (
-        <Link to="/ibanban/social/home" onClick={() => setActive("Review")}>
+        <Link to="/social/home" onClick={() => setActive("Review")}>
           <Typography
             sx={{
               textDecoration: "underline",
@@ -59,7 +59,7 @@ const Navbar = () => {
     } else {
       return (
         <>
-          <Link to="/ibanban/map" onClick={() => setActive("Review")}>
+          <Link to="/map" onClick={() => setActive("Review")}>
             <Typography
               sx={{
                 textDecoration: "underline",
@@ -85,13 +85,13 @@ const Navbar = () => {
       >
         <div className={`${styles.boxWidth} bg-primary`}>
           <nav className="w-full flex py-6 justify-between items-center navbar">
-            <Link to="/ibanban">
+            <Link to="">
               <img src={logo} alt="Ibanban" className="w-[135px] h-[48px]" />
             </Link>
             {getNav()}
             {isHome && (
               <div className="sm:hidden flex flex-1 justify-end items-center">
-                <Link to="/ibanban/map">
+                <Link to="/map">
                   <Button
                     styles={"text-[12px] px-1.5 py-0.5 mr-5 sm:hidden block"}
                   />

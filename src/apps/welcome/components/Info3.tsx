@@ -14,7 +14,7 @@ const Info3 = () => (
         You won't want to stop playing. We have a huge library of games for you
         to play. And words to make you laugh.
       </p>
-      <Link to="/ibanban/map">
+      <Link to="/map">
         <Button styles={`mt-10`} />
       </Link>
     </div>

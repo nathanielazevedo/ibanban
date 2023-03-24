@@ -45,7 +45,7 @@ const Business = () => (
         Learning with Ibanban is fun, and it works! With quick, bite-sized
         voabulary decks, your vocabulary will improve in no time.
       </p>
-      <Link to="/ibanban/map">
+      <Link to="/map">
         <Button styles={`mt-10`} />
       </Link>
     </div>

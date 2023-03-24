@@ -37,7 +37,7 @@ const Navbar = () => {
   return (
     <FlexBetween padding="1rem 6%" sx={{ backgroundColor: { alt } }}>
       <FlexBetween gap="1.75rem">
-        <Link to="/ibanban/map" className="cursor-pointer">
+        <Link to="/map" className="cursor-pointer">
           <Typography
             sx={{
               textDecoration: "underline",
@@ -74,7 +74,7 @@ const Navbar = () => {
               <LightMode sx={{ color: dark, fontSize: "25px" }} />
             )}
           </IconButton> */}
-          {/* <Link to="/ibanban/map" className="cursor-pointer">
+          {/* <Link to="/map" className="cursor-pointer">
             <Message sx={{ fontSize: "25px" }} />
           </Link>
           <Notifications sx={{ fontSize: "25px" }} />
@@ -146,7 +146,7 @@ const Navbar = () => {
                 <LightMode sx={{ color: dark, fontSize: "25px" }} />
               )}
             </IconButton> */}
-            {/* <Link to="/ibanban/map" className="cursor-pointer">
+            {/* <Link to="/map" className="cursor-pointer">
               <Message sx={{ fontSize: "25px" }} />
             </Link>
             <Notifications sx={{ fontSize: "25px" }} />
