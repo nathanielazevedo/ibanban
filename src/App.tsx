@@ -24,7 +24,7 @@ const App = () => {
   const isAuth = Boolean(useAppSelector((state) => state.token));
 
   return (
-    <BrowserRouter basename="/ibanban">
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div id="main" className="min-h-[100vh] bg-primary">
