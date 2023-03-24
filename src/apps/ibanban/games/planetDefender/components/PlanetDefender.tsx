@@ -8,7 +8,7 @@ import Comet from "./Comet";
 import earth from "../assets/earth.svg";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
-import StartDialog from "./StartDialog";
+import StartDialog from "../../planetDefender/components/StartDialog";
 import { Box, TextField } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
@@ -104,7 +104,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        <img className="h-32 w-32 self-end r-5" ref={planetRef} src={earth} />
+        <img className="h-64 w-64 self-end r-5" ref={planetRef} src={earth} />
         <Box className="flex flex-col items-center">
           <h5 className="text-gradient text-[20px] pb-[10px]">
             {currentWord.pinyin}

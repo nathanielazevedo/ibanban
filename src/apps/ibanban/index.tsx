@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import titles from "./data/Titles";
 import LockIcon from "@mui/icons-material/Lock";
 
-const Level = ({ title, isFirst }: any) => {
+const Level = ({ title, isFirst }: { title: string; isFirst?: boolean }) => {
   return (
     <Link to={isFirst ? `/ibanban/deck/${title}` : ""}>
       <div className="flex flex-col items-center">
         <div
-          className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer hover:bg-sky-700"
+          className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer"
           key={title}
         >
           <div

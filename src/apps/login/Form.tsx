@@ -2,12 +2,12 @@ import Login from "./Login";
 import { useState } from "react";
 import Register from "./Register";
 import { Link } from "react-router-dom";
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 const Form = () => {
   const [pageType, setPageType] = useState("login");
   const isLogin = pageType === "login";
-  const { palette } = useTheme() as any;
+  const { palette } = useTheme();
 
   return (
     <>

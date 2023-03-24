@@ -12,7 +12,7 @@ export class SpellingGame {
   currentWordIndex: number;
   currentLetterIndex: number;
   setCurrentWord: (word: Word) => void;
-  setState: any;
+  setState: ((state: WordsState) => void) | undefined;
   setCompleted: (state: boolean) => void;
 
   constructor(
@@ -48,7 +48,7 @@ export class SpellingGame {
     if (this.currentWordIndex === this.getDeckLength() - 1) return;
     this.currentWordIndex++;
     this.currentLetterIndex = 0;
-    this.setState(this.generateState());
+    this.setState && this.setState(this.generateState());
     this.setCurrentWord(this.words[this.currentWordIndex]);
   }
 
@@ -56,7 +56,7 @@ export class SpellingGame {
     if (this.currentWordIndex === 0) return;
     this.currentWordIndex--;
     this.currentLetterIndex = 0;
-    this.setState(this.generateState());
+    this.setState && this.setState(this.generateState());
     this.setCurrentWord(this.words[this.currentWordIndex]);
   }
 

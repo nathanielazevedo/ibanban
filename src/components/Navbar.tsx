@@ -11,7 +11,7 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const { pathname } = useLocation();
-  const isHome = pathname === "/ibanban";
+  const isHome = pathname === "/ibanban" || pathname === "/ibanban/";
   const isMap = pathname === "/ibanban/map";
   const { palette } = useTheme();
 

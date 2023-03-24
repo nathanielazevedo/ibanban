@@ -4,7 +4,7 @@ const tones = new Set([
   "\u030c", // tone 3
   "\u0300", // tone 4
 ]);
-// Remove tone from any letters with tone
+// Remove tone from letters with tone
 export const stripTone = (w: string) => {
   const letters = w.normalize("NFD");
   let newStr = undefined;

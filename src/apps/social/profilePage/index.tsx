@@ -9,14 +9,11 @@ import MyPostWidget from "../widgets/MyPostWidget";
 import PostsWidget from "../widgets/PostsWidget";
 import UserWidget from "../widgets/UserWidget";
 
-// import IbanbanApi from "api";
-
 const ProfilePage = () => {
   const [user, setUser] = useState<any>(null);
   const { userId } = useParams();
   const token = useAppSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
-  // const Ibanban = new IbanbanApi(token);
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {

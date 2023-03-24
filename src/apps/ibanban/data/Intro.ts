@@ -45,5 +45,10 @@ export default {
       pinyin: "Māo hěn dà",
       chinese: "猫很大",
     },
+    {
+      english: "The pants are big",
+      pinyin: "Kuzi hěn dà",
+      chinese: "裤子很大",
+    },
   ],
 };
