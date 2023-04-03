@@ -9,7 +9,9 @@ import React from "react";
 import Games from "../games";
 import InfoCard from "./components/InfoCard";
 import WordCard from "./components/WordCard";
-
+import { useDispatch } from "react-redux";
+import { setTab } from "../../../state";
+import { useAppSelector } from "../../../hooks/redux";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -27,11 +29,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -47,9 +45,12 @@ const Overview = () => {
   const { deckName } = useParams();
   if (!deckName) return <></>;
   const deck = register[deckName];
-  const [value, setValue] = React.useState(0);
+  const tab = useAppSelector((state) => state.tab);
+  const [value, setValue] = React.useState(tab as number);
+  const dispatch = useDispatch();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    dispatch(setTab(newValue));
     setValue(newValue);
   };
 

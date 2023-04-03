@@ -124,6 +124,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         setShowWinDialog={setShowWinDialog}
         setShowStartDialog={setShowStartDialog}
         prepareGame={startCountDown}
+        pdClass={pdClass}
       />
       <StartDialog
         open={showStartDialog}

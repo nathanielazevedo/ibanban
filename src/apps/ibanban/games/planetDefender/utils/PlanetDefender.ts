@@ -6,10 +6,12 @@ type PlanetDefener = {
 export default class PlanetDefenderGame {
   stack: PlanetDefener;
   stackStore: PlanetDefener;
+  deckName: string;
 
-  constructor(deck: PlanetDefener) {
+  constructor(deck: PlanetDefener, deckName: string) {
     this.stack = structuredClone(deck);
     this.stackStore = deck;
+    this.deckName = deckName;
   }
 
   isEmpty() {

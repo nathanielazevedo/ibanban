@@ -6,12 +6,16 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setLevel } from "../../../../../state";
+import PlanetDefenderGame from "../utils/PlanetDefender";
 
 type WinDialog = {
   open: boolean;
   setShowWinDialog: (state: boolean) => void;
   setShowStartDialog: (state: boolean) => void;
   prepareGame: () => void;
+  pdClass: PlanetDefenderGame;
 };
 
 const WinDialog = ({
@@ -19,7 +23,12 @@ const WinDialog = ({
   setShowWinDialog,
   setShowStartDialog,
   prepareGame,
+  pdClass,
 }: WinDialog) => {
+  const dispatch = useDispatch();
+  dispatch(
+    setLevel({ deckName: pdClass.deckName, deckLevel: "planetDefender" })
+  );
   return (
     <Dialog open={open} sx={{ zIndex: "5000" }} fullWidth>
       <DialogTitle>

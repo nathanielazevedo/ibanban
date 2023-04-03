@@ -29,16 +29,32 @@ export type PostType = {
 
 export type initialStateType = {
   mode: "light" | "dark";
+  currentLevel: string;
   user: UserType | null;
   token: string | null;
   posts: PostType[];
+  tab: 0 | 1 | 2 | 3;
+  level: {
+    [key: string]: {
+      [key: string]: boolean;
+    };
+  };
 };
 
 const initialState = {
   mode: "light",
+  currentLevel: "",
   user: { friends: [], _id: "", picturePath: "", firstName: "", lastName: "" },
   token: null,
   posts: [],
+  tab: 0,
+  level: {
+    Intro: {
+      completed: false,
+      spellingNinja: false,
+      planetDefender: false,
+    },
+  },
 } as initialStateType;
 
 export const authSlice = createSlice({
@@ -73,9 +89,32 @@ export const authSlice = createSlice({
       });
       state.posts = updatedPosts as PostType[];
     },
+    setTab: (state, action) => {
+      state.tab = action.payload;
+    },
+    setLevel: (state, action) => {
+      if (state.level[action.payload.deckName]) {
+        state.level[action.payload.deckName][action.payload.deckLevel] = true;
+      }
+      if (action.payload.deckLevel === "planetDefeder") {
+        state.level[action.payload.deckName].completed = true;
+      }
+    },
+    setCurrentLevel: (state, action) => {
+      state.currentLevel = action.payload;
+    },
   },
 });
 
-export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } =
-  authSlice.actions;
+export const {
+  setMode,
+  setLogin,
+  setLogout,
+  setFriends,
+  setPosts,
+  setPost,
+  setTab,
+  setLevel,
+  setCurrentLevel,
+} = authSlice.actions;
 export default authSlice.reducer;

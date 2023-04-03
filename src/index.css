@@ -129,41 +129,19 @@
   filter: blur(750px);
 }
 
-.container {
-  display: flex;
-  width: 250px;
-  background: black;
-  row-gap: 30px;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 50%;
+.progress-bar {
+  height: 24px;
+  width: 360px;
+  border-radius: 10px;
+  background-color: rgb(12, 13, 13);
+  border: solid white 1px;
 }
-.circular-progress {
-  position: relative;
-  height: 250px;
-  width: 250px;
-  border-radius: 50%;
-  background: conic-gradient(#2ec7e6 3.6deg, #ededed 0deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.circular-progress::before {
-  content: "";
-  position: absolute;
-  height: 210px;
-  width: 210px;
-  border-radius: 50%;
-  background-color: black;
-}
-.progress-value {
-  position: relative;
-  font-size: 40px;
-  font-weight: 600;
-  color: #2ec7e6;
-}
-.text {
-  font-size: 30px;
-  font-weight: 500;
-  color: #606060;
+
+.progress-bar > div {
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, lightskyblue, blue);
+  background-size: 360px 100%;
+  transition: width 200ms;
 }

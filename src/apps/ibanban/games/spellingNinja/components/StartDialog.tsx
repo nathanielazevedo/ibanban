@@ -12,6 +12,7 @@ import {
   RadioGroup,
   Typography,
   Switch,
+  Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { speak } from "../../../../../utils/speak";
@@ -32,24 +33,22 @@ const StartDialog = ({ open, setShowStartDialog, startGame }: WinDialog) => {
       fullWidth
       sx={{ zIndex: "5501" }}
       PaperProps={{
-        sx: { height: "300px", backgroundColor: "black" },
+        sx: { height: "500px", backgroundColor: "black" },
       }}
     >
-      <DialogTitle
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%",
-        }}
-      >
-        Spelling Ninja
+      <DialogTitle className="flex justify-between items-center">
+        <h3 className="text-[30px]">Spelling Ninja</h3>
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
           <Typography variant="h6">
-            Translate all the words before the timer runs out.
+            <h3 className="text-[16px]">
+              Translate all the words before the timer runs out.
+            </h3>
           </Typography>
+          <div className="progress-bar mt-20">
+            <div></div>
+          </div>
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>

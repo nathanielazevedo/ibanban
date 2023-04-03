@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { SpellingGame } from "./utils/Spelling";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { useDispatch } from "react-redux";
+import { setLevel } from "../../../../state";
 
 //components
 import { Box } from "@mui/material";
@@ -20,6 +22,7 @@ const Words = () => {
   const [showStartDialog, setShowStartDialog] = useState(true);
   const [completed, setCompleted] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const GameClass = useMemo(() => {
     return new SpellingGame(
@@ -32,49 +35,31 @@ const Words = () => {
 
   useEffect(() => {
     if (lost == true || showStartDialog === true || completed === true) return;
-    let circularProgress = document.querySelector(
-        ".circular-progress"
-      ) as HTMLDivElement,
-      progressValue = document.querySelector(".progress-value");
+    const pb = document.querySelector(".progress-bar > div") as HTMLDivElement;
+    const intreval = setInterval(myTimer, 1000);
+    let progress = 0;
 
-    let progressStartValue = 0,
-      progressEndValue = 100,
-      speed = 100;
-
-    let progress = setInterval(() => {
-      progressStartValue++;
-
-      if (progressValue?.textContent) {
-        progressValue.textContent = `${progressStartValue}%`;
-      }
-      if (circularProgress?.style.background) {
-        circularProgress.style.background = `conic-gradient(#2ec7e6 ${
-          progressStartValue * 3.6
-        }deg, #ededed 0deg)`;
-      }
-
-      if (progressStartValue == progressEndValue) {
-        clearInterval(progress);
+    function myTimer() {
+      if (progress < 100 || progress < 10) {
+        progress = progress + 10;
+      } else {
         setLost(true);
       }
-    }, speed);
+
+      if (pb) pb.style.width = progress + "%";
+    }
     return () => {
-      clearInterval(progress);
-      progressStartValue = 0;
+      clearInterval(intreval);
     };
   }, [lost, showStartDialog, completed]);
 
-  if (completed)
-    return <WinPage GameClass={GameClass} setCompleted={setCompleted} />;
-  if (lost) return <LostPage GameClass={GameClass} setLost={setLost} />;
-  if (showStartDialog)
-    return (
-      <StartDialog
-        startGame={GameClass}
-        setShowStartDialog={setShowStartDialog}
-        open={showStartDialog}
-      />
+  if (completed) {
+    dispatch(
+      setLevel({ deckName: GameClass.deckName, deckLevel: "spellingNinja" })
     );
+    return <WinPage GameClass={GameClass} setCompleted={setCompleted} />;
+  }
+  if (lost) return <LostPage GameClass={GameClass} setLost={setLost} />;
 
   return (
     <Box className="h-[78vh] flex relative">
@@ -87,14 +72,17 @@ const Words = () => {
           }}
         />
         <Word GameClass={GameClass} />
-      </Box>
-      <Box className="flex flex-row gap-10 absolute top-0 right-64 ">
-        <div className="container">
-          <div className="circular-progress">
-            <span className="progress-value">0%</span>
-          </div>
+        <div className="progress-bar">
+          <div></div>
         </div>
       </Box>
+      {showStartDialog && (
+        <StartDialog
+          startGame={GameClass}
+          setShowStartDialog={setShowStartDialog}
+          open={showStartDialog}
+        />
+      )}
     </Box>
   );
 };

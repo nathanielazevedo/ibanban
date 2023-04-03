@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 import { Outlet } from "react-router-dom";
 import styles from "../style";
-import { Typography, useTheme } from "@mui/material";
+import { Typography, useTheme, Button as Button2 } from "@mui/material";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
@@ -42,18 +42,19 @@ const Navbar = () => {
     } else if (isMap) {
       return (
         <Link to="/social/home" onClick={() => setActive("Review")}>
-          <Typography
-            sx={{
-              textDecoration: "underline",
-              color: palette.primary.main,
-              "&:hover": {
-                cursor: "pointer",
-                color: palette.primary.light,
-              },
-            }}
-          >
-            Get social
-          </Typography>
+          <Button2 variant="contained">
+            <Typography
+              sx={{
+                fontSize: "16px",
+                "&:hover": {
+                  cursor: "pointer",
+                  color: palette.primary.light,
+                },
+              }}
+            >
+              Get social
+            </Typography>
+          </Button2>
         </Link>
       );
     } else {
