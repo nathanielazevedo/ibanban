@@ -103,6 +103,9 @@ export const authSlice = createSlice({
     setCurrentLevel: (state, action) => {
       state.currentLevel = action.payload;
     },
+    setLevelCompleted: (state) => {
+      state.level[state.currentLevel].completed = true;
+    },
   },
 });
 
@@ -116,5 +119,6 @@ export const {
   setTab,
   setLevel,
   setCurrentLevel,
+  setLevelCompleted,
 } = authSlice.actions;
 export default authSlice.reducer;
