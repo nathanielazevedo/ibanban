@@ -18,6 +18,8 @@ import {
   REGISTER,
 } from "redux-persist";
 
+console.log("main is trying to render");
+
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
