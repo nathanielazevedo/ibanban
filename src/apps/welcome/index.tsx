@@ -4,7 +4,6 @@ import Stats from "./components/Stats";
 import Footer from "./components/Footer";
 import CTA from "./components/CTA";
 import Info1 from "./components/Info1";
-import Info2 from "./components/Info2";
 import Info3 from "./components/Info3";
 
 const Welcome = () => (
@@ -18,9 +17,8 @@ const Welcome = () => (
     <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
       <div className={`${styles.boxWidth}`}>
         <Stats />
-        <Info1 />
-        <Info2 />
-        <Info3 />
+        {/* <Info1 /> */}
+        {/* <Info3 /> */}
         <CTA />
         <Footer />
       </div>

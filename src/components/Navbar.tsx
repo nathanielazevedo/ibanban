@@ -19,7 +19,7 @@ const Navbar = () => {
     if (isHome) {
       return (
         <>
-          <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+          {/* <ul className="list-none sm:flex hidden justify-end items-center flex-1">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
@@ -31,7 +31,7 @@ const Navbar = () => {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
-          </ul>
+          </ul> */}
           <Link to="/map">
             <Button
               styles={"text-[12px] px-1.5 py-0.5 ml-10 sm:block hidden"}
@@ -41,21 +41,22 @@ const Navbar = () => {
       );
     } else if (isMap) {
       return (
-        <Link to="/social/home" onClick={() => setActive("Review")}>
-          <Button2 variant="contained">
-            <Typography
-              sx={{
-                fontSize: "16px",
-                "&:hover": {
-                  cursor: "pointer",
-                  color: palette.primary.light,
-                },
-              }}
-            >
-              Get social
-            </Typography>
-          </Button2>
-        </Link>
+        <></>
+        // <Link to="/social/home" onClick={() => setActive("Review")}>
+        //   <Button2 variant="contained">
+        //     <Typography
+        //       sx={{
+        //         fontSize: "16px",
+        //         "&:hover": {
+        //           cursor: "pointer",
+        //           color: palette.primary.light,
+        //         },
+        //       }}
+        //     >
+        //       Get social
+        //     </Typography>
+        //   </Button2>
+        // </Link>
       );
     } else {
       return (
