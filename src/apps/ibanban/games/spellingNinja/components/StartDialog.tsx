@@ -5,17 +5,10 @@ import {
   DialogContentText,
   DialogActions,
   Button,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  Radio,
-  RadioGroup,
   Typography,
-  Switch,
   Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { speak } from "../../../../../utils/speak";
 import { SpellingGame } from "../utils/Spelling";
 
 type WinDialog = {
@@ -31,34 +24,63 @@ const StartDialog = ({ open, setShowStartDialog, startGame }: WinDialog) => {
     <Dialog
       open={open}
       fullWidth
-      sx={{ zIndex: "5501" }}
+      sx={{ zIndex: 5501 }}
       PaperProps={{
-        sx: { height: "500px", backgroundColor: "black" },
+        sx: {
+          height: "500px",
+          backgroundColor: "black",
+          color: "white",
+        },
       }}
     >
-      <DialogTitle className="flex justify-between items-center">
-        <h3 className="text-[30px]">Spelling Ninja</h3>
+      <DialogTitle>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h4">Spelling Ninja</Typography>
+        </Box>
       </DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
+        <DialogContentText>
           <Typography variant="h6">
-            <h3 className="text-[16px]">
-              Translate all the words before the timer runs out.
-            </h3>
+            Translate all the words before the timer runs out.
           </Typography>
-          <div className="progress-bar mt-20">
-            <div></div>
-          </div>
+          <Box
+            sx={{
+              height: "10px",
+              width: "100%",
+              backgroundColor: "#444",
+              borderRadius: "5px",
+              marginTop: 5,
+              overflow: "hidden",
+            }}
+          >
+            <Box
+              sx={{
+                width: "0%",
+                height: "100%",
+                backgroundColor: "#1976d2",
+                transition: "width 1s linear",
+              }}
+            />
+          </Box>
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
-        <Button onClick={() => navigate(-1)}>Leave Game</Button>
-
+      <DialogActions sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Button onClick={() => navigate(-1)} color="secondary">
+          Leave Game
+        </Button>
         <Button
           onClick={() => {
             setShowStartDialog(false);
             startGame.newGame();
           }}
+          color="primary"
+          variant="contained"
         >
           Start
         </Button>

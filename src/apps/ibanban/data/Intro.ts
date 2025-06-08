@@ -5,27 +5,27 @@ export default {
   words: [
     {
       english: "dog",
-      pinyin: "gou",
+      pinyin: "gǒu",
       chinese: "狗",
     },
     {
       english: "pants",
-      pinyin: "kuzi",
+      pinyin: "kùzi",
       chinese: "裤子",
     },
     {
       english: "cat",
-      pinyin: "Māo",
+      pinyin: "māo",
       chinese: "猫",
     },
     {
       english: "very",
-      pinyin: "Hěn",
+      pinyin: "hěn",
       chinese: "很",
     },
     {
       english: "big",
-      pinyin: "da",
+      pinyin: "dà",
       chinese: "大",
     },
     {
@@ -33,12 +33,17 @@ export default {
       pinyin: "shì",
       chinese: "是",
     },
+    {
+      english: "wearing",
+      pinyin: "chuān",
+      chinese: "穿",
+    },
   ],
   sentences: [
     {
       english: "The dog is wearing pants",
-      pinyin: "gou zai kuzi",
-      chinese: "狗在裤子",
+      pinyin: "Gǒu chuān kùzi",
+      chinese: "狗穿裤子",
     },
     {
       english: "The cat is big",
@@ -47,7 +52,7 @@ export default {
     },
     {
       english: "The pants are big",
-      pinyin: "Kuzi hěn dà",
+      pinyin: "Kùzi hěn dà",
       chinese: "裤子很大",
     },
   ],

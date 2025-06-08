@@ -6,8 +6,6 @@ import {
   DialogActions,
   Button,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { setLevel } from "../../../../../state";
 import PlanetDefenderGame from "../utils/PlanetDefender";
 
 type WinDialog = {
@@ -25,10 +23,6 @@ const WinDialog = ({
   prepareGame,
   pdClass,
 }: WinDialog) => {
-  const dispatch = useDispatch();
-  dispatch(
-    setLevel({ deckName: pdClass.deckName, deckLevel: "planetDefender" })
-  );
   return (
     <Dialog open={open} sx={{ zIndex: "5000" }} fullWidth>
       <DialogTitle>

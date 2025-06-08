@@ -12,7 +12,6 @@ import StartDialog from "../../planetDefender/components/StartDialog";
 import { Box, TextField } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { useDispatch } from "react-redux";
-import { setLevelCompleted } from "../../../../../state";
 
 type PlanetDefender = {
   pdClass: PlanetDefenderGame;
@@ -59,7 +58,6 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
       setShowComet(false);
       if (pdClass.isEmpty()) {
         setShowWinDialog(true);
-        dispatch(setLevelCompleted());
         playSound("Win");
       } else {
         setBorderColor("green");

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { close, logo, menu } from "../assets";
+import { close, logo } from "../assets";
 import { navLinks } from "../apps/welcome/constants";
 import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
@@ -19,19 +19,6 @@ const Navbar = () => {
     if (isHome) {
       return (
         <>
-          {/* <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-normal cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-white" : "text-dimWhite"
-                } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-                onClick={() => setActive(nav.title)}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
-          </ul> */}
           <Link to="/map">
             <Button
               styles={"text-[12px] px-1.5 py-0.5 ml-10 sm:block hidden"}
@@ -40,24 +27,7 @@ const Navbar = () => {
         </>
       );
     } else if (isMap) {
-      return (
-        <></>
-        // <Link to="/social/home" onClick={() => setActive("Review")}>
-        //   <Button2 variant="contained">
-        //     <Typography
-        //       sx={{
-        //         fontSize: "16px",
-        //         "&:hover": {
-        //           cursor: "pointer",
-        //           color: palette.primary.light,
-        //         },
-        //       }}
-        //     >
-        //       Get social
-        //     </Typography>
-        //   </Button2>
-        // </Link>
-      );
+      return <></>;
     } else {
       return (
         <>
@@ -98,12 +68,6 @@ const Navbar = () => {
                     styles={"text-[12px] px-1.5 py-0.5 mr-5 sm:hidden block"}
                   />
                 </Link>
-                <img
-                  src={toggle ? close : menu}
-                  alt="menu"
-                  className="w-[28px] h-[28px] object-contain cursor-pointer"
-                  onClick={() => setToggle(!toggle)}
-                />
                 <div
                   className={`${
                     !toggle ? "hidden" : "flex"

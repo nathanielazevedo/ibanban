@@ -1,17 +1,12 @@
-//functionality
-import { register } from "../data";
 import { useParams } from "react-router-dom";
+import decks from "../data/index";
 
 //components
-import { Box, Tab, Tabs, Typography } from "@mui/material";
-
+import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
-import Games from "../games";
-import InfoCard from "./components/InfoCard";
+import Games from "../games/GamesMain";
 import WordCard from "./components/WordCard";
-import { useDispatch } from "react-redux";
-import { setTab } from "../../../state";
-import { useAppSelector } from "../../../hooks/redux";
+
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -44,13 +39,11 @@ function a11yProps(index: number) {
 const Overview = () => {
   const { deckName } = useParams();
   if (!deckName) return <></>;
-  const deck = register[deckName];
-  const tab = useAppSelector((state) => state.tab);
-  const [value, setValue] = React.useState(tab as number);
-  const dispatch = useDispatch();
+
+  const deck = decks[deckName];
+  const [value, setValue] = React.useState(0); // local state only
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    dispatch(setTab(newValue));
     setValue(newValue);
   };
 
@@ -63,7 +56,6 @@ const Overview = () => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Deck Info" {...a11yProps(0)} />
             <Tab label="Words" {...a11yProps(0)} />
             <Tab label="Sentences" {...a11yProps(1)} />
             <Tab label="Games" {...a11yProps(2)} />
@@ -71,24 +63,19 @@ const Overview = () => {
         </Box>
         <TabPanel value={value} index={0}>
           <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
-            <InfoCard deck={deck} />
-          </Box>
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
             {deck.words.map((word, i) => (
               <WordCard key={i} word={word} />
             ))}
           </Box>
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={1}>
           <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
             {deck.sentences.map((word, i) => (
               <WordCard key={i} word={word} />
             ))}
           </Box>
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel value={value} index={2}>
           <Games />
         </TabPanel>
       </Box>

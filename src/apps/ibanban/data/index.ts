@@ -1,4 +1,7 @@
 import Intro from "./Intro";
+import Bathroom from "./Bathroom";
+import Pet from "./Pet";
+import Hello from "./Hello";
 
 export type Word = {
   chinese: string;
@@ -22,6 +25,9 @@ type Decks = {
   [key: string]: Deck;
 };
 
-export const register: Decks = {
+export default  {
   Intro,
-};
+  Hello,
+  Bathroom,
+  Pet
+} as Decks;
