@@ -1,22 +1,52 @@
 //components
-import { Button, Typography } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Button, Typography, Box } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { SpellingGame } from "../utils/Spelling";
 
-type WinPage = {
+type WinPageProps = {
   GameClass: SpellingGame;
   setCompleted: (completed: boolean) => void;
 };
 
-const WinPage = ({ GameClass, setCompleted }: WinPage) => {
+const WinPage = ({ GameClass, setCompleted }: WinPageProps) => {
   const navigate = useNavigate();
+
   return (
-    <div className="h-[90vh] flex flex-col items-center pt-48">
-      <h3 className="w-50vw text-[20px]">
-        <span className="text-[30px] text-gradient">Congratulations!</span>{" "}
-        <br /> You completed Spelling Ninja for this deck. <br /> You can now
-        play the next game!
-      </h3>
+    <Box
+      sx={{
+        height: "90vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingTop: "12rem",
+        textAlign: "center",
+      }}
+    >
+      <Typography
+        variant="h5"
+        sx={{
+          maxWidth: "600px",
+          fontSize: "20px",
+          marginBottom: 4,
+        }}
+      >
+        <span
+          style={{
+            fontSize: "30px",
+            background: "linear-gradient(to right, #4facfe, #00f2fe)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            display: "inline-block",
+          }}
+        >
+          Congratulations!
+        </span>
+        <br />
+        You completed Spelling Ninja for this deck. <br />
+        You can now play the next game!
+      </Typography>
+
       <Button
         sx={{ mt: 4 }}
         onClick={() => {
@@ -26,6 +56,7 @@ const WinPage = ({ GameClass, setCompleted }: WinPage) => {
       >
         <Typography variant="h4">Play Again</Typography>
       </Button>
+
       <Button
         sx={{ mt: 2 }}
         variant="contained"
@@ -35,7 +66,7 @@ const WinPage = ({ GameClass, setCompleted }: WinPage) => {
       >
         <Typography variant="h4">Back to games</Typography>
       </Button>
-    </div>
+    </Box>
   );
 };
 

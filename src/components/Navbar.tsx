@@ -4,12 +4,9 @@ import { navLinks } from "../apps/welcome/constants";
 import { Link, useLocation } from "react-router-dom";
 import Button from "./Button";
 import { Outlet } from "react-router-dom";
-import styles from "../style";
-import { Typography, useTheme, Button as Button2 } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
-  const [toggle, setToggle] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === "/" || pathname === "/home" || pathname === "";
   const isMap = pathname === "/map";
@@ -18,80 +15,67 @@ const Navbar = () => {
   const getNav = () => {
     if (isHome) {
       return (
-        <>
-          <Link to="/map">
-            <Button
-              styles={"text-[12px] px-1.5 py-0.5 ml-10 sm:block hidden"}
-            />
-          </Link>
-        </>
+        <Link to="/map">
+          <Button />
+        </Link>
       );
     } else if (isMap) {
       return <></>;
     } else {
       return (
-        <>
-          <Link to="/map" onClick={() => setActive("Review")}>
-            <Typography
-              sx={{
-                textDecoration: "underline",
-                color: palette.primary.main,
-                "&:hover": {
-                  cursor: "pointer",
-                  color: palette.primary.light,
-                },
-              }}
-            >
-              Back to Map
-            </Typography>
-          </Link>
-        </>
+        <Link to="/map">
+          <Typography
+            sx={{
+              textDecoration: "underline",
+              color: palette.primary.main,
+              "&:hover": {
+                cursor: "pointer",
+                color: palette.primary.light,
+              },
+            }}
+          >
+            Back to Map
+          </Typography>
+        </Link>
       );
     }
   };
 
   return (
     <>
-      <div
-        className={`${styles.paddingX} ${styles.flexCenter} sticky absolute top-0 bg-primary z-[7]`}
+      <Box
+        sx={{
+          position: "sticky",
+          top: 0,
+          backgroundColor: "black",
+          zIndex: 7,
+          display: "flex",
+          justifyContent: "center",
+          px: 4,
+        }}
       >
-        <div className={`${styles.boxWidth} bg-primary`}>
-          <nav className="w-full flex py-6 justify-between items-center navbar">
-            <Link to="/home">
-              <img src={logo} alt="Ibanban" className="w-[135px] h-[48px]" />
-            </Link>
-            {getNav()}
-            {isHome && (
-              <div className="sm:hidden flex flex-1 justify-end items-center">
-                <Link to="/map">
-                  <Button
-                    styles={"text-[12px] px-1.5 py-0.5 mr-5 sm:hidden block"}
-                  />
-                </Link>
-                <div
-                  className={`${
-                    !toggle ? "hidden" : "flex"
-                  } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
-                >
-                  <ul className="list-none flex justify-end items-start flex-1 flex-col">
-                    {navLinks.map((nav, index) => (
-                      <li
-                        key={nav.id}
-                        className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                          active === nav.title ? "text-white" : "text-dimWhite"
-                        } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                        onClick={() => setActive(nav.title)}
-                      >
-                        <a href={`#${nav.id}`}>{nav.title}</a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            )}
-          </nav>
-        </div>
-      </div>
+        <Box
+          component="nav"
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            py: 2,
+          }}
+        >
+          <Link to="/home">
+            <Box
+              component="img"
+              src={logo}
+              alt="Ibanban"
+              sx={{ width: "135px", height: "48px" }}
+            />
+          </Link>
+
+          {getNav()}
+        </Box>
+      </Box>
 
       <Outlet />
     </>

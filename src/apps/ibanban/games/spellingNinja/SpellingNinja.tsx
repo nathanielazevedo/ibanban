@@ -51,7 +51,14 @@ const Words = () => {
     return <WinPage GameClass={GameClass} setCompleted={setCompleted} />;
   }
 
-  if (lost) return <LostPage GameClass={GameClass} setLost={setLost} />;
+  if (lost)
+    return (
+      <LostPage
+        GameClass={GameClass}
+        setLost={setLost}
+        setProgress={setProgress}
+      />
+    );
 
   return (
     <Box sx={{ height: "78vh", display: "flex", position: "relative" }}>
@@ -61,7 +68,7 @@ const Words = () => {
           flexDirection: "column",
           justifyContent: "center",
           gap: "40px",
-          backgroundColor: "primary.main",
+          // backgroundColor: "primary.main",
           mx: "auto",
           width: "900px",
           position: "relative",

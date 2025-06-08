@@ -7,12 +7,26 @@ const CountDown = () => {
 
   useInterval(
     () => {
-      setTime((o) => o - 1);
+      setTime((prev) => prev - 1);
     },
-    time == 0 ? null : 1000
+    time === 0 ? null : 1000
   );
 
-  return <div className="text-[50px] absolute m-auto">{time}</div>;
+  return (
+    <div
+      style={{
+        fontSize: "50px",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        color: "white",
+        fontFamily: "Poppins, sans-serif",
+      }}
+    >
+      {time}
+    </div>
+  );
 };
 
 export default CountDown;

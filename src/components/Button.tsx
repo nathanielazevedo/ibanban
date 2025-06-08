@@ -1,12 +1,29 @@
+import { Button as MUIButton } from "@mui/material";
 import React from "react";
 
-const Button = ({ styles, text }: { styles?: string; text?: string }) => (
-  <button
-    type="button"
-    className={`py-2 px-4 font-poppins font-medium text-[18px] text-primary bg-blue-gradient rounded-[10px] outline-none ${styles}`}
+const Button = ({
+  styles,
+  text,
+}: {
+  styles?: React.CSSProperties;
+  text?: string;
+}) => (
+  <MUIButton
+    variant="contained"
+    sx={{
+      background: "linear-gradient(to right, #4facfe, #00f2fe)",
+      borderRadius: "10px",
+      fontFamily: "Poppins, sans-serif",
+      fontWeight: 500,
+      fontSize: "18px",
+      textTransform: "none",
+      px: 2,
+      // py: 1,
+      ...styles,
+    }}
   >
-    {text ? text : "Start Learning"}
-  </button>
+    {text ?? "Start Learning"}
+  </MUIButton>
 );
 
 export default Button;

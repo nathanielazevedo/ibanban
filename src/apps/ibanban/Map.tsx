@@ -1,23 +1,59 @@
 import index from "./data/index";
-import styles from "../../style";
 import { star } from "../../assets";
 import { Link } from "react-router-dom";
 
 const Level = ({ title }: { title: string }) => {
   return (
-    <Link to={`/deck/${title}`}>
-      <div className="flex flex-col items-center">
+    <Link to={`/deck/${title}`} style={{ textDecoration: "none" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <div
-          className="p-[2px] rounded-full bg-blue-gradient text-green h-24 w-24 mt-10 flex items-center justify-center flex-col cursor-pointer"
+          style={{
+            padding: "2px",
+            borderRadius: "9999px",
+            background: "linear-gradient(to right, #4facfe, #00f2fe)", // mimic "bg-blue-gradient"
+            height: "80px",
+            width: "80px",
+            marginTop: "30px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+          }}
           key={title}
         >
           <div
-            className={`${styles.flexCenter} flex-col bg-primary hover:bg-sky-900 rounded-full w-[100%] h-[100%]`}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              backgroundColor: "#000", // assuming "bg-primary" is black
+              borderRadius: "9999px",
+              height: "100%",
+              width: "100%",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseOver={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.backgroundColor =
+                "#0369a1")
+            }
+            onMouseOut={(e) =>
+              ((e.currentTarget as HTMLDivElement).style.backgroundColor =
+                "#000")
+            }
           >
-            {<img src={star} />}
+            <img src={star} alt="level icon" />
           </div>
         </div>
-        <h4 className="text-[30px] pt-3">{title}</h4>
+        <h4 style={{ fontSize: "20px", paddingTop: "12px", color: "#fff" }}>
+          {title}
+        </h4>
       </div>
     </Link>
   );
@@ -31,7 +67,15 @@ const Map = () => {
     if (i % 3 === 0) {
       // Single centered item
       rows.push(
-        <div key={i} className="flex justify-center mt-5">
+        <div
+          key={i}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "20px",
+            width: "100%",
+          }}
+        >
           <Level title={titles[i]} />
         </div>
       );
@@ -41,7 +85,17 @@ const Map = () => {
       const left = titles[i];
       const right = titles[i + 1];
       rows.push(
-        <div key={i} className="flex flex-row mt-5 gap-20">
+        <div
+          key={i}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            gap: "80px",
+            marginTop: "20px",
+            width: "100%",
+          }}
+        >
           <Level title={left} />
           {right && <Level title={right} />}
         </div>
@@ -51,7 +105,17 @@ const Map = () => {
   }
 
   return (
-    <div className="w-full flex flex-col items-center bg-primary">{rows}</div>
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        backgroundColor: "#000",
+      }}
+    >
+      {rows}
+    </div>
   );
 };
 

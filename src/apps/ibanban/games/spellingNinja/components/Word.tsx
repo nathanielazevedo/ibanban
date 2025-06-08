@@ -24,49 +24,83 @@ const Word = ({ GameClass }: WordType) => {
   const [wordsState, setWordsState] = useState<WordsState>(
     GameClass.generateState()
   );
+
   const chinese = GameClass.getCurrentChineseWord;
   const english = GameClass.getCurrentEnglishWord;
   const pinyin = GameClass.getCurrentPinyinWord;
 
   useEffect(() => {
     GameClass.setState = setWordsState;
+
     const inputRefs = document.getElementById("inputs")?.children;
     if (!inputRefs) return;
-    setWordsState((o) => {
-      o?.forEach((e, i) => {
+
+    setWordsState((prevState) => {
+      prevState?.forEach((e, i) => {
         e.ref = inputRefs[i];
       });
-      return o;
+      return [...prevState];
     });
   }, []);
 
+  // 🔥 Focus the current input when wordsState updates
+  useEffect(() => {
+    const activeIndex = GameClass.currentLetterIndex;
+    const inputRefs = document.getElementById("inputs")?.children;
+    if (inputRefs?.[activeIndex]) {
+      (inputRefs[activeIndex] as HTMLElement).focus();
+    }
+  }, [wordsState]);
+
   const getBorderColor = (state: string) => {
-    let borderColor = "white";
-    if (state == "completed") borderColor = "green";
-    else if (state == "error") borderColor = "red";
-    return borderColor;
+    if (state === "completed") return "green";
+    if (state === "error") return "red";
+    return "white";
   };
 
   return (
     <>
-      <Box className="flex items-center gap-[50px]">
-        <h3 className="text-[50px] text-gradient">{english}</h3>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: "50px",
+          marginBottom: "24px",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: "50px",
+            background: "linear-gradient(to right, #4facfe, #00f2fe)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          {english}
+        </Typography>
         <Tooltip title="Hear word" placement="top">
           <HearingIcon
-            className="hearing-icon"
             fontSize="large"
             onClick={() => speak(chinese, 0.5)}
+            sx={{ cursor: "pointer", color: "#90caf9" }}
           />
         </Tooltip>
       </Box>
-      <Box id="inputs" className="flex w-[84vw] gap-[10px]">
+
+      <Box
+        id="inputs"
+        sx={{
+          display: "flex",
+          gap: "10px",
+          width: "84vw",
+          flexWrap: "wrap",
+        }}
+      >
         {pinyin?.map((l: string, i: number) => (
           <input
-            key={Math.random() * 1000}
+            key={i}
             value={wordsState[i]?.value ?? ""}
-            autoFocus={GameClass.currentLetterIndex === i}
-            className="text-[40px] bg-primary text-white border-2 border-white rounded-md w-[70px] h-[70px] text-center"
-            style={{ borderColor: getBorderColor(wordsState[i].status) }}
             onChange={(evt) =>
               GameClass.handleChange(
                 i,
@@ -74,6 +108,19 @@ const Word = ({ GameClass }: WordType) => {
                 setWordsState
               )(evt.target.value)
             }
+            autoCapitalize="off"
+            autoCorrect="off"
+            spellCheck={false}
+            style={{
+              fontSize: "40px",
+              backgroundColor: "#000",
+              color: "white",
+              border: `2px solid ${getBorderColor(wordsState[i]?.status)}`,
+              borderRadius: "8px",
+              width: "70px",
+              height: "70px",
+              textAlign: "center",
+            }}
           />
         ))}
       </Box>

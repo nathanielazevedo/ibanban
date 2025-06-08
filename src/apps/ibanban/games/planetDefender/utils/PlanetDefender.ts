@@ -27,7 +27,7 @@ export default class PlanetDefenderGame {
   }
 
   checkWord(input: string) {
-    if (input === this.stack[0].english) return true;
+    if (input.toLowerCase() === this.stack[0].english.toLowerCase()) return true;
     return false;
   }
 

@@ -1,9 +1,34 @@
-import styles from "../../../style";
-
 const Footer = () => (
-  <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
-    <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+  <section
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      paddingBottom: "60px",
+    }}
+  >
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexDirection: "column", // fallback for mobile
+        paddingTop: "44px",
+        // borderTop: "1px solid #3F3E45",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "Poppins, sans-serif",
+          fontWeight: 400,
+          fontSize: "18px",
+          lineHeight: "27px",
+          color: "white",
+          textAlign: "center",
+        }}
+      >
         Copyright Ⓒ 2022 Ibanban. All Rights Reserved.
       </p>
     </div>

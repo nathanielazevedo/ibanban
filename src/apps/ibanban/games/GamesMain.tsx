@@ -17,31 +17,51 @@ const Main = () => {
       previous: "spellingNinja",
       name: "planetDefender",
     },
+    // {
+    //   title: "Jumping Jao",
+    //   difficulty: "easy",
+    //   previous: "planetDefender",
+    //   name: "jumpingJao",
+    // },
   ];
 
   return (
     <Box>
-      <Box className="w-[320px] sm:w-[520px] m-auto pt-5">
-        {games.map((game, i) => {
-          return (
-            <Link
-              key={i}
-              to={location.pathname + "/" + game.title.replace(/\s+/g, "")}
+      <Box
+        sx={{
+          width: { xs: "320px", sm: "520px" },
+          margin: "0 auto",
+          // paddingTop: 2,
+        }}
+      >
+        {games.map((game, i) => (
+          <Link
+            key={i}
+            to={`${location.pathname}/${game.title.replace(/\s+/g, "")}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Paper
+              elevation={2}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "20px",
+                padding: "20px",
+                // backgroundColor: "#1a1a1a",
+                "&:hover": {
+                  backgroundColor: "black",
+                },
+              }}
             >
-              <Paper
-                key={i}
-                elevation={2}
-                className={`flex justify-between items-center mt-5 p-5 hover:bg-primary`}
+              <Typography
+                color={game.difficulty === "In Dev" ? "grey.500" : "white"}
               >
-                <Typography
-                  color={game.difficulty == "In Dev" ? "grey" : "white"}
-                >
-                  {game.title}
-                </Typography>
-              </Paper>
-            </Link>
-          );
-        })}
+                {game.title}
+              </Typography>
+            </Paper>
+          </Link>
+        ))}
       </Box>
     </Box>
   );

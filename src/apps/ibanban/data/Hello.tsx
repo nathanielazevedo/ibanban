@@ -60,5 +60,40 @@ export default {
       pinyin: "Hěn gāoxìng rènshí nǐ!",
       chinese: "很高兴认识你！",
     },
+    {
+      english: "I am Alex.",
+      pinyin: "Wǒ shì Alex.",
+      chinese: "我是Alex。",
+    },
+    {
+      english: "You are very nice.",
+      pinyin: "Nǐ hěn hǎo.",
+      chinese: "你很好。",
+    },
+    {
+      english: "Are you Alex?",
+      pinyin: "Nǐ shì Alex ma?",
+      chinese: "你是Alex吗？",
+    },
+    {
+      english: "Yes, I am.",
+      pinyin: "Shì, wǒ shì.",
+      chinese: "是，我是。",
+    },
+    {
+      english: "No, I am not.",
+      pinyin: "Bù shì, wǒ bù shì.",
+      chinese: "不是，我不是。",
+    },
+    {
+      english: "What is this?",
+      pinyin: "Zhè shì shénme?",
+      chinese: "这是什么？",
+    },
+    {
+      english: "This is my name.",
+      pinyin: "Zhè shì wǒ de míngzì.",
+      chinese: "这是我的名字。",
+    },
   ],
 };

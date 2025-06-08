@@ -1,22 +1,22 @@
-//functionality
+// functionality
 import playSound from "../../../../../utils/playSound";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import PlanetDefenderGame from "../utils/PlanetDefender";
 
-//components
+// components
 import Comet from "./Comet";
 import earth from "../assets/earth.svg";
 import WinDialog from "./WinDialog";
 import CountDown from "./CountDown";
 import StartDialog from "../../planetDefender/components/StartDialog";
-import { Box, TextField } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-type PlanetDefender = {
+type PlanetDefenderProps = {
   pdClass: PlanetDefenderGame;
 };
 
-const PlanetDefender = ({ pdClass }: PlanetDefender) => {
+const PlanetDefender = ({ pdClass }: PlanetDefenderProps) => {
   const [currentWord, setCurrentWord] = useState(pdClass.getNextWord());
   const [input, setInput] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
@@ -26,8 +26,17 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
   const [showStartDialog, setShowStartDialog] = useState(true);
   const [borderColor, setBorderColor] = useState("lightblue");
   const [showCountDown, setShowCountDown] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Start countdown
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    if (showComet && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [showComet]);
+
   const startCountDown = () => {
     playSound("CountdownSound");
     setShowCountDown(true);
@@ -37,7 +46,6 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
     }, 3000);
   };
 
-  // Start game
   const startGame = () => {
     setShowStartDialog(false);
     pdClass.restoreDeck();
@@ -48,8 +56,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
     }, 500);
   };
 
-  // Handle Inputting characters
-  const handleInputChange = (text: string) => {
+  const handleInputChange = async (text: string) => {
     setInput(text);
     if (pdClass.checkWord(text)) {
       pdClass.shift();
@@ -60,17 +67,15 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
       } else {
         setBorderColor("green");
         playSound("Good");
+        await sleep(300);
         setCurrentWord(pdClass.getNextWord());
-        setTimeout(() => {
-          setBorderColor("blue");
-          setInput("");
-          setShowComet(true);
-        }, 500);
+        setBorderColor("blue");
+        setInput("");
+        setShowComet(true);
       }
     }
   };
 
-  // comet hit the planet
   const handleWrong = () => {
     setBorderColor("red");
     setShowComet(false);
@@ -85,16 +90,33 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
 
   return (
     <>
-      <Box className="h-[50vh] flex flex-col items-center justify-evenly relative">
-        {showCountDown ? <CountDown /> : null}
+      <Box
+        sx={{
+          height: "50vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          position: "relative",
+        }}
+      >
+        {showCountDown && <CountDown />}
+
         <CloseRoundedIcon
-          className="absolute top-0 left-0 m-5 cursor-pointer"
           fontSize="large"
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            margin: 2,
+            cursor: "pointer",
+          }}
           onClick={() => {
             setShowStartDialog(true);
             setShowComet(false);
           }}
         />
+
         {showComet && (
           <Comet
             word={currentWord}
@@ -103,21 +125,69 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
             planetRef={planetRef.current}
           />
         )}
-        <img className="h-64 w-64 self-end r-5" ref={planetRef} src={earth} />
-        <Box className="flex flex-col items-center">
-          <h5 className="text-gradient text-[20px] pb-[10px]">
+
+        <Box
+          component="img"
+          ref={planetRef}
+          src={earth}
+          alt="planet"
+          sx={{
+            width: { xs: "120px", sm: "160px", md: "200px" },
+            pt: { xs: "65px", sm: "0px" },
+            height: "auto",
+            alignSelf: "flex-end",
+            mr: { xs: "0", sm: 2 },
+          }}
+        />
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              background: "linear-gradient(to right, #4facfe, #00f2fe)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              paddingBottom: "10px",
+            }}
+          >
             {currentWord.pinyin}
-          </h5>
+          </Typography>
           <TextField
             value={input}
+            fullWidth
+            size="medium"
             autoComplete="off"
             disabled={!showComet}
-            id="border-2 outline-none"
-            inputRef={(input) => input && input.focus()}
+            inputRef={inputRef}
             onChange={(evt) => handleInputChange(evt.target.value)}
+            inputProps={{
+              autoCapitalize: "off",
+              autoCorrect: "off",
+              spellCheck: false,
+              style: {
+                padding: "12px",
+                fontSize: "18px",
+              },
+            }}
+            sx={{
+              maxWidth: "90vw",
+              input: {
+                border: `2px solid ${borderColor}`,
+                borderRadius: "8px",
+                background: "#121212",
+                color: "white",
+              },
+            }}
           />
         </Box>
       </Box>
+
       <WinDialog
         open={showWinDialog}
         setShowWinDialog={setShowWinDialog}
@@ -125,6 +195,7 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
         prepareGame={startCountDown}
         pdClass={pdClass}
       />
+
       <StartDialog
         open={showStartDialog}
         difficulty={difficulty}

@@ -32,7 +32,7 @@ const App = () => {
                 path="/deck/:deckName/SpellingNinja"
                 element={<Spelling />}
               />
-              <Route path="/deck/:deckName/jumpingJiao" element={<Jumper />} />
+              <Route path="/deck/:deckName/jumpingJao" element={<Jumper />} />
               <Route path="*" element={<FourOFour />} />
             </Route>
           </Routes>

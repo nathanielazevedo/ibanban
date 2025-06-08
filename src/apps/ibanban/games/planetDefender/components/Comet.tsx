@@ -1,10 +1,12 @@
-//functionality
 import { comet } from "../assets";
 import { Word } from "../../../data";
 import { useEffect, useRef } from "react";
 import { speak } from "../../../../../utils/speak";
 import playSound from "../../../../../utils/playSound";
 import { useSpring, animated } from "@react-spring/web";
+import { styled } from "@mui/system";
+
+const StyledAnimatedImg = styled(animated.img)({});
 
 type Comet = {
   word: Word;
@@ -20,7 +22,7 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
     from: { x: -50 },
     to: { x: planetRef ? planetRef.getBoundingClientRect().left - 120 : 500 },
     config: {
-      duration: difficulty == "easy" ? 7000 : 5000,
+      duration: difficulty === "easy" ? 7000 : 5000,
     },
     onRest: (x) => {
       if (x.finished) {
@@ -29,6 +31,7 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
       }
     },
   }));
+
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
@@ -37,13 +40,19 @@ const Comet = ({ word, handleWrong, difficulty, planetRef }: Comet) => {
   }, []);
 
   return (
-    <animated.img
-      className="z-100 w-[150px] h-[150px] absolute top-[100px] left-[10px]"
-      style={{ ...spring }}
+    <StyledAnimatedImg
       src={comet}
-    >
-      {/* {difficulty == "easy" && word.word.pinyin} */}
-    </animated.img>
+      alt="comet"
+      sx={{
+        position: "absolute",
+        top: "100px",
+        left: "10px",
+        width: { xs: "120px", sm: "160px", md: "200px" },
+        height: "auto",
+        zIndex: 100,
+      }}
+      style={{ ...spring }}
+    />
   );
 };
 

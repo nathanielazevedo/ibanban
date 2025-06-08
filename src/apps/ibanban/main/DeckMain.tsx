@@ -24,7 +24,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -41,40 +41,66 @@ const Overview = () => {
   if (!deckName) return <></>;
 
   const deck = decks[deckName];
-  const [value, setValue] = React.useState(0); // local state only
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Box className="bg-primary h-[90vh]">
-      <Box className="bg-primary w-[90vw] m-auto">
+    <Box sx={{ backgroundColor: "black" }}>
+      <Box
+        sx={{
+          margin: "0 auto",
+          pb: 10,
+        }}
+      >
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="basic tabs example"
+            aria-label="overview tabs"
           >
             <Tab label="Words" {...a11yProps(0)} />
             <Tab label="Sentences" {...a11yProps(1)} />
             <Tab label="Games" {...a11yProps(2)} />
           </Tabs>
         </Box>
+
         <TabPanel value={value} index={0}>
-          <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
+          <Box
+            sx={{
+              width: { xs: "320px", sm: "520px" },
+              margin: "0 auto",
+              paddingTop: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
             {deck.words.map((word, i) => (
               <WordCard key={i} word={word} />
             ))}
           </Box>
         </TabPanel>
+
         <TabPanel value={value} index={1}>
-          <Box className="w-[320px] sm:w-[520px] m-auto bg-primary pt-5">
+          <Box
+            sx={{
+              width: { xs: "320px", sm: "520px" },
+              margin: "0 auto",
+              paddingTop: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
             {deck.sentences.map((word, i) => (
               <WordCard key={i} word={word} />
             ))}
           </Box>
         </TabPanel>
+
         <TabPanel value={value} index={2}>
           <Games />
         </TabPanel>

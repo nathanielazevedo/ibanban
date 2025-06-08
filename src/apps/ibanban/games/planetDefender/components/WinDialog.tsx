@@ -5,10 +5,11 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  Typography,
 } from "@mui/material";
 import PlanetDefenderGame from "../utils/PlanetDefender";
 
-type WinDialog = {
+type WinDialogProps = {
   open: boolean;
   setShowWinDialog: (state: boolean) => void;
   setShowStartDialog: (state: boolean) => void;
@@ -22,18 +23,22 @@ const WinDialog = ({
   setShowStartDialog,
   prepareGame,
   pdClass,
-}: WinDialog) => {
+}: WinDialogProps) => {
   return (
-    <Dialog open={open} sx={{ zIndex: "5000" }} fullWidth>
+    <Dialog open={open} sx={{ zIndex: 5000 }} fullWidth>
       <DialogTitle>
-        <h3 className="text-[30px]">You won!</h3>
+        <Typography variant="h4" component="h3">
+          You won!
+        </Typography>
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-          <h4 className="text-[20px]">You defended the planet!</h4>
+          <Typography variant="h6" component="h4">
+            You defended the planet!
+          </Typography>
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ display: "flext", justifyContent: "space-between" }}>
+      <DialogActions sx={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           onClick={() => {
             setShowWinDialog(false);

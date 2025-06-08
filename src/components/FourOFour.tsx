@@ -4,10 +4,18 @@ import Button from "./Button";
 
 const FourOFour = () => {
   return (
-    <div className="h-[90vh] flex flex-col items-center justify-center align-center">
+    <div
+      style={{
+        height: "90vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Typography variant="h1">You lost?</Typography>
-      <Link to="/map">
-        <Button text="Go Home" styles="mt-16" />
+      <Link to="/map" style={{ marginTop: "4rem" }}>
+        <Button text="Go Home" />
       </Link>
     </div>
   );

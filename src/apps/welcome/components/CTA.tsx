@@ -1,24 +1,57 @@
 import { Link } from "react-router-dom";
-import styles from "../../../style";
 import Button from "../../../components/Button";
+import { Box } from "@mui/material";
 
 const CTA = () => (
-  <section
-    className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
+  <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      marginTop: "60px",
+      // marginBottom: "60px",
+      padding: "40px",
+      // borderRadius: "20px",
+      background: "linear-gradient(to right, #000000,rgb(34, 76, 112))",
+      // boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+    }}
   >
-    <div className="flex-1 flex flex-col">
-      <h2 className={styles.heading2}>Go play some games now!</h2>
-      <p className={`${styles.paragraph} max-w-[480px] mt-5`}>
-        What are you waiting for? Start learning now!
-      </p>
+    <div
+      style={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+      }}
+    >
+      <h2
+        style={{
+          fontSize: "32px",
+          fontWeight: 600,
+          fontFamily: "Poppins, sans-serif",
+          color: "white",
+          margin: 0,
+        }}
+      >
+        Go play some games now!
+      </h2>
     </div>
 
-    <div className={`${styles.flexCenter} sm:ml-10 ml-0 sm:mt-0 mt-10`}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginLeft: "0",
+        marginTop: "40px",
+      }}
+    >
       <Link to="/map">
         <Button />
       </Link>
     </div>
-  </section>
+  </Box>
 );
 
 export default CTA;
