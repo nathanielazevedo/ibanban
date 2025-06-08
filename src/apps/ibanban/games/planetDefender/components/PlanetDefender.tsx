@@ -11,7 +11,6 @@ import CountDown from "./CountDown";
 import StartDialog from "../../planetDefender/components/StartDialog";
 import { Box, TextField } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { useDispatch } from "react-redux";
 
 type PlanetDefender = {
   pdClass: PlanetDefenderGame;
@@ -22,7 +21,6 @@ const PlanetDefender = ({ pdClass }: PlanetDefender) => {
   const [input, setInput] = useState("");
   const [difficulty, setDifficulty] = useState("easy");
   const planetRef = useRef<HTMLImageElement | null>(null);
-  const dispatch = useDispatch();
   const [showComet, setShowComet] = useState<boolean>(false);
   const [showWinDialog, setShowWinDialog] = useState(false);
   const [showStartDialog, setShowStartDialog] = useState(true);
